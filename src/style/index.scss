@@ -1,0 +1,13 @@
+@import 'animate';
+@import 'responsive';
+@import 'material';
+@import 'app';
+
+* {
+  outline: none;
+}
+
+html, body, #app, .main {
+  width: 100%;
+  height: 100%;
+}

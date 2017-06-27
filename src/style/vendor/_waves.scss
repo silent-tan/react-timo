@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+.waves-effect {
+	position: relative;
+	overflow: hidden;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.waves-effect .waves-ripple {
+	position: absolute;
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	margin-top: -50px;
+	margin-left: -50px;
+	opacity: 0;
+	transition: all 0.5s ease-out;
+	transition-property: opacity,-webkit-transform;
+	transition-property: transform,opacity;
+	transition-property: transform,opacity,-webkit-transform;
+	-webkit-transform: scale(0) translate(0,0);
+	transform: scale(0) translate(0,0);
+	pointer-events: none;
+}
+
+.waves-effect.btn-link .waves-ripple,
+.waves-effect.btn-secondary .waves-ripple,
+.waves-effect:not(.waves-light) .waves-ripple {
+	background: rgba(0,0,0,.08);
+}
+
+.waves-effect.btn:not(.btn-secondary):not(.btn-link) .waves-ripple,
+.waves-effect.waves-light .waves-ripple {
+	background: rgba(255,255,255,.5);
+}
+
+.waves-effect.waves-classic .waves-ripple {
+	background: rgba(0,0,0,.08);
+}
+
+.waves-effect.waves-classic.waves-light .waves-ripple {
+	background: rgba(255,255,255,.5);
+}
+
+.waves-notransition {
+	transition: none!important;
+}
+
+.waves-button,
+.waves-circle {
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-mask-image: -webkit-radial-gradient(circle,#FFF 100%,#000 100%);
+}
+
+.waves-input-wrapper .waves-button-input {
+	position: relative;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	border: 0;
+}
+
+.waves-block {
+	display: block;
+}

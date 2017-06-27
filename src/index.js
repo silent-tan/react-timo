@@ -1,6 +1,10 @@
-import Flex from './component/flex';
-import './index.scss';
+import './scss/main.scss';
+import Button from './component/Button';
+import Flex from './component/Flex';
+import Tip from './component/Tip';
 
 module.exports = {
-  Flex
+  Button,
+  Flex,
+  Tip
 };

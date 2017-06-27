@@ -1,7 +1,5 @@
 module.exports = {
-    "plugins": [
-        "gm"
-    ],
+    "plugins": ["gm"],
     "extends": ["plugin:gm/recommended"],
     "rules": {
         "react/no-string-refs": 0,

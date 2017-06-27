@@ -1,0 +1,24 @@
+.tm-static-tips {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 1031;
+}
+
+.tm-static-tip {
+  display: inline-block;
+  max-width: 600px;
+  width: 100%;
+}
+
+.tm-static-tip-icon,
+.tm-static-tip-content {
+  margin-right: 5px;
+}
+
+.tm-static-tip-close {
+  &:hover {
+    cursor: pointer;
+    opacity: .8;
+  }
+}
