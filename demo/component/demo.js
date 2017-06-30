@@ -1,14 +1,31 @@
-import React from 'react';
+import React, {Component} from 'react';
+import _ from 'lodash';
+
 import {
   Button,
+  FileUpload,
+  Flex,
   Tip
 } from '../../src/index';
 
-class Component extends React.Component {
+class Demo extends Component {
+  constructor() {
+    super();
+    this.handleChangeFile = ::this.handleChangeFile;
+    this.state = {
+      files: []
+    };
+  }
+  handleChangeFile(files) {
+    this.setState({
+      files
+    });
+  }
   handleShowTip() {
     Tip.success('测试来一发');
   }
   render() {
+    console.log(this.state.files);
     return (
       <div>
         demo
@@ -20,8 +37,29 @@ class Component extends React.Component {
             onClick={this.handleShowTip}
           >测试来一发</Button>
         </div>
+        <hr />
+        <div>
+          <FileUpload onChange={this.handleChangeFile}/>
+        </div>
+        {
+          this.state.files.length ?
+          <div className="img-thumb row">
+            {
+              _.map(this.state.files, file => {
+                return (
+                  <div className="col-md-2" key={file.name}>
+                    <Flex alignCenter justifyCenter  height="250px" className="mb-2">
+                      <img src={file.thumb} style={{maxWidth: '100%', maxHeight: '100%'}}/>
+                    </Flex>
+                  </div>
+                );
+              })
+            }
+          </div>
+          : null
+        }
       </div>
     );
   }
 }
-export default Component;
+export default Demo;

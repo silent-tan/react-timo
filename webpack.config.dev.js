@@ -8,9 +8,10 @@ const config = {
   entry: {
     'index': ['./demo/index']
   },
-  // resolve: {
-  //     alias: {}
-  // },
+  resolve: {
+      alias: {
+      }
+  },
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[name].[hash].bundle.js',
