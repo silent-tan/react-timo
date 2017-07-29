@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import _ from 'lodash';
+import map from 'lodash/map';
 
 import {
   Button,
@@ -25,7 +25,6 @@ class Demo extends Component {
     Tip.success('测试来一发');
   }
   render() {
-    console.log(this.state.files);
     return (
       <div>
         demo
@@ -43,20 +42,20 @@ class Demo extends Component {
         </div>
         {
           this.state.files.length ?
-          <div className="img-thumb row">
-            {
-              _.map(this.state.files, file => {
-                return (
-                  <div className="col-md-2" key={file.name}>
-                    <Flex alignCenter justifyCenter  height="250px" className="mb-2">
-                      <img src={file.thumb} style={{maxWidth: '100%', maxHeight: '100%'}}/>
-                    </Flex>
-                  </div>
-                );
-              })
-            }
-          </div>
-          : null
+            <div className="img-thumb row">
+              {
+                map(this.state.files, file => {
+                  return (
+                    <div className="col-md-2" key={file.name}>
+                      <Flex alignCenter justifyCenter  height="250px" className="mb-2">
+                        <img src={file.thumb} style={{maxWidth: '100%', maxHeight: '100%'}}/>
+                      </Flex>
+                    </div>
+                  );
+                })
+              }
+            </div>
+            : null
         }
       </div>
     );

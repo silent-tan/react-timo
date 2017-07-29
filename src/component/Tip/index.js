@@ -4,12 +4,15 @@
  */
 
 require('./_style.scss');
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import _ from 'lodash';
 import cx from 'classnames';
 import uuid from 'uuid';
-
+import isString from 'lodash/isString';
+import forEach from 'lodash/forEach';
+import noop from 'lodash/noop';
+import assign from 'lodash/assign';
 import Flex from '../Flex/';
 
 const STATIC_TIP_CONTAINER_ID = '_tm-static-tip__container ' + uuid.v1();
@@ -39,7 +42,7 @@ const TipMethods = {
   },
 
   success(options) {
-    if(typeof options === 'string') {
+    if(isString(options)) {
       options = {
         children: options
       };
@@ -50,7 +53,7 @@ const TipMethods = {
   },
 
   info(options) {
-    if(typeof options === 'string') {
+    if(isString(options)) {
       options = {
         children: options
       };
@@ -61,7 +64,7 @@ const TipMethods = {
   },
 
   warning(options) {
-    if(typeof options === 'string') {
+    if(isString(options)) {
       options = {
         children: options
       };
@@ -72,7 +75,7 @@ const TipMethods = {
   },
 
   danger(options) {
-    if(typeof options === 'string') {
+    if(isString(options)) {
       options = {
         children: options
       };
@@ -83,7 +86,7 @@ const TipMethods = {
   },
 
   clear() {
-    _.forEach(tipContainer.children, tip => {
+    forEach(tipContainer.children, tip => {
       ReactDOM.unmountComponentAtNode(tip);
     });
   }
@@ -99,14 +102,15 @@ class TipOverlay extends Component {
       'danger'
     ]),
     time: PropTypes.number,
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    children: PropTypes.any
   }
 
   static defaultProps = {
     title: '',
     type: 'info',
     time: 3000,
-    onClose: _.noop
+    onClose: noop
   }
 
   constructor(props) {
@@ -168,13 +172,14 @@ class Tip extends Component {
       'warning'
     ]),
     title: PropTypes.string,
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    children: PropTypes.any
   }
 
   static defaultProps = {
     type: 'info',
     title: '',
-    onClose: _.noop
+    onClose: noop
   }
 
   constructor(props) {
@@ -206,29 +211,27 @@ class Tip extends Component {
             <i className={`${iconClassName[type]}`}/>
           </Flex>
           {
-            title ?
-            <Flex><strong>{ title }</strong></Flex>
-            : null
+            title ? <Flex><strong>{ title }</strong></Flex> : null
           }
           <Flex
             flex={1}
             alignCenter={true}
             className="tm-static-tip-content"
           >
-          { children }
+            { children }
+          </Flex>
+          <Flex
+            justifyCenter={true}
+            alignCenter={true}
+            className="tm-static-tip-close"
+            onClick={this.handleClose}
+          >关闭</Flex>
         </Flex>
-        <Flex
-          justifyCenter={true}
-          alignCenter={true}
-          className="tm-static-tip-close"
-          onClick={this.handleClose}
-        >关闭</Flex>
-      </Flex>
-    </div>
+      </div>
     );
   }
 }
 
-Object.assign(Tip, TipMethods);
+assign(Tip, TipMethods);
 
 export default Tip;

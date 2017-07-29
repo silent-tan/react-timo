@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class FileUpload extends Component {
   static propTypes = {
@@ -6,7 +7,7 @@ class FileUpload extends Component {
     btnValue: PropTypes.string,
     className: PropTypes.string,
     multiple: PropTypes.bool,
-    filter: PropTypes.oneOfType([
+    filterData: PropTypes.oneOfType([
       PropTypes.oneOf([false]),
       PropTypes.func
     ])
@@ -15,7 +16,7 @@ class FileUpload extends Component {
     btnValue: '上传图片',
     className: 'btn btn-primary',
     multiple: true,
-    filter: false
+    filterData: false
   }
   constructor(props) {
     super(props);
@@ -32,9 +33,9 @@ class FileUpload extends Component {
     // 将对象转化成数组
     files = Array.prototype.slice.call(files, 0);
     // 文件类型过滤
-    if(this.props.filter) {
-      files = this.props.filter(files);
-      // filter 举例
+    if(this.props.filterData) {
+      files = this.props.filterData(files);
+      // filterData 举例
       // (files) => {
       //   return _.filter(files, file => /image/i.test(file.type));
       // }
@@ -48,7 +49,6 @@ class FileUpload extends Component {
         <input
           type="file"
           multiple={multiple}
-          ref="fileInput"
           className="hide"
           onChange={this.handleChange}
         />

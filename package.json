@@ -14,7 +14,7 @@
     "precommit": "eslint ./src/ ./demo/",
     "pre": "npm install",
     "clear": "rm -rf build && mkdir build",
-    "start": "npm run clear && NODE_ENV=development webpack-dev-server --config webpack.config.dev.js --devtool eval --public 192.168.0.102:3000 --host 0.0.0.0 --inline --hot --progress --colors --port 3000",
+    "start": "npm run clear && NODE_ENV=development webpack-dev-server --config webpack.config.dev.js --devtool eval --host 0.0.0.0 --inline --hot --progress --colors --port 3000",
     "deploy": "npm install && npm run build && npm run build:min",
     "build": "NODE_ENV=production webpack",
     "build:min": "NODE_ENV=production webpack --config webpack.config.min.js",
@@ -69,8 +69,9 @@
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-router": "^3.0.0",
     "uuid": "^3.1.0"
   }

@@ -1,0 +1,50 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:lodash/recommended"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "lodash"
+  ],
+  "rules": {
+    "indent": [
+      1,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "linebreak-style": [
+      0,
+      "unix"
+    ],
+    "quotes": [
+      "off",
+      "double"
+    ],
+    "prefer-const": [2, {
+      "destructuring": "any",
+      "ignoreReadBeforeAssign": false
+    }],
+    "no-console": [2, {
+      "allow": ["warn", "error"]
+    }],
+    "comma-dangle": [2, "never"]
+  }
+}

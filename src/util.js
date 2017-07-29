@@ -1,5 +1,9 @@
-const isMac = window.navigator.userAgent.indexOf('Mac') > -1;
+import includes from 'lodash/includes';
+
+function isMac(){
+  return includes(window.navigator.userAgent, 'Mac');
+}
 
 module.exports = {
-    isMac
+  isMac
 };

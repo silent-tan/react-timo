@@ -1,20 +1,22 @@
-import React, { Component, PropTypes } from 'react';
-import _ from 'lodash';
+import React, { Component } from 'react';
+import PropTypes from 'react';
+import noop from 'lodash/noop';
 
 class Button extends Component {
   static propTypes = {
     className: PropTypes.string,
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    children: PropTypes.any
   }
 
   static defaultProps = {
     className: 'btn btn-secondary',
     disabled: false,
-    onClick: _.noop,
-    onFocus: _.noop
-}
+    onClick: noop,
+    onFocus: noop
+  }
 
   constructor(props) {
     super(props);

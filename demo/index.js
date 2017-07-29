@@ -2,12 +2,16 @@ import './index.scss';
 import 'markdown-it-react-loader/index.css';
 import 'highlight.js/styles/default.css';
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import {Flex as TimoFlex} from '../src/index';
 import {Router, Route, hashHistory, IndexRedirect} from 'react-router';
 import Demo from './component/demo';
 
 class App extends React.Component {
+  static propTypes = {
+    children: PropTypes.any
+  }
   constructor(props) {
     super(props);
   }
