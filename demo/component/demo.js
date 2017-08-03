@@ -5,7 +5,8 @@ import {
   Button,
   FileUpload,
   Flex,
-  Tip
+  Tip,
+  Loading
 } from '../../src/index';
 
 class Demo extends Component {
@@ -57,6 +58,9 @@ class Demo extends Component {
             </div>
             : null
         }
+        <div>
+          <Loading />
+        </div>
       </div>
     );
   }
