@@ -2,8 +2,8 @@
 //
 // Utility mixins and functions for evalutating source code across our variables, maps, and mixins.
 
-// Ascending
-// Used to evaluate Sass maps like our grid breakpoints.
+// 升序
+// 用于评估 Sass maps, 例如 grid breakpoints.
 @mixin _assert-ascending($map, $map-name) {
   $prev-key: null;
   $prev-num: null;
@@ -20,8 +20,8 @@
   }
 }
 
-// Starts at zero
-// Another grid mixin that ensures the min-width of the lowest breakpoint starts at 0.
+// 从0计数
+// 另一个 grid mixin 用于验证 min-width of the lowest breakpoint 是从0开始的
 @mixin _assert-starts-at-zero($map) {
   $values: map-values($map);
   $first-value: nth($values, 1);
@@ -30,8 +30,8 @@
   }
 }
 
-// Replace `$search` with `$replace` in `$string`
-// Used on our SVG icon backgrounds for custom forms.
+// 替换 `$search` 为 `$replace` 在 `$string`中
+// 用于自定义 forms中的 SVG icon backgrounds.
 //
 // @author Hugo Giraudel
 // @param {String} $string - Initial string
@@ -48,7 +48,7 @@
   @return $string;
 }
 
-// Color contrast
+// Color 对比
 @mixin color-yiq($color) {
   $r: red($color);
   $g: green($color);

@@ -1,88 +1,49 @@
-.text-justify {
-	text-align: justify!important;
+//
+// Text
+//
+
+// Alignment
+
+.text-justify  { text-align: justify !important; }
+.text-nowrap   { white-space: nowrap !important; }
+.text-truncate { @include text-truncate; }
+
+// Responsive alignment
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .text#{$infix}-left   { text-align: left !important; }
+    .text#{$infix}-right  { text-align: right !important; }
+    .text#{$infix}-center { text-align: center !important; }
+  }
 }
 
-.text-nowrap {
-	white-space: nowrap!important;
+// Transformation
+
+.text-lowercase  { text-transform: lowercase !important; }
+.text-uppercase  { text-transform: uppercase !important; }
+.text-capitalize { text-transform: capitalize !important; }
+
+// Weight and italics
+
+.font-weight-normal { font-weight: $font-weight-normal; }
+.font-weight-bold   { font-weight: $font-weight-bold; }
+.font-italic        { font-style: italic; }
+
+// Contextual colors
+
+.text-white { color: #fff !important; }
+
+@each $color, $value in $theme-colors {
+  @include text-emphasis-variant('.text-#{$color}', $value);
 }
 
-.text-truncate {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
+.text-muted { color: $text-muted !important; }
 
-.text-left {
-	text-align: left!important;
-}
+// Misc
 
-.text-right {
-	text-align: right!important;
-}
-
-.text-center {
-	text-align: center!important;
-}
-@media (min-width:576px) {
-	.text-sm-left {
-		text-align: left!important;
-	}
-
-	.text-sm-right {
-		text-align: right!important;
-	}
-
-	.text-sm-center {
-		text-align: center!important;
-	}
-
-	.hidden-sm-up {
-		display: none!important;
-	}
-}
-@media (min-width:768px) {
-	.text-md-left {
-		text-align: left!important;
-	}
-
-	.text-md-right {
-		text-align: right!important;
-	}
-
-	.text-md-center {
-		text-align: center!important;
-	}
-
-	.hidden-md-up {
-		display: none!important;
-	}
-}
-@media (min-width:992px) {
-	.text-lg-left {
-		text-align: left!important;
-	}
-
-	.text-lg-right {
-		text-align: right!important;
-	}
-
-	.text-lg-center {
-		text-align: center!important;
-	}
-
-	.hidden-lg-up {
-		display: none!important;
-	}
-}
-
-.text-lowercase {
-	text-transform: lowercase!important;
-}
-
-.text-uppercase {
-	text-transform: uppercase!important;
-}
-
-.text-capitalize {
-	text-transform: capitalize!important;
+.text-hide {
+  @include text-hide();
 }
