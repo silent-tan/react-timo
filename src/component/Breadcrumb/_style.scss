@@ -1,4 +1,5 @@
 .nf-breadcrumb {
+  margin-bottom: 0;
   & > li {
     display: block;
     float: left;
@@ -12,8 +13,5 @@
   }
   &-item {
     color: rgba(0, 0, 0, .65);
-  }
-  &-separator {
-
   }
 }

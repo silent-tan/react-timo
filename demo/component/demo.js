@@ -169,12 +169,12 @@ class Demo extends Component {
         <div>
           <p>面包屑</p>
           <div className="mb-3">
-            <Breadcrumb routes={this.props.routes} />
+            <Breadcrumb routes={this.props.routes} border={false}/>
           </div>
           <div>
             <Breadcrumb>
-              <Breadcrumb.Item href="/hello"> 你好 </Breadcrumb.Item>
-              <Breadcrumb.Item> 例子 </Breadcrumb.Item>
+              <Breadcrumb.Item href="/hello">你好</Breadcrumb.Item>
+              <Breadcrumb.Item>例子</Breadcrumb.Item>
             </Breadcrumb>
           </div>
         </div>

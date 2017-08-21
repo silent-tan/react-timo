@@ -34,14 +34,16 @@ class Breadcrumb extends Component {
     params: PropTypes.object,
     itemRender: PropTypes.func,
     separator: PropTypes.any,
-    children: PropTypes.any
+    children: PropTypes.any,
+    border: PropTypes.bool
   }
 
   static defaultProps = {
     routes: [],
     params:  {},
     separator: '/',
-    itemRender: defaultItemRender
+    itemRender: defaultItemRender,
+    border: true
   }
   constructor(props) {
     super(props);
@@ -78,8 +80,12 @@ class Breadcrumb extends Component {
   }
 
   render() {
+    const style = {};
+    if(!this.props.border) {
+      style.border = 'none';
+    }
     return (
-      <ol className="breadcrumb nf-breadcrumb">
+      <ol className="breadcrumb nf-breadcrumb" style={style}>
         {this.renderItems()}
       </ol>
     );
