@@ -1,9 +1,7 @@
-import includes from 'lodash/includes';
-
-function isMac(){
-  return includes(window.navigator.userAgent, 'Mac');
-}
+import * as Layout from './layout';
+import * as Browser from './browser';
 
 export {
-  isMac
+  Browser,
+  Layout
 };

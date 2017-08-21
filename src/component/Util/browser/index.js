@@ -1,9 +1,9 @@
 import includes from 'lodash/includes';
 
-function isMac(){
+function isMac() {
   return includes(window.navigator.userAgent, 'Mac');
 }
 
-module.exports = {
+export {
   isMac
 };
