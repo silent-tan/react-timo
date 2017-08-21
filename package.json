@@ -35,8 +35,8 @@
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react": "15.6.1",
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
     "assets-webpack-plugin": "^3.5.0",
@@ -66,13 +66,18 @@
     "webpack-hot-middleware": "^2.17.1"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
+    "flatpickr": "^3.0.6",
+    "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
+    "node-waves": "^0.7.5",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router": "^3.0.0",
+    "select2": "^4.0.3",
     "uuid": "^3.1.0"
   }
 }

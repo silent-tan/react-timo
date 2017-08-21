@@ -4,7 +4,7 @@ import 'highlight.js/styles/default.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import {Flex as TimoFlex} from '../src/index';
+import {Flex} from '../src/';
 import {Router, Route, hashHistory, IndexRedirect} from 'react-router';
 import Demo from './component/demo';
 
@@ -18,11 +18,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="demo">
-        <TimoFlex className="demo-center container">
-          <TimoFlex>
+        <Flex className="demo-center container">
+          <Flex>
             {this.props.children}
-          </TimoFlex>
-        </TimoFlex>
+          </Flex>
+        </Flex>
       </div>
     );
   }

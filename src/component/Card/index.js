@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import isString from 'lodash/isString';
+import _isString from 'lodash/isString';
 
 class Card extends Component {
   static propTypes = {
@@ -28,7 +28,7 @@ class Card extends Component {
           title ?
             <div className="card-header">
               {
-                isString(title) ? <h2 className="card-title">{title}</h2> : {title}
+                _isString(title) ? <h2 className="card-title">{title}</h2> : {title}
               }
             </div> : null
         }

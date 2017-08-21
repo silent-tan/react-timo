@@ -1,0 +1,24 @@
+$info-color: #00BCD4 !default;
+$rep-prefix: __nf !default;
+.#{$rep-prefix}-transfer__table {
+  width: 100%;
+  border-top: 0;
+  overflow-y: scroll;
+}
+
+.#{$rep-prefix}-transfer__row {
+  padding: 10px 12px;
+  &:hover {
+    cursor: pointer;
+    background: $info-color;
+    color: #fff;
+  }
+
+  & + .#{$rep-prefix}-transfer__row {
+    border-top: 1px solid $info-color;
+  }
+}
+
+.#{$rep-prefix}-transfer__button--corner {
+  border-radius: 0 !important;
+}

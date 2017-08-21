@@ -16,3 +16,8 @@ html, body, #app, .main {
   font-weight: 400;
   font-size: .9rem;
 }
+
+// Checkbox fixed
+.custom-control.disabled {
+  cursor: not-allowed;
+}

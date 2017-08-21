@@ -1,3 +1,8 @@
+// @Author: twbs
+// @Date:   2017-08-04 18:01:29
+// @Last modified by:   farzer
+// @Last modified time: 2017-08-04 21:03:42
+
 // scss-lint:disable QualifyingElement, DuplicateProperty, VendorPrefix
 
 // Reboot
@@ -349,6 +354,14 @@ select {
   text-transform: none; // Remove the inheritance of text transform in Firefox
 }
 
+// Add the correct display in IE 9-.
+ audio,
+ canvas,
+ progress,
+ video {
+   display: inline-block;
+ }
+
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
 //    controls in Android 4.
 // 2. Correct the inability to style clickable types in iOS and Safari.
@@ -418,6 +431,7 @@ legend {
   line-height: inherit;
   color: inherit; // 2
   white-space: normal; // 1
+  box-sizing: border-box; // 1
 }
 
 progress {
