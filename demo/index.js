@@ -28,11 +28,20 @@ class App extends React.Component {
   }
 }
 
+class Test extends React.Component {
+  render() {
+    return (
+      <div>Test</div>
+    );
+  }
+}
+
 ReactDOM.render((
   <Router history={hashHistory}>
-    <Route path="/" component={App}>
+    <Route path="/" component={App} breadcrumbName="首页">
       <IndexRedirect to="/demo" />
-      <Route path="/demo" component={Demo}/>
+      <Route path="/demo" component={Demo} breadcrumbName="例子"/>
+      <Route path="/test" component={Test} />
     </Route>
   </Router>
 ), window.document.getElementById('appContainer'));

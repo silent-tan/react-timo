@@ -1,0 +1,19 @@
+.nf-breadcrumb {
+  & > li {
+    display: block;
+    float: left;
+
+    &:last-child {
+      font-weight: 500;
+      > .nf-breadcrumb-separator {
+        display: none;
+      }
+    }
+  }
+  &-item {
+    color: rgba(0, 0, 0, .65);
+  }
+  &-separator {
+
+  }
+}

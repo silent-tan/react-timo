@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import map from 'lodash/map';
 
 import {
@@ -10,10 +11,14 @@ import {
   Loading,
   Checkbox,
   Radio,
-  Card
+  Card,
+  Breadcrumb
 } from '../../src/index';
 
 class Demo extends Component {
+  static propTypes = {
+    routes: PropTypes.any
+  }
   constructor() {
     super();
     this.handleShowTip = ::this.handleShowTip;
@@ -159,6 +164,19 @@ class Demo extends Component {
           <Card title="测试Card">
             这些都是测试的内容啊哦哦哦哦哦哦
           </Card>
+        </div>
+        <hr />
+        <div>
+          <p>面包屑</p>
+          <div className="mb-3">
+            <Breadcrumb routes={this.props.routes} />
+          </div>
+          <div>
+            <Breadcrumb>
+              <Breadcrumb.Item href="/hello"> 你好 </Breadcrumb.Item>
+              <Breadcrumb.Item> 例子 </Breadcrumb.Item>
+            </Breadcrumb>
+          </div>
         </div>
       </div>
     );
