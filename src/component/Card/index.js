@@ -1,29 +1,54 @@
+/**
+ * @Author: farzer
+ * @Date:   2017-07-29 16:47:04
+ * @Last modified by:   farzer
+ * @Last modified time: 2017-08-21 14:25:28
+ */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import _isString from 'lodash/isString';
 
+const STATUS = ['default', 'info', 'primary', 'success', 'warning', 'danger'];
+
+/**
+ * 卡片组件
+ * @type {Component}
+ * animated css动画
+ * outline  卡片边框
+ * title  卡片标题
+ * type 卡片类型：底色
+ */
 class Card extends Component {
   static propTypes = {
+    children: PropTypes.any.isRequired,
+    animated: PropTypes.string,
+    outline: PropTypes.oneOf(STATUS),
+    style: PropTypes.object,
     title: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.object
     ]),
-    children: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.array
-    ]).isRequired,
-    animated: PropTypes.string,
-    style: PropTypes.object
+    type: PropTypes.oneOf(STATUS)
   }
   static defaultProps = {
+    animated: '',
+    outline: 'default',
+    style: {},
     title: '',
-    animated: 'fadeIn',
-    style: {}
+    type: 'default'
   }
   render() {
-    const {title, children, animated, style} = this.props;
+    const {title, children, animated, style, type, outline} = this.props;
+    const cls = cx('card', {
+      [`animated ${animated}`]: animated !== '',
+      [`card-${type}`]: type !== 'default',
+      'card-inverse': type !== 'default',
+      [`card-outline-${outline}`]: outline !== 'default'
+    });
     return (
-      <div className={`card animated${' ' + animated}`} style={style}>
+      <div className={cls} style={style}>
         {
           title ?
             <div className="card-header">

@@ -9,7 +9,8 @@ import {
   Tip,
   Loading,
   Checkbox,
-  Radio
+  Radio,
+  Card
 } from '../../src/index';
 
 class Demo extends Component {
@@ -152,6 +153,12 @@ class Demo extends Component {
               onChange={this.handleChangeRadios.bind(this)}
             />
           </div>
+        </div>
+        <hr />
+        <div>
+          <Card title="测试Card">
+            这些都是测试的内容啊哦哦哦哦哦哦
+          </Card>
         </div>
       </div>
     );
