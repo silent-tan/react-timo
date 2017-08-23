@@ -1,5 +1,45 @@
 import _isNil from 'lodash/isNil';
 import _isNumber from 'lodash/isNumber';
+import _forEach from 'lodash/forEach';
+
+let cached;
+
+function getScrollBarSize(fresh) {
+  if (fresh || cached === undefined) {
+    const inner = window.document.createElement('div');
+    inner.style.width = '100%';
+    inner.style.height = '200px';
+
+    const outer = window.document.createElement('div');
+    const outerStyle = outer.style;
+
+    outerStyle.position = 'absolute';
+    outerStyle.top = 0;
+    outerStyle.left = 0;
+    outerStyle.pointerEvents = 'none';
+    outerStyle.visibility = 'hidden';
+    outerStyle.width = '200px';
+    outerStyle.height = '150px';
+    outerStyle.overflow = 'hidden';
+
+    outer.appendChild(inner);
+
+    window.document.body.appendChild(outer);
+
+    const widthContained = inner.offsetWidth;
+    outer.style.overflow = 'scroll';
+    let widthScroll = inner.offsetWidth;
+
+    if (widthContained === widthScroll) {
+      widthScroll = outer.clientWidth;
+    }
+
+    window.document.body.removeChild(outer);
+
+    cached = widthContained - widthScroll;
+  }
+  return cached;
+}
 
 function getDefaultTarget() {
   return _isNil(window) ? window : null;
@@ -27,6 +67,28 @@ function getScroll(target, top) {
   return ret;
 }
 
+function setTransformOrigin(node, value) {
+  const style = node.style;
+  const browserPrefix = ['Webkit', 'Moz', 'Ms', 'ms'];
+  _forEach(browserPrefix, (prefix) => {
+    style[`${prefix}TransformOrigin`] = value;
+  });
+  style[`transformOrigin`] = value;
+}
+
+function offset(el) {
+  const rect = el.getBoundingClientRect();
+  const pos = {
+    left: rect.left,
+    top: rect.top
+  };
+  const doc = el.ownerDocument;
+  const w = doc.defaultView || doc.parentWindow;
+  pos.left += getScroll(w);
+  pos.top += getScroll(w, true);
+  return pos;
+}
+
 function getOffset(element, target) {
   const elemRect = element.getBoundingClientRect();
   const targetRect = getTargetRect(target);
@@ -52,5 +114,8 @@ export {
   getDefaultTarget,
   getScroll,
   getTargetRect,
-  getOffset
+  getOffset,
+  getScrollBarSize,
+  setTransformOrigin,
+  offset
 };

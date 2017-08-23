@@ -1,0 +1,218 @@
+$modal-mask-bg: rgba(55, 55, 55, 0.3);
+$zindex-modal: 1000;
+$zindex-modal-mask: 1000;
+$component-background: #fff;
+$shadow-color: rgba(0, 0, 0, .2);
+$shadow-2: 0 2px 8px $shadow-color;
+$text-color-secondary: fade(#000, 43%);
+
+.nf-modal {
+  position: relative;
+  width: auto;
+  margin: 0 auto;
+  top: 100px;
+  padding-bottom: 24px;
+
+  &-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #373737;
+    background-color: $modal-mask-bg; // lesshint duplicateProperty: false
+    height: 100%;
+    z-index: $zindex-modal-mask;
+
+
+    &-hidden {
+      display: none;
+    }
+  }
+  &-wrap {
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $zindex-modal;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+  }
+  &-content {
+    position: relative;
+    background-color: $component-background;
+    border: 0;
+    border-radius: 2px;
+    background-clip: padding-box;
+    box-shadow: $shadow-2;
+  }
+  &-close {
+    display: none;
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    position: absolute;
+    right: 7px;
+    top: 25px;
+    z-index: 10;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    transition: color .3s ease;
+    color: $text-color-secondary;
+    outline: 0;
+
+    &-x {
+      display: inline-block;
+      vertical-align: baseline;
+      text-align: center;
+      text-transform: none;
+      text-rendering: auto;
+      font: normal normal normal 14px/1 'Material-Design-Iconic-Font';
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      &:before {
+        content: '\f136';
+      }
+    }
+
+    &:focus,
+    &:hover {
+      color: #444;
+      text-decoration: none;
+    }
+  }
+  &-header {
+    padding: 25px 30px 0;
+  }
+  &-title {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.5;
+  }
+  &-body,
+  &-footer {
+    padding: 25px 30px;
+  }
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    > .btn-link {
+      color: #575757;
+      font-weight: 500;
+      cursor: pointer;
+      border: 0;
+      text-transform: uppercase;
+      &:hover {
+        background-color: #f6f6f6;
+        box-shadow: none;
+      }
+    }
+    & > :not(:last-child) {
+      margin-right: .25rem;
+    }
+  }
+
+  @mixin zoom-effect {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+  }
+
+  &.zoom-enter, &.zoom-appear {
+    opacity: 0;
+    @include zoom-effect;
+    animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
+    animation-play-state: paused;
+  }
+
+  &.zoom-leave {
+    @include zoom-effect;
+    animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+    animation-play-state: paused;
+  }
+
+  &.zoom-enter.zoom-enter-active,
+  &.zoom-appear.zoom-appear-active {
+    animation-name: nfDialogZoomIn;
+    animation-play-state: running;
+  }
+
+  &.zoom-leave.zoom-leave-active {
+    animation-name: nfDialogZoomOut;
+    animation-play-state: running;
+  }
+
+  @mixin fade-effect {
+    animation-duration: 0.24s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    animation-play-state: paused;
+  }
+
+  &.fade-enter,
+  &.fade-appear {
+    opacity: 0;
+    @include fade-effect;
+  }
+
+  &.fade-leave {
+    @include fade-effect;
+    animation-duration: 0.2s;
+  }
+
+  &.fade-enter.fade-enter-active,
+  &.fade-appear.fade-appear-active {
+    animation-name: nfDialogFadeIn;
+    animation-play-state: running;
+  }
+
+  &.fade-leave.fade-leave-active {
+    animation-name: nfDialogFadeIn;
+    animation-play-state: running;
+  }
+
+  @keyframes nfDialogZoomIn {
+    0% {
+      opacity: 0;
+      transform: scale(0, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+  }
+  @keyframes nfDialogZoomOut {
+    0% {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0, 0);
+    }
+  }
+
+  @keyframes nfDialogFadeIn{
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes nfDialogFadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}

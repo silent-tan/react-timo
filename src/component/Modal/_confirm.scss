@@ -1,0 +1,54 @@
+$confirm-title-color: #333;
+$confirm-content-color: #9c9c9c;
+
+$blue:    #2196F3 !default;
+$red:     #FF6B68 !default;
+$yellow:  #FFEB3B !default;
+$green:   #32C787 !default;
+$cyan:    #00BCD4 !default;
+
+$icon-types: (
+  primary:     $blue,
+  success:     $green,
+  info:        $cyan,
+  warning:     $yellow,
+  danger:      $red
+) !default;
+
+@mixin confirm-typography {
+  font-weight: 400;
+  text-align: center;
+  word-wrap: break-word;
+}
+.nf-confirm {
+  &-body-wrapper {
+    zoom: 1;
+  }
+  &-title {
+    color: $confirm-title-color;
+    font-size: 1.1rem;
+    margin: 0 0 5px;
+    line-height: inherit;
+    @include confirm-typography;
+  }
+  &-content {
+    color: $confirm-content-color;
+    font-size: 1rem;
+    @include confirm-typography;
+  }
+  &-footer {
+    text-align: center;
+  }
+  &-icon {
+    @mixin icon-typography {
+      font-size: 5rem;
+      text-align: center;
+    }
+    @each $type in map-keys($icon-types) {
+      &-#{$type} {
+        color: map-get($icon-types, $type);
+        @include icon-typography;
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@ import FileUpload from './component/FileUpload';
 import Grid from './component/Grid';
 import Icon from './component/Icon';
 import Loading from './component/Loading';
+import Modal from './component/Modal';
 import Radio from './component/Radio';
 import Sheet from './component/Sheet';
 import Tip from './component/Tip';
@@ -23,6 +24,7 @@ export {
   Grid,
   Icon,
   Loading,
+  Modal,
   Radio,
   Sheet,
   Tip,

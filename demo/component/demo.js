@@ -12,7 +12,8 @@ import {
   Checkbox,
   Radio,
   Card,
-  Breadcrumb
+  Breadcrumb,
+  Modal
 } from '../../src/index';
 
 class Demo extends Component {
@@ -26,6 +27,7 @@ class Demo extends Component {
     this.state = {
       files: [],
       loading: false,
+      dialog: false,
       checkboxes: {
         options: [{
           label: '测试1',
@@ -85,6 +87,17 @@ class Demo extends Component {
         ...this.state.radios,
         value
       }
+    });
+  }
+  handleDisplayDialog(display) {
+    this.setState({
+      dialog: display
+    });
+  }
+  handleRenderModal(type) {
+    Modal[type]({
+      title: 'Here\'s a message!',
+      content: 'Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
     });
   }
   render() {
@@ -177,6 +190,15 @@ class Demo extends Component {
               <Breadcrumb.Item>例子</Breadcrumb.Item>
             </Breadcrumb>
           </div>
+        </div>
+        <hr />
+        <div>
+          <p>Modal</p>
+          <Button onClick={this.handleDisplayDialog.bind(this, true)}>打开模态框</Button>
+          <Modal show={this.state.dialog} onClose={this.handleDisplayDialog.bind(this, false)} title="谭先生说">
+            阿狸是最美的
+          </Modal>
+          <Button onClick={this.handleRenderModal.bind(this, 'success')}>Success</Button>
         </div>
       </div>
     );

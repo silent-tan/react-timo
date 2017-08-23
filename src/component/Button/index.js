@@ -43,7 +43,7 @@ class Button extends Component {
   }
 
   static defaultProps = {
-    className: 'btn btn-secondary',
+    className: 'btn-secondary',
     disabled: false,
     onClick: noop,
     onFocus: noop,
@@ -85,7 +85,7 @@ class Button extends Component {
       ...rest
     } = this.props;
 
-    const cls = cx('btn btn-primary waves-effect', className);
+    const cls = cx('btn waves-effect', className);
     const extraAttr = {disabled: disabled};
     if(loading) extraAttr.disabled = true;
     return (
