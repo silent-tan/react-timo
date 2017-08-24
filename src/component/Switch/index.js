@@ -2,7 +2,7 @@
  * @Author: farzer
  * @Date:   2017-08-24 09:49:27
  * @Last modified by:   farzer
- * @Last modified time: 2017-08-24 10:32:40
+ * @Last modified time: 2017-08-24 12:36:16
  */
 
 import React, { Component } from 'react';
@@ -14,26 +14,44 @@ import _has from 'lodash/has';
 
 import './_style.scss';
 
+/**
+ * 开关组件: 只用于明确意义的开关场景, 比如是否，开关
+ * @type {Component}
+ * type 开关类型
+ * checked 开关状态
+ * className 类名样式
+ * defaultChecked 默认开关状态
+ * disabled 是否禁止切换开关
+ * onChange 开关改变回调
+ * onClick  点击开关回调
+ */
 class Switch extends Component {
   static propTypes = {
+    type: PropTypes.oneOf(['primary', 'success', 'info', 'warning', 'danger']),
     checked: PropTypes.bool,
-    checkedChildren: PropTypes.any,
     className: PropTypes.string,
     defaultChecked: PropTypes.bool,
     disabled: PropTypes.bool,
     onChange: PropTypes.func,
-    onClick: PropTypes.func,
-    uncheckedChildren: PropTypes.any
+    onClick: PropTypes.func
   }
 
   static defaultProps = {
-    checkedChildren: null,
-    uncheckedChildren: null,
+    type: 'primary',
     className: '',
     defaultChecked: false,
     onChange: _noop,
     onClick: _noop
   }
+
+  static colorMap = {
+    primary: '#2196F3',
+    success: '#32C787',
+    info: '#00BCD4',
+    warning: '#FFEB3B',
+    danger: '#FF6B68'
+  }
+
   constructor(props) {
     super(props);
     this.handleToggle = ::this.handleToggle;
@@ -76,28 +94,37 @@ class Switch extends Component {
 
   render() {
     const {
-      checkedChildren,
-      uncheckedChildren,
       className,
       disabled,
+      type,
       ...restProps
     } = this.props;
     const checked = this.state.checked;
-    const switchCls = cx('nf-switch', className, {
-      'nf-switch-checked': checked,
-      'nf-switch-disabled': disabled
-    });
+    const switchCls = cx('nf-switch', className);
 
     return (
-      <span
+      <div
         {...restProps}
         className={switchCls}
         onClick={this.handleToggle}
       >
-        <span className="nf-switch-inner">
-          {checked ? checkedChildren : uncheckedChildren}
-        </span>
-      </span>
+        <style>
+          {
+            `
+              .nf-switch-checkbox:checked ~ .nf-switch-helper:after {
+                background-color: ${Switch.colorMap[type]}
+              }
+            `
+          }
+        </style>
+        <input
+          type="checkbox"
+          checked={checked}
+          className="nf-switch-checkbox"
+          disabled={disabled}
+        />
+        <i className="nf-switch-helper" />
+      </div>
     );
   }
 }

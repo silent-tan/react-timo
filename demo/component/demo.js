@@ -205,6 +205,8 @@ class Demo extends Component {
         <div className="mb-2">
           <p>Switch</p>
           <Switch />
+          <br />
+          <Switch disabled/>
         </div>
       </div>
     );
