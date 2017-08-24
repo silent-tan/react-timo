@@ -11,6 +11,7 @@ import Loading from './component/Loading';
 import Modal from './component/Modal';
 import Radio from './component/Radio';
 import Sheet from './component/Sheet';
+import Switch from './component/Switch';
 import Tip from './component/Tip';
 import Waves from './component/Waves';
 
@@ -27,6 +28,7 @@ export {
   Modal,
   Radio,
   Sheet,
+  Switch,
   Tip,
   Waves
 };

@@ -1,0 +1,91 @@
+$disabled-color: rgba(0, 0, 0, 0.25);
+$component-background: #fff;
+$blue: #2196F3 !default;
+$switch-duration: .36s;
+$font-size-base: 12px;
+$ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+
+$component-prefix: 'nf-switch';
+
+.#{$component-prefix} {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  height: 22px;
+  min-width: 44px;
+  line-height: 20px;
+  vertical-align: middle;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  background-color: $disabled-color;
+  cursor: pointer;
+  transition: all $switch-duration;
+  user-select: none;
+
+  &-inner {
+    color: #fff;
+    font-size: $font-size-base;
+    margin-left: 24px;
+    margin-right: 6px;
+    display: block;
+  }
+
+  &:after {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 1px;
+    top: 1px;
+
+    border-radius: 18px;
+    background-color: $component-background;
+    content: " ";
+    cursor: pointer;
+    transition: all $switch-duration $ease-in-out-circ;
+  }
+
+  &:active:after {
+    width: 24px;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba($blue, 20%);
+    outline: 0;
+  }
+
+  &:focus:hover {
+    box-shadow: none;
+  }
+
+  &-checked {
+    background-color: $blue;
+
+    .#{$component-prefix}-inner {
+      margin-left: 6px;
+      margin-right: 24px;
+    }
+
+    &:after {
+      left: 100%;
+      margin-left: -19px;
+    }
+
+    &:active:after {
+      margin-left: -25px;
+    }
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    background: #f4f4f4;
+
+    &:after {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .#{$component-prefix}-inner {
+      color: $disabled-color;
+    }
+  }
+}

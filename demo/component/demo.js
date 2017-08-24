@@ -13,7 +13,8 @@ import {
   Radio,
   Card,
   Breadcrumb,
-  Modal
+  Modal,
+  Switch
 } from '../../src/index';
 
 class Demo extends Component {
@@ -199,6 +200,11 @@ class Demo extends Component {
             阿狸是最美的
           </Modal>
           <Button onClick={this.handleRenderModal.bind(this, 'success')}>Success</Button>
+        </div>
+        <hr />
+        <div className="mb-2">
+          <p>Switch</p>
+          <Switch />
         </div>
       </div>
     );
