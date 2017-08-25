@@ -1,10 +1,11 @@
 import './scss/main.scss';
+import * as Util from './component/Util';
 import Breadcrumb from './component/Breadcrumb';
 import Button from './component/Button';
 import Card from './component/Card';
 import Checkbox from './component/Checkbox';
-import Flex from './component/Flex';
 import FileUpload from './component/FileUpload';
+import Flex from './component/Flex';
 import Grid from './component/Grid';
 import Icon from './component/Icon';
 import Loading from './component/Loading';
@@ -13,8 +14,7 @@ import Notification from './component/Notification';
 import Radio from './component/Radio';
 import Sheet from './component/Sheet';
 import Switch from './component/Switch';
-import Tip from './component/Tip';
-import * as Util from './component/Util';
+import Tooltip from './component/Tooltip';
 import Waves from './component/Waves';
 
 export {
@@ -22,8 +22,8 @@ export {
   Button,
   Card,
   Checkbox,
-  Flex,
   FileUpload,
+  Flex,
   Grid,
   Icon,
   Loading,
@@ -32,7 +32,7 @@ export {
   Radio,
   Sheet,
   Switch,
-  Tip,
+  Tooltip,
   Util,
   Waves
 };

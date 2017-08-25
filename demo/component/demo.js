@@ -7,7 +7,6 @@ import {
   FileUpload,
   Flex,
   Icon,
-  Tip,
   Loading,
   Checkbox,
   Radio,
@@ -15,7 +14,8 @@ import {
   Breadcrumb,
   Modal,
   Switch,
-  Notification
+  Notification,
+  Tooltip
 } from '../../src/index';
 
 class Demo extends Component {
@@ -24,7 +24,6 @@ class Demo extends Component {
   }
   constructor() {
     super();
-    this.handleShowTip = ::this.handleShowTip;
     this.handleChangeFile = ::this.handleChangeFile;
     this.state = {
       files: [],
@@ -63,18 +62,7 @@ class Demo extends Component {
       files
     });
   }
-  handleShowTip() {
-    Tip.success('测试来一发');
-    this.setState({
-      loading: true
-    }, () => {
-      window.setTimeout(() => {
-        this.setState({
-          loading: false
-        });
-      }, 5000);
-    });
-  }
+
   handleChangeCheckboxes(values) {
     this.setState({
       checkboxes: {
@@ -111,16 +99,6 @@ class Demo extends Component {
   render() {
     return (
       <div className="mt-2">
-        <div>
-          <Tip>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</Tip>
-          <hr/>
-          <Button
-            loading={this.state.loading}
-            className="btn btn-primary"
-            onClick={this.handleShowTip}
-          >测试来一发</Button>
-        </div>
-        <hr />
         <div>
           <Icon type="3d-rotation"/>
         </div>
@@ -218,6 +196,15 @@ class Demo extends Component {
         <hr />
         <div>
           <Button onClick={this.handleShowNotification.bind(this)}>Show Notification</Button>
+        </div>
+        <hr />
+        <div>
+          <Tooltip placement="topLeft" title="Prompt Text">
+            <Button>Align edge / 边缘对齐</Button>
+          </Tooltip>
+          <Tooltip placement="topLeft" title="Prompt Text" arrowPointAtCenter>
+            <Button>Arrow points to center / 箭头指向中心</Button>
+          </Tooltip>
         </div>
       </div>
     );
