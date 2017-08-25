@@ -1,0 +1,36 @@
+/**
+ * Color
+ * @type {[type]}
+ */
+// base color
+$blue:    #2196F3 !default;
+$red:     #FF6B68 !default;
+$yellow:  #FFEB3B !default;
+$green:   #32C787 !default;
+$cyan:    #00BCD4 !default;
+
+// color named
+
+// css normal
+$shadow-color: rgba(0, 0, 0, .2);
+
+// zindex
+$zindex-modal: 1000;
+$zindex-modal-mask: 1000;
+$zindex-tooltip: 1060;
+
+// base
+$box-shadow-base: 0 1px 6px $shadow-color;
+$font-size-base: 12px;
+$line-height-base: 1.5;
+$border-radius-base: 2px;
+
+// animation fuction
+$ease-out-circ: cubic-bezier(0.08, 0.82, 0.17, 1);
+$ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+$ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+
+// animation duration
+$animation-duration-base: .2s;
+$animation-duration-fast: .1s;
+

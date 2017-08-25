@@ -31,9 +31,26 @@ const PLACEMENT = [
 
 const defaultGetPopupContainer = () => window.document.body;
 
+/**
+ * 提示工具
+ * @type {Component}
+ * content 提示内容，尽可能提供字符串内容 √
+ * placement 提示方向 PLACEMENT √
+ * trigger  触发事件  √
+ * visible 工具可见化  √
+ * onVisibleChange  发生改变的回调
+ * getPopupContainer 提示组件挂载位置 ×
+ * arrowPointAtCenter 箭头指向内容中心  ×
+ * mouseEnterDelay  hover时延迟多少秒触发 ×
+ * mouseLeaveDelay  hover鼠标离开延迟多少秒触发  ×
+ * overlayClassName 包含的内容额外类名 ×
+ * overlayStyle   包含的内容额外样式 ×
+ * transitionName 动画  ×
+ * prefixCls 方便UI框架内复用该组件的类名前缀 ×
+ */
 class Tooltip extends Component {
   static propTypes = {
-    title: PropTypes.any.isRequired,
+    content: PropTypes.any.isRequired,
     placement: PropTypes.oneOf(PLACEMENT),
     getPopupContainer: PropTypes.func,
     arrowPointAtCenter: PropTypes.bool,
@@ -46,7 +63,8 @@ class Tooltip extends Component {
     overlayClassName: PropTypes.string,
     overlayStyle: PropTypes.object,
     transitionName: PropTypes.string,
-    children: PropTypes.any
+    children: PropTypes.any,
+    prefixCls: PropTypes.string
   }
 
   static defaultProps = {
@@ -60,11 +78,12 @@ class Tooltip extends Component {
     trigger: 'hover',
     overlayClassName: '',
     overlayStyle: {},
-    transitionName: 'zoom-big-fast'
+    transitionName: 'zoom-big-fast',
+    prefixCls: 'nf-tooltip'
   }
   constructor(props) {
     super(props);
-    this.isNoTitle = ::this.isNoTitle;
+    this.isNoContent = ::this.isNoContent;
     this.handleVisibleChange = ::this.handleVisibleChange;
     this.state = {
       visible: props.visible
@@ -80,9 +99,9 @@ class Tooltip extends Component {
   handleVisibleChange(visible) {
     const { onVisibleChange } = this.props;
     if (!_has(this.props, 'visible')) {
-      this.setState({ visible: this.isNoTitle() ? false : visible });
+      this.setState({ visible: this.isNoContent() ? false : visible });
     }
-    if (onVisibleChange && !this.isNoTitle()) {
+    if (onVisibleChange && !this.isNoContent()) {
       onVisibleChange(visible);
     }
   }
@@ -136,9 +155,9 @@ class Tooltip extends Component {
     return element;
   }
 
-  isNoTitle() {
-    const { title } = this.props;
-    return !title;
+  isNoContent() {
+    const { content } = this.props;
+    return !content;
   }
 
   // 动态设置动画点
@@ -173,14 +192,15 @@ class Tooltip extends Component {
 
   render() {
     const {
-      title,
+      content,
       overlayClassName,
       getPopupContainer,
+      prefixCls,
       children
     } = this.props;
     let visible = this.state.visible;
-    // Hide tooltip when there is no title
-    if (!_has(this.props, 'visible') && this.isNoTitle()) {
+    // Hide tooltip when there is no content
+    if (!_has(this.props, 'visible') && this.isNoContent()) {
       visible = false;
     }
 
@@ -189,17 +209,17 @@ class Tooltip extends Component {
     );
     const childProps = child.props;
     const childCls = cx(childProps.className, {
-      [overlayClassName || 'nf-tooltip-open']: true
+      [overlayClassName || `${prefixCls}-overlay`]: true
     });
 
     return (
       <RcTooltip
         {...this.props}
-        prefixCls="nf-tooltip"
+        prefixCls={prefixCls}
         getTooltipContainer={getPopupContainer}
         ref={refsNode => this.refsTooltip = refsNode}
         builtinPlacements={this.getPlacements()}
-        overlay={title || ''}
+        overlay={content || ''}
         visible={visible}
         onVisibleChange={this.handleVisibleChange}
         onPopupAlign={this.onPopupAlign}

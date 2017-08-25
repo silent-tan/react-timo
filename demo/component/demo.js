@@ -199,10 +199,10 @@ class Demo extends Component {
         </div>
         <hr />
         <div>
-          <Tooltip placement="topLeft" title="Prompt Text">
-            <Button>Align edge / 边缘对齐</Button>
+          <Tooltip placement="topLeft" content="Prompt Text" >
+            <span>这是一段文字</span>
           </Tooltip>
-          <Tooltip placement="topLeft" title="Prompt Text" arrowPointAtCenter>
+          <Tooltip placement="topLeft" content="Prompt Text" arrowPointAtCenter trigger="click">
             <Button>Arrow points to center / 箭头指向中心</Button>
           </Tooltip>
         </div>

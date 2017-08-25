@@ -1,65 +1,14 @@
+@import "../../scss/_variables.scss";
+@import "../../scss/_keyframe.scss";
+@import "../../scss/_mixins.scss";
+
 $tooltip-prefix: 'nf-tooltip';
 $tooltip-arrow-width: 5px;
 $tooltip-distance: $tooltip-arrow-width - 1px + 4px;
-$zindex-tooltip: 1060;
-$font-size-base: 12px;
-$line-height-base: 1.5;
 $tooltip-max-width: 250px;
-$border-radius-base: 2px;
 $tooltip-color: #fff;
 $tooltip-bg: rgba(64, 64, 64, .85);
 $tooltip-arrow-color: $tooltip-bg;
-$shadow-color: rgba(0, 0, 0, .2);
-$box-shadow-base: 0 1px 6px $shadow-color;
-$animation-duration-base: .2s;
-$ease-out-circ: cubic-bezier(0.08, 0.82, 0.17, 1);
-$ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.34);
-$ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
-$animation-duration-fast: .1s;
-
-@mixin motion-common($duration: $animation-duration-base) {
-  animation-duration: $duration;
-  animation-fill-mode: both;
-}
-
-@mixin motion-common-leave($duration: $animation-duration-base) {
-  animation-duration: $duration;
-  animation-fill-mode: both;
-}
-
-@mixin make-motion($className, $keyframeName, $duration: $animation-duration-base) {
-  .#{$className}-enter,
-  .#{$className}-appear {
-    @include motion-common($duration);
-    animation-play-state: paused;
-  }
-  .#{$className}-leave {
-    @include motion-common-leave($duration);
-    animation-play-state: paused;
-  }
-  .#{$className}-enter.#{$className}-enter-active,
-  .#{$className}-appear.#{$className}-appear-active {
-    animation-name: '#{$keyframeName}In';
-    animation-play-state: running;
-  }
-  .#{$className}-leave.#{$className}-leave-active {
-    animation-name: '#{$keyframeName}Out';
-    animation-play-state: running;
-    pointer-events: none;
-  }
-}
-
-@mixin zoom-motion($className, $keyframeName, $duration: $animation-duration-base) {
-  @include make-motion($className, $keyframeName, $duration);
-  .#{$className}-enter,
-  .#{$className}-appear {
-    transform: scale(0); // need this by yiminghe
-    animation-timing-function: $ease-out-circ;
-  }
-  .#{$className}-leave {
-    animation-timing-function: $ease-in-out-circ;
-  }
-}
 
 @include zoom-motion('zoom-big-fast', nfZoomBig, $animation-duration-fast);
 
@@ -202,25 +151,5 @@ $animation-duration-fast: .1s;
 
   &-placement-bottomRight &-arrow {
     right: 16px;
-  }
-}
-
-@keyframes nfZoomBigIn {
-  0% {
-    opacity: 0;
-    transform: scale(.8);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes nfZoomBigOut {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(.8);
   }
 }

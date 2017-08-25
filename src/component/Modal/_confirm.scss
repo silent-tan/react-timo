@@ -1,11 +1,7 @@
+@import "../../scss/_variables";
+
 $confirm-title-color: #333;
 $confirm-content-color: #9c9c9c;
-
-$blue:    #2196F3 !default;
-$red:     #FF6B68 !default;
-$yellow:  #FFEB3B !default;
-$green:   #32C787 !default;
-$cyan:    #00BCD4 !default;
 
 $icon-types: (
   primary:     $blue,
