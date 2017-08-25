@@ -1,0 +1,128 @@
+$notification-prefix: 'nf-notification';
+$zindex-notification: 1010;
+$notification-width: 335px;
+$notification-padding: 16px;
+$notification-margin-bottom: 10px;
+$component-background: #fff;
+$shadow-color: rgba(0, 0, 0, .2);
+$shadow-2: 0 2px 8px $shadow-color;
+$ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+$blue:    #2196F3 !default;
+$red:     #FF6B68 !default;
+$yellow:  #FFEB3B !default;
+$green:   #32C787 !default;
+$cyan:    #00BCD4 !default;
+
+$notice-types: (
+  basic:     $blue,
+  success:     $green,
+  info:        $cyan,
+  warning:     $yellow,
+  danger:      $red
+) !default;
+
+.#{$notification-prefix} {
+  position: fixed;
+  z-index: $zindex-notification;
+  width: $notification-width;
+  margin-right: 24px;
+  &-notice {
+    padding: $notification-padding;
+    border-radius: 2px;
+    box-shadow: $shadow-2;
+    background: $component-background;
+    line-height: 1.5;
+    margin-bottom: $notification-margin-bottom;
+    overflow: hidden;
+    &-close {
+      cursor: pointer;
+    }
+    @each $type in map-keys($notice-types) {
+      &-#{$type} {
+        background-color: map-get($notice-types, $type);
+        color: #fff;
+      }
+    }
+  }
+
+  &-topLeft,
+  &-bottomLeft {
+    margin-left: 24px;
+    margin-right: 0;
+
+    .#{$notification-prefix}-fade-enter.#{$notification-prefix}-fade-enter-active,
+    .#{$notification-prefix}-fade-appear.#{$notification-prefix}-fade-appear-active {
+      animation-name: NotificationLeftFadeIn;
+    }
+  }
+
+  @mixin notification-fade-effect {
+    animation-duration: 0.24s;
+    animation-fill-mode: both;
+    animation-timing-function: $ease-in-out;
+  }
+
+  &-fade-enter,
+  &-fade-appear {
+    opacity: 0;
+    @include notification-fade-effect;
+    animation-play-state: paused;
+  }
+
+  &-fade-leave {
+    @include notification-fade-effect;
+    animation-duration: 0.2s;
+    animation-play-state: paused;
+  }
+
+  &-fade-enter.#{$notification-prefix}-fade-enter-active,
+  &-fade-appear.#{$notification-prefix}-fade-appear-active {
+    animation-name: NotificationFadeIn;
+    animation-play-state: running;
+  }
+
+  &-fade-leave.#{$notification-prefix}-fade-leave-active {
+    animation-name: NotificationFadeOut;
+    animation-play-state: running;
+  }
+}
+
+@keyframes NotificationFadeIn {
+  0% {
+    opacity: 0;
+    left: $notification-width;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes NotificationLeftFadeIn {
+  0% {
+    opacity: 0;
+    right: $notification-width;
+  }
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes NotificationFadeOut {
+  0% {
+    opacity: 1;
+    margin-bottom: $notification-margin-bottom;
+    padding-top: $notification-padding;
+    padding-bottom: $notification-padding;
+    max-height: 150px;
+  }
+  100% {
+    opacity: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 0;
+  }
+}

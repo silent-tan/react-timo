@@ -14,7 +14,8 @@ import {
   Card,
   Breadcrumb,
   Modal,
-  Switch
+  Switch,
+  Notification
 } from '../../src/index';
 
 class Demo extends Component {
@@ -99,6 +100,12 @@ class Demo extends Component {
     Modal[type]({
       title: 'Here\'s a message!',
       content: 'Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+    });
+  }
+  handleShowNotification() {
+    Notification.success({
+      content: `阿狸${Math.random()}`,
+      placement: 'bottomLeft'
     });
   }
   render() {
@@ -207,6 +214,10 @@ class Demo extends Component {
           <Switch />
           <br />
           <Switch disabled/>
+        </div>
+        <hr />
+        <div>
+          <Button onClick={this.handleShowNotification.bind(this)}>Show Notification</Button>
         </div>
       </div>
     );
