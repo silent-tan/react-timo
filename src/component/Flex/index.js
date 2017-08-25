@@ -5,6 +5,8 @@ import cx from 'classnames';
 import assign from 'lodash/assign';
 import isBoolean from 'lodash/isBoolean';
 
+const COMPONENT_PREFIX = 'nf-flex';
+
 class Flex extends Component {
   static propTypes = {
     flex: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
@@ -56,24 +58,24 @@ class Flex extends Component {
       ...rest
     } = this.props;
     const cn = cx({
-      'tm-flex': true,
-      'tm-flex-flex': flex,
-      'tm-flex-auto': auto,
-      'tm-flex-none': none || width || height,
-      'tm-flex-row': row,
-      'tm-flex-column': column,
-      'tm-flex-wrap': wrap,
-      'tm-flex-nowrap': nowrap,
-      'tm-flex-justify-start': justifyStart,
-      'tm-flex-justify-end': justifyEnd,
-      'tm-flex-justify-center': justifyCenter,
-      'tm-flex-justify-between': justifyBetween,
-      'tm-flex-justify-around': justifyAround,
-      'tm-flex-align-start': alignStart,
-      'tm-flex-align-end': alignEnd,
-      'tm-flex-align-center': alignCenter,
-      'tm-flex-align-baseline': alignBaseline,
-      'tm-flex-align-stretch': alignStretch
+      [`${COMPONENT_PREFIX}`]: true,
+      [`${COMPONENT_PREFIX}-flex`]: flex,
+      [`${COMPONENT_PREFIX}-auto`]: auto,
+      [`${COMPONENT_PREFIX}-none`]: none || width || height,
+      [`${COMPONENT_PREFIX}-row`]: row,
+      [`${COMPONENT_PREFIX}-column`]: column,
+      [`${COMPONENT_PREFIX}-wrap`]: wrap,
+      [`${COMPONENT_PREFIX}-nowrap`]: nowrap,
+      [`${COMPONENT_PREFIX}-justify-start`]: justifyStart,
+      [`${COMPONENT_PREFIX}-justify-end`]: justifyEnd,
+      [`${COMPONENT_PREFIX}-justify-center`]: justifyCenter,
+      [`${COMPONENT_PREFIX}-justify-between`]: justifyBetween,
+      [`${COMPONENT_PREFIX}-justify-around`]: justifyAround,
+      [`${COMPONENT_PREFIX}-align-start`]: alignStart,
+      [`${COMPONENT_PREFIX}-align-end`]: alignEnd,
+      [`${COMPONENT_PREFIX}-align-center`]: alignCenter,
+      [`${COMPONENT_PREFIX}-align-baseline`]: alignBaseline,
+      [`${COMPONENT_PREFIX}-align-stretch`]: alignStretch
     }, className);
     const s = assign({}, style);
     if (flex) {

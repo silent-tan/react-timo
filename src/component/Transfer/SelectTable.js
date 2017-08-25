@@ -9,7 +9,7 @@ class SelectTable extends Component {
   render() {
     const {height, data, render, onClickItem, animated} = this.props;
     return (
-      <div className="__nf-transfer__table" style={{
+      <div className="nf-transfer__table" style={{
         height: height
       }}>
         {_map(data, d => {

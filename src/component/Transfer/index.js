@@ -70,7 +70,7 @@ class Transfer extends Component {
   render() {
     const {sourceData, targetData, height, title, render} = this.props;
     return (
-      <div className="__nf-transfer row">
+      <div className="nf-transfer row">
         <div className="col-sm-6">
           <div className="card card-outline-info mb-0">
             <div className="p-2">
@@ -80,7 +80,7 @@ class Transfer extends Component {
               </Flex>
             </div>
             <button
-              className="btn btn-block btn-info __nf-transfer__button--corner waves-effect"
+              className="btn btn-block btn-info nf-transfer__button--corner waves-effect"
               onClick={this.handleAllToTarget}
             >
               <i className="zmdi zmdi-arrow-forward" />
@@ -103,7 +103,7 @@ class Transfer extends Component {
               </Flex>
             </div>
             <button
-              className="btn btn-block btn-info __nf-transfer__button--corner waves-effect"
+              className="btn btn-block btn-info nf-transfer__button--corner waves-effect"
               onClick={this.handleAllToSource}
             >
               <i className="zmdi zmdi-arrow-back" />

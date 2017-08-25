@@ -12,7 +12,7 @@ class Row extends Component {
   render() {
     const {render, data, animated} = this.props;
     return (
-      <div className={`__nf-transfer__row animated ${animated}`} onClick={this.handleClick}>
+      <div className={`nf-transfer__row animated ${animated}`} onClick={this.handleClick}>
         {render(data)}
       </div>
     );
