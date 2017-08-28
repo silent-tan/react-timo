@@ -16,6 +16,7 @@ import Radio from './component/Radio';
 import Sheet from './component/Sheet';
 import Switch from './component/Switch';
 import Tooltip from './component/Tooltip';
+import Transfer from './component/Transfer';
 import Waves from './component/Waves';
 
 export {
@@ -35,6 +36,7 @@ export {
   Sheet,
   Switch,
   Tooltip,
+  Transfer,
   Util,
   Waves
 };

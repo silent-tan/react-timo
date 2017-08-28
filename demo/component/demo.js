@@ -16,7 +16,8 @@ import {
   Switch,
   Notification,
   Tooltip,
-  Popover
+  Popover,
+  Transfer
 } from '../../src/index';
 
 class Demo extends Component {
@@ -55,8 +56,36 @@ class Demo extends Component {
           value: 3
         }],
         value: 1
+      },
+      transfer: {
+        sourceData: [{
+          _transfer_id: 1,
+          _transfer_value: '测试1'
+        }],
+        targetData: []
       }
     };
+  }
+
+  componentDidMount() {
+    const sourceData = this.getTransferMockData();
+    this.setState({
+      transfer: {
+        ...this.state.transfer,
+        sourceData
+      }
+    });
+  }
+  getTransferMockData() {
+    const sourceData = [];
+    for (let i = 0; i < 10; i++) {
+      sourceData.push({
+        _transfer_id: i,
+        _transfer_value: `transfer mock ${Math.random()}`
+      });
+    }
+
+    return sourceData;
   }
   handleChangeFile(files) {
     this.setState({
@@ -94,41 +123,46 @@ class Demo extends Component {
   handleShowNotification() {
     Notification.success({
       content: `阿狸${Math.random()}`,
-      placement: 'bottomLeft'
+      placement: 'topRight'
+    });
+  }
+  handleChangeTransfer(sourceData, targetData) {
+    this.setState({
+      transfer: { sourceData, targetData }
     });
   }
   render() {
     return (
-      <div className="mt-2">
-        <div>
+      <Flex className="mt-2" column>
+        <Flex className="mb-2">
           <Icon type="3d-rotation"/>
-        </div>
-        <hr />
-        <div>
+        </Flex>
+        <Flex className="mb-2">
           <FileUpload onChange={this.handleChangeFile}/>
-        </div>
+        </Flex>
         {
           this.state.files.length ?
-            <div className="img-thumb row">
-              {
-                map(this.state.files, file => {
-                  return (
-                    <div className="col-md-2" key={file.name}>
-                      <Flex alignCenter justifyCenter  height="250px" className="mb-2">
-                        <img src={file.thumb} style={{maxWidth: '100%', maxHeight: '100%'}}/>
-                      </Flex>
-                    </div>
-                  );
-                })
-              }
-            </div>
+            <Flex className="img-thumb">
+              <div className="row">
+                {
+                  map(this.state.files, file => {
+                    return (
+                      <div className="col-md-2" key={file.name}>
+                        <Flex alignCenter justifyCenter  height="250px" className="mb-2">
+                          <img src={file.thumb} style={{maxWidth: '100%', maxHeight: '100%'}}/>
+                        </Flex>
+                      </div>
+                    );
+                  })
+                }
+              </div>
+            </Flex>
             : null
         }
-        <div>
+        <Flex>
           <Loading />
-        </div>
-        <hr />
-        <div>
+        </Flex>
+        <Flex>
           <p>单个checkbox</p>
           <div className="mb-2">
             <Checkbox showText="测试"/>
@@ -142,9 +176,8 @@ class Demo extends Component {
               onChange={this.handleChangeCheckboxes.bind(this)}
             />
           </div>
-        </div>
-        <hr />
-        <div>
+        </Flex>
+        <Flex>
           <p>单个Radio</p>
           <div className="mb-2">
             <Radio showText="测试"/>
@@ -158,15 +191,13 @@ class Demo extends Component {
               onChange={this.handleChangeRadios.bind(this)}
             />
           </div>
-        </div>
-        <hr />
-        <div>
+        </Flex>
+        <Flex>
           <Card title="测试Card">
             这些都是测试的内容啊哦哦哦哦哦哦
           </Card>
-        </div>
-        <hr />
-        <div>
+        </Flex>
+        <Flex>
           <p>面包屑</p>
           <div className="mb-3">
             <Breadcrumb routes={this.props.routes} border={false}/>
@@ -177,38 +208,33 @@ class Demo extends Component {
               <Breadcrumb.Item>例子</Breadcrumb.Item>
             </Breadcrumb>
           </div>
-        </div>
-        <hr />
-        <div>
+        </Flex>
+        <Flex>
           <p>Modal</p>
           <Button onClick={this.handleDisplayDialog.bind(this, true)}>打开模态框</Button>
           <Modal show={this.state.dialog} onClose={this.handleDisplayDialog.bind(this, false)} title="谭先生说">
             阿狸是最美的
           </Modal>
           <Button onClick={this.handleRenderModal.bind(this, 'success')}>Success</Button>
-        </div>
-        <hr />
-        <div className="mb-2">
+        </Flex>
+        <Flex className="mb-2">
           <p>Switch</p>
           <Switch />
           <br />
           <Switch disabled/>
-        </div>
-        <hr />
-        <div>
+        </Flex>
+        <Flex>
           <Button onClick={this.handleShowNotification.bind(this)}>Show Notification</Button>
-        </div>
-        <hr />
-        <div>
+        </Flex>
+        <Flex>
           <Tooltip placement="topLeft" content="Prompt Text" >
             <span>这是一段文字</span>
           </Tooltip>
           <Tooltip placement="topLeft" content="Prompt Text" arrowPointAtCenter trigger="click">
             <Button>Arrow points to center / 箭头指向中心</Button>
           </Tooltip>
-        </div>
-        <hr />
-        <div>
+        </Flex>
+        <Flex>
           <Popover
             placement="topLeft"
             title="Popover Title"
@@ -217,8 +243,15 @@ class Demo extends Component {
           >
             <Button>Popover</Button>
           </Popover>
-        </div>
-      </div>
+        </Flex>
+        <Flex width="100%">
+          <Transfer
+            sourceData={this.state.transfer.sourceData}
+            targetData={this.state.transfer.targetData}
+            onChange={this.handleChangeTransfer.bind(this)}
+          />
+        </Flex>
+      </Flex>
     );
   }
 }

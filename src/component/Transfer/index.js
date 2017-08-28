@@ -1,10 +1,16 @@
-require('./_style.scss');
+import './_transfer.scss';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import SelectTable from './SelectTable';
 import Flex from '../Flex';
 import uniqBy from 'lodash/uniqBy';
 import remove from 'lodash/remove';
+
+const defaultRenderItem = (item) => (
+  <div className="nf-transfer-item-render">
+    {`${item._transfer_id} ${item._transfer_value}`}
+  </div>
+);
 
 class Transfer extends Component {
   static propTypes = {
@@ -20,7 +26,7 @@ class Transfer extends Component {
     title: [
       '源数据', '已选项'
     ],
-    render: (item) => item._transfer_id + ' ' + item._transfer_value
+    render: defaultRenderItem
   }
   constructor(props) {
     super(props);
@@ -70,21 +76,23 @@ class Transfer extends Component {
   render() {
     const {sourceData, targetData, height, title, render} = this.props;
     return (
-      <div className="nf-transfer row">
-        <div className="col-sm-6">
-          <div className="card card-outline-info mb-0">
-            <div className="p-2">
-              <Flex justifyBetween alignCenter>
-                <Flex className="lead">{title[0]}</Flex>
+      <Flex className="nf-transfer" width="100%">
+        <Flex flex={1} className="nf-transfer-item-box">
+          <Flex column width="100%">
+            <Flex className="p-2">
+              <Flex justifyBetween alignCenter flex={1}>
+                <Flex className="nf-transfer-item-title">{title[0]}</Flex>
                 <Flex>一共<span className="text-primary">{sourceData.length}</span>项</Flex>
               </Flex>
-            </div>
-            <button
-              className="btn btn-block btn-info nf-transfer__button--corner waves-effect"
-              onClick={this.handleAllToTarget}
-            >
-              <i className="zmdi zmdi-arrow-forward" />
-            </button>
+            </Flex>
+            <Flex className="nf-transfer-button">
+              <button
+                className="btn btn-block btn-primary nf-transfer-button-corner waves-effect"
+                onClick={this.handleAllToTarget}
+              >
+                <i className="zmdi zmdi-arrow-forward" />
+              </button>
+            </Flex>
             <SelectTable
               data={sourceData}
               height={height}
@@ -92,22 +100,25 @@ class Transfer extends Component {
               onClickItem={this.handleToTarget}
               animated="fadeInRight"
             />
-          </div>
-        </div>
-        <div className="col-sm-6">
-          <div className="card card-outline-info mb-0">
-            <div className="p-2">
-              <Flex justifyBetween alignCenter>
-                <Flex className="lead">{title[1]}</Flex>
+          </Flex>
+        </Flex>
+        <Flex width="10px" />
+        <Flex flex={1} className="nf-transfer-item-box">
+          <Flex column width="100%">
+            <Flex className="p-2">
+              <Flex justifyBetween alignCenter flex={1}>
+                <Flex className="nf-transfer-item-title">{title[1]}</Flex>
                 <Flex>一共<span className="text-primary">{targetData.length}</span>项</Flex>
               </Flex>
-            </div>
-            <button
-              className="btn btn-block btn-info nf-transfer__button--corner waves-effect"
-              onClick={this.handleAllToSource}
-            >
-              <i className="zmdi zmdi-arrow-back" />
-            </button>
+            </Flex>
+            <Flex className="nf-transfer-button">
+              <button
+                className="btn btn-block btn-primary nf-transfer-button-corner waves-effect"
+                onClick={this.handleAllToSource}
+              >
+                <i className="zmdi zmdi-arrow-back" />
+              </button>
+            </Flex>
             <SelectTable
               data={targetData}
               height={height}
@@ -115,9 +126,9 @@ class Transfer extends Component {
               onClickItem={this.handleToSource}
               animated="fadeInLeft"
             />
-          </div>
-        </div>
-      </div>
+          </Flex>
+        </Flex>
+      </Flex>
     );
   }
 }

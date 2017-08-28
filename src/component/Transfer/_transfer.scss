@@ -1,0 +1,43 @@
+$transfer-border-color: #d9d9d9;
+$transfer-item-hover-bg: #ecf6fd;
+$transfer-prefix: 'nf-transfer';
+
+.#{$transfer-prefix} {
+  &-item-box {
+    border: 1px solid $transfer-border-color;
+    border-radius: 2px;
+    background-color: #fff;
+  }
+  &-item-title {
+    font-size: 1.1rem;
+  }
+}
+
+.#{$transfer-prefix}-table {
+  width: 100%;
+  border-top: 0;
+  overflow-y: scroll;
+}
+
+.#{$transfer-prefix}-row {
+  padding: 10px 12px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  &:hover {
+    cursor: pointer;
+    background-color: $transfer-item-hover-bg;
+  }
+
+  & + .#{$transfer-prefix}-row {
+    border-top: 1px solid $transfer-border-color;
+  }
+}
+
+.#{$transfer-prefix}-button {
+  margin: 0 -1px;
+  &-corner {
+    border-radius: 0 !important;
+  }
+}
