@@ -28,14 +28,15 @@
 // K  AM/PM AM or PM
 
 // 不知道为什么不显示使用loader的时候无法使用配置loader进行编译
-require('style-loader!css-loader!flatpickr/dist/flatpickr.css');
-require('./_style.scss');
+require('flatpickr/dist/flatpickr.css');
+import './_style.scss';
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Flatpickr from 'flatpickr';
 import moment from 'moment';
 import uuid from 'uuid';
+
 import trim from 'lodash/trim';
 import noop from 'lodash/noop';
 import isArray from 'lodash/isArray';

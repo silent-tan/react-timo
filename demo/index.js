@@ -19,7 +19,7 @@ class App extends React.Component {
     return (
       <div className="demo">
         <Flex className="demo-center container">
-          <Flex>
+          <Flex flex={1}>
             {this.props.children}
           </Flex>
         </Flex>

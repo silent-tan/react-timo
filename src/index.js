@@ -4,6 +4,7 @@ import Breadcrumb from './component/Breadcrumb';
 import Button from './component/Button';
 import Card from './component/Card';
 import Checkbox from './component/Checkbox';
+import DatetimePicker from './component/DatetimePicker';
 import FileUpload from './component/FileUpload';
 import Flex from './component/Flex';
 import Grid from './component/Grid';
@@ -24,6 +25,7 @@ export {
   Button,
   Card,
   Checkbox,
+  DatetimePicker,
   FileUpload,
   Flex,
   Grid,

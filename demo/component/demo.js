@@ -133,11 +133,11 @@ class Demo extends Component {
   }
   render() {
     return (
-      <Flex className="mt-2" column>
-        <Flex className="mb-2">
+      <Flex className="mt-2" column flex>
+        <Flex className="mb-4">
           <Icon type="3d-rotation"/>
         </Flex>
-        <Flex className="mb-2">
+        <Flex className="mb-4">
           <FileUpload onChange={this.handleChangeFile}/>
         </Flex>
         {
@@ -148,7 +148,7 @@ class Demo extends Component {
                   map(this.state.files, file => {
                     return (
                       <div className="col-md-2" key={file.name}>
-                        <Flex alignCenter justifyCenter  height="250px" className="mb-2">
+                        <Flex alignCenter justifyCenter  height="250px" className="mb-4">
                           <img src={file.thumb} style={{maxWidth: '100%', maxHeight: '100%'}}/>
                         </Flex>
                       </div>
@@ -159,97 +159,116 @@ class Demo extends Component {
             </Flex>
             : null
         }
-        <Flex>
+        <Flex className="mb-4">
           <Loading />
         </Flex>
-        <Flex>
-          <p>单个checkbox</p>
-          <div className="mb-2">
+        <Flex className="mb-4" column>
+          <Flex className="mb-2">单个checkbox</Flex>
+          <Flex className="mb-4">
             <Checkbox showText="测试"/>
             <Checkbox showText="测试" disabled/>
-          </div>
-          <p>Checkbox Group</p>
-          <div>
+          </Flex>
+          <Flex className="mb-2">Checkbox Group</Flex>
+          <Flex>
             <Checkbox.Group
               options={this.state.checkboxes.options}
               values={this.state.checkboxes.values}
               onChange={this.handleChangeCheckboxes.bind(this)}
             />
-          </div>
+          </Flex>
         </Flex>
-        <Flex>
-          <p>单个Radio</p>
-          <div className="mb-2">
+        <Flex className="mb-4" column>
+          <Flex className="mb-2">单个Radio</Flex>
+          <Flex className="mb-4">
             <Radio showText="测试"/>
             <Radio showText="测试" disabled/>
-          </div>
-          <p>Radio Group</p>
-          <div>
+          </Flex>
+          <Flex className="mb-2">Radio Group</Flex>
+          <Flex>
             <Radio.Group
               options={this.state.radios.options}
               value={this.state.radios.value}
               onChange={this.handleChangeRadios.bind(this)}
             />
-          </div>
+          </Flex>
         </Flex>
-        <Flex>
+        <Flex className="mb-4">
           <Card title="测试Card">
             这些都是测试的内容啊哦哦哦哦哦哦
           </Card>
         </Flex>
-        <Flex>
-          <p>面包屑</p>
-          <div className="mb-3">
+        <Flex className="mb-4" column>
+          <Flex className="mb-2">面包屑</Flex>
+          <Flex className="mb-3">
             <Breadcrumb routes={this.props.routes} border={false}/>
-          </div>
-          <div>
+          </Flex>
+          <Flex>
             <Breadcrumb>
               <Breadcrumb.Item href="/hello">你好</Breadcrumb.Item>
               <Breadcrumb.Item>例子</Breadcrumb.Item>
             </Breadcrumb>
-          </div>
+          </Flex>
         </Flex>
-        <Flex>
-          <p>Modal</p>
-          <Button onClick={this.handleDisplayDialog.bind(this, true)}>打开模态框</Button>
+        <Flex className="mb-4" column>
+          <Flex className="mb-2">Modal</Flex>
+          <Flex>
+            <Button onClick={this.handleDisplayDialog.bind(this, true)}>打开模态框</Button>
+          </Flex>
           <Modal show={this.state.dialog} onClose={this.handleDisplayDialog.bind(this, false)} title="谭先生说">
             阿狸是最美的
           </Modal>
-          <Button onClick={this.handleRenderModal.bind(this, 'success')}>Success</Button>
+          <Flex>
+            <Button onClick={this.handleRenderModal.bind(this, 'success')}>Success</Button>
+          </Flex>
         </Flex>
-        <Flex className="mb-2">
-          <p>Switch</p>
-          <Switch />
-          <br />
-          <Switch disabled/>
+        <Flex className="mb-4" column>
+          <Flex>Switch</Flex>
+          <Flex>
+            <Switch className="mr-2"/>
+            <Switch disabled/>
+          </Flex>
         </Flex>
-        <Flex>
-          <Button onClick={this.handleShowNotification.bind(this)}>Show Notification</Button>
+        <Flex className="mb-4" column>
+          <Flex className="mb-2">Notification</Flex>
+          <Flex>
+            <Button onClick={this.handleShowNotification.bind(this)}>Show Notification</Button>
+          </Flex>
         </Flex>
-        <Flex>
-          <Tooltip placement="topLeft" content="Prompt Text" >
-            <span>这是一段文字</span>
-          </Tooltip>
-          <Tooltip placement="topLeft" content="Prompt Text" arrowPointAtCenter trigger="click">
-            <Button>Arrow points to center / 箭头指向中心</Button>
-          </Tooltip>
+        <Flex className="mb-4" column>
+          <Flex className="mb-2">Tooltip</Flex>
+          <Flex className="mb-2">
+            <Tooltip placement="topLeft" content="Prompt Text" >
+              <span>这是一段文字</span>
+            </Tooltip>
+          </Flex>
+          <Flex>
+            <Tooltip placement="topLeft" content="Prompt Text" arrowPointAtCenter trigger="click">
+              <Button>Arrow points to center / 箭头指向中心</Button>
+            </Tooltip>
+          </Flex>
         </Flex>
-        <Flex>
-          <Popover
-            placement="topLeft"
-            title="Popover Title"
-            content="And here's some amazing content. It's very engaging. Right?"
-            trigger="click"
-          >
-            <Button>Popover</Button>
-          </Popover>
+        <Flex className="mb-4" column>
+          <Flex className="mb-2">Popover</Flex>
+          <Flex>
+            <Popover
+              placement="topLeft"
+              title="Popover Title"
+              content="And here's some amazing content. It's very engaging. Right?"
+              trigger="click"
+            >
+              <Button>Popover</Button>
+            </Popover>
+          </Flex>
         </Flex>
-        <Flex width="100%">
-          <Transfer
-            sourceData={this.state.transfer.sourceData}
-            targetData={this.state.transfer.targetData}
-            onChange={this.handleChangeTransfer.bind(this)}
-          />
+        <Flex width="100%" className="mb-4" column>
+          <Flex className="mb-2">Transfer</Flex>
+          <Flex>
+            <Transfer
+              sourceData={this.state.transfer.sourceData}
+              targetData={this.state.transfer.targetData}
+              onChange={this.handleChangeTransfer.bind(this)}
+            />
+          </Flex>
         </Flex>
       </Flex>
     );
