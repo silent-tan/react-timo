@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _omit from 'lodash/omit';
 
 import Tooltip from '../Tooltip';
+import './_popover.scss';
 
 /**
  * 弹出组件
@@ -26,7 +27,7 @@ class Popover extends Component {
 
     return (
       <div>
-        {title && <div className="nf-popover-title">{title}</div>}
+        {title && <div className="nf-popover-inner-title">{title}</div>}
         <div className='nf-popover-inner-content'>
           {content}
         </div>
@@ -38,6 +39,7 @@ class Popover extends Component {
     return (
       <Tooltip
         {..._omit(this.props, ['title', 'content'])}
+        prefixCls="nf-popover"
         content={this.getOverlay()}
       />
     );

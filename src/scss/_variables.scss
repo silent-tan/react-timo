@@ -12,15 +12,17 @@ $cyan:    #00BCD4 !default;
 // color named
 
 // css normal
-$shadow-color: rgba(0, 0, 0, .2);
+$shadow-color: rgba(0, 0, 0, .15);
+$shadow-2: 0 2px 8px $shadow-color;
 
 // zindex
 $zindex-modal: 1000;
 $zindex-modal-mask: 1000;
 $zindex-tooltip: 1060;
+$zindex-popover: 1030;
 
 // base
-$box-shadow-base: 0 1px 6px $shadow-color;
+$box-shadow-base: 0 2px 30px $shadow-color;
 $font-size-base: 12px;
 $line-height-base: 1.5;
 $border-radius-base: 2px;

@@ -15,7 +15,8 @@ import {
   Modal,
   Switch,
   Notification,
-  Tooltip
+  Tooltip,
+  Popover
 } from '../../src/index';
 
 class Demo extends Component {
@@ -205,6 +206,17 @@ class Demo extends Component {
           <Tooltip placement="topLeft" content="Prompt Text" arrowPointAtCenter trigger="click">
             <Button>Arrow points to center / 箭头指向中心</Button>
           </Tooltip>
+        </div>
+        <hr />
+        <div>
+          <Popover
+            placement="topLeft"
+            title="Popover Title"
+            content="And here's some amazing content. It's very engaging. Right?"
+            trigger="click"
+          >
+            <Button>Popover</Button>
+          </Popover>
         </div>
       </div>
     );
