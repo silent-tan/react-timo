@@ -28,7 +28,7 @@
 // K  AM/PM AM or PM
 
 // 不知道为什么不显示使用loader的时候无法使用配置loader进行编译
-require('flatpickr/dist/flatpickr.css');
+import 'flatpickr/dist/flatpickr.css';
 import './_style.scss';
 
 import React, { Component } from 'react';
@@ -43,7 +43,7 @@ import isArray from 'lodash/isArray';
 import isEqual from 'lodash/isEqual';
 import forEach from 'lodash/forEach';
 
-Flatpickr.localize(require('flatpickr/src/l10n/zh.js').zh);
+import ZH from 'flatpickr/src/l10n/zh';
 
 class DateTimePicker extends Component {
   static propTypes = {
@@ -112,6 +112,7 @@ class DateTimePicker extends Component {
 
   componentDidMount() {
     const options = {
+      locale: ZH.zh,
       onOpen: [this.props.onOpen],
       onClose: () => {
         this.node.blur && this.node.blur();
@@ -132,8 +133,7 @@ class DateTimePicker extends Component {
       mode: this.props.mode,
       nextArrow: this.props.nextArrow,
       prevArrow: this.props.prevArrow,
-      parseDate: dateString => moment(trim(dateString)).toDate(),
-      locale: 'zh'
+      parseDate: dateString => moment(trim(dateString)).toDate()
     };
 
     if (this.props.format) {

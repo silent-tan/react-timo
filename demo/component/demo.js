@@ -17,7 +17,8 @@ import {
   Notification,
   Tooltip,
   Popover,
-  Transfer
+  Transfer,
+  DatetimePicker
 } from '../../src/index';
 
 class Demo extends Component {
@@ -268,6 +269,12 @@ class Demo extends Component {
               targetData={this.state.transfer.targetData}
               onChange={this.handleChangeTransfer.bind(this)}
             />
+          </Flex>
+        </Flex>
+        <Flex className="mb-4" column>
+          <Flex className="mb-2">DatetimePicker</Flex>
+          <Flex>
+            <DatetimePicker />
           </Flex>
         </Flex>
       </Flex>
