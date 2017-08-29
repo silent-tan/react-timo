@@ -14,6 +14,8 @@ import Modal from './component/Modal';
 import Notification from './component/Notification';
 import Popover from './component/Popover';
 import Radio from './component/Radio';
+import SearchSelect from './component/SearchSelect';
+import Select from './component/Select';
 import Sheet from './component/Sheet';
 import Switch from './component/Switch';
 import Tooltip from './component/Tooltip';
@@ -35,6 +37,8 @@ export {
   Notification,
   Popover,
   Radio,
+  SearchSelect,
+  Select,
   Sheet,
   Switch,
   Tooltip,

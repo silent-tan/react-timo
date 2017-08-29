@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
+import $ from 'jquery';
 
 import {
   Button,
@@ -18,7 +19,9 @@ import {
   Tooltip,
   Popover,
   Transfer,
-  DatetimePicker
+  DatetimePicker,
+  Select,
+  SearchSelect
 } from '../../src/index';
 
 class Demo extends Component {
@@ -32,6 +35,21 @@ class Demo extends Component {
       files: [],
       loading: false,
       dialog: false,
+      searchSelect: {
+        selected: {}
+      },
+      select: [
+        {
+          name: '测试1',
+          value: 1
+        },{
+          name: '测试2',
+          value: 2
+        }, {
+          name: '测试3',
+          value: 3
+        }
+      ],
       checkboxes: {
         options: [{
           label: '测试1',
@@ -132,9 +150,40 @@ class Demo extends Component {
       transfer: { sourceData, targetData }
     });
   }
+  handleSearchSelect(name, offset) {
+    const result = {searchList: [], offset: 0, limit: 30, count: 0};
+    $.ajax({
+      async: false,
+      url: "https://api.github.com/search/repositories",
+      dataType: 'json',
+      data: {
+        q: name,
+        page: (offset + 30) / 30
+      },
+      success: (data) => {
+        const {items, total_count: count} = data;
+        const searchList = map(items, i => {
+          return {
+            ...i,
+            __select__name: i.name
+          };
+        });
+        result.searchList = searchList;
+        result.count = count;
+      }
+    });
+    return Promise.resolve(result);
+  }
+  handleSelectSearchSelect(selected) {
+    this.setState({
+      searchSelect: {
+        selected
+      }
+    });
+  }
   render() {
     return (
-      <Flex className="mt-2" column flex>
+      <Flex className="mt-2 mb-5" column flex>
         <Flex className="mb-4">
           <Icon type="3d-rotation"/>
         </Flex>
@@ -271,10 +320,26 @@ class Demo extends Component {
             />
           </Flex>
         </Flex>
-        <Flex className="mb-4" column>
+        <Flex className="mb-4 pt-2 pb-2 bg-white" column>
           <Flex className="mb-2">DatetimePicker</Flex>
           <Flex>
             <DatetimePicker />
+          </Flex>
+        </Flex>
+        <Flex className="mb-4 pt-2 pb-2 bg-white" column>
+          <Flex className="mb-2">Select</Flex>
+          <Flex width="100%" className="px-2">
+            <Select options={this.state.select} />
+          </Flex>
+        </Flex>
+        <Flex className="mb-4 pt-2 pb-2 bg-white" column>
+          <Flex className="mb-2">SearchSelect</Flex>
+          <Flex width="100%" className="px-2">
+            <SearchSelect
+              selected={this.state.searchSelect.selected}
+              onSearch={this.handleSearchSelect.bind(this)}
+              onSelect={this.handleSelectSearchSelect.bind(this)}
+            />
           </Flex>
         </Flex>
       </Flex>

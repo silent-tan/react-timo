@@ -7,12 +7,13 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import noop from 'lodash/noop';
-import keys from 'lodash/keys';
-import isEqual from 'lodash/isEqual';
 import $ from 'jquery';
 import 'select2';
 import uuid from 'uuid';
+
+import _noop from 'lodash/noop';
+import _keys from 'lodash/keys';
+import _isEqual from 'lodash/isEqual';
 
 class SearchSelect extends Component {
   static propTypes = {
@@ -34,7 +35,7 @@ class SearchSelect extends Component {
 
   static defaultProps = {
     selected: {},
-    onSelect: noop,
+    onSelect: _noop,
     delay: 300
   }
 
@@ -88,7 +89,7 @@ class SearchSelect extends Component {
       }
     };
 
-    if(keys(this.props.selected).length) {
+    if(_keys(this.props.selected).length) {
       this.__SEARCHBOX.empty();
     }
 
@@ -103,11 +104,11 @@ class SearchSelect extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(isEqual(nextProps.selected, {})) {
+    if(_isEqual(nextProps.selected, {})) {
       this.clearSelection();
       return;
     }
-    if(!isEqual(nextProps.selected, this.props.selected)) {
+    if(!_isEqual(nextProps.selected, this.props.selected)) {
       const newOpt = {
         ...this.__OPTIONS,
         data: [nextProps.selected]
