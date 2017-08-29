@@ -75,6 +75,7 @@
     "prop-types": "^15.5.10",
     "rc-animate": "^2.4.1",
     "rc-dialog": "^6.5.11",
+    "rc-menu": "^5.0.10",
     "rc-tooltip": "^3.4.8",
     "rc-trigger": "^1.11.3",
     "react": "^15.6.1",

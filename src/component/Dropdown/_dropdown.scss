@@ -1,0 +1,201 @@
+@import "../../scss/_variables.scss";
+@import "../../scss/_function.scss";
+@import "../../scss/_keyframe.scss";
+
+$dropdown-prefix: 'nf-dropdown';
+$item-active-bg: tint($primary-color, 90%);
+$item-hover-bg: $item-active-bg;
+$menu-dark-bg: #404040;
+
+.#{$dropdown-prefix} {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  z-index: $zindex-dropdown;
+  display: block;
+  font-size: $font-size-base;
+  font-weight: normal;
+  line-height: 1.5;
+
+  &-wrap {
+    position: relative;
+  }
+
+  &-hidden,
+  &-menu-hidden {
+    display: none;
+  }
+
+  &-menu {
+    outline: none;
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    background-color: $component-background;
+    border-radius: $border-radius-base;
+    box-shadow: $box-shadow-base;
+    background-clip: padding-box;
+
+    &-item,
+    &-submenu-title {
+      padding: 7px 8px;
+      margin: 0;
+      clear: both;
+      font-size: $font-size-base;
+      font-weight: normal;
+      color: $text-color;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all .3s;
+
+      > a {
+        color: $text-color;
+        display: block;
+        padding: 7px 8px;
+        margin: -7px -8px;
+        transition: all .3s;
+        &:focus {
+          text-decoration: none;
+        }
+      }
+
+      &-selected,
+      &-selected > a {
+        color: $primary-color;
+        background-color: $item-active-bg;
+      }
+
+      &:hover {
+        background-color: $item-hover-bg;
+      }
+
+      &-disabled {
+        color: $disabled-color;
+        cursor: not-allowed;
+
+        &:hover {
+          color: $disabled-color;
+          background-color: $component-background;
+          cursor: not-allowed;
+        }
+      }
+
+      &:first-child,
+      &:first-child > a {
+        border-radius: $border-radius-base $border-radius-base 0 0;
+      }
+
+      &:last-child,
+      &:last-child > a {
+        border-radius: 0 0 $border-radius-base $border-radius-base;
+      }
+
+      &:only-child,
+      &:only-child > a {
+        border-radius: $border-radius-base;
+      }
+
+      &-divider {
+        height: 1px;
+        overflow: hidden;
+        background-color: $border-color-split;
+        line-height: 0;
+      }
+    }
+
+    &-submenu-vertical {
+      position: relative;
+    }
+
+    &-submenu-vertical > & {
+      top: 0;
+      left: 100%;
+      position: absolute;
+      min-width: 100%;
+      margin-left: 4px;
+      transform-origin: 0 0;
+    }
+
+    &-submenu.#{$dropdown-prefix}-menu-submenu-disabled .#{$dropdown-prefix}-menu-submenu-title {
+      &,
+      &:after {
+        color: $disabled-color;
+      }
+    }
+    &-submenu:first-child &-submenu-title {
+      border-radius: $border-radius-base $border-radius-base 0 0;
+    }
+
+    &-submenu:last-child &-submenu-title {
+      border-radius: 0 0 $border-radius-base $border-radius-base;
+    }
+  }
+
+  &.slide-down-enter.slide-down-enter-active.#{$dropdown-prefix}-placement-bottomLeft,
+  &.slide-down-appear.slide-down-appear-active.#{$dropdown-prefix}-placement-bottomLeft,
+  &.slide-down-enter.slide-down-enter-active.#{$dropdown-prefix}-placement-bottomCenter,
+  &.slide-down-appear.slide-down-appear-active.#{$dropdown-prefix}-placement-bottomCenter,
+  &.slide-down-enter.slide-down-enter-active.#{$dropdown-prefix}-placement-bottomRight,
+  &.slide-down-appear.slide-down-appear-active.#{$dropdown-prefix}-placement-bottomRight {
+    animation-name: nfSlideUpIn;
+  }
+
+  &.slide-up-enter.slide-up-enter-active.#{$dropdown-prefix}-placement-topLeft,
+  &.slide-up-appear.slide-up-appear-active.#{$dropdown-prefix}-placement-topLeft,
+  &.slide-up-enter.slide-up-enter-active.#{$dropdown-prefix}-placement-topCenter,
+  &.slide-up-appear.slide-up-appear-active.#{$dropdown-prefix}-placement-topCenter,
+  &.slide-up-enter.slide-up-enter-active.#{$dropdown-prefix}-placement-topRight,
+  &.slide-up-appear.slide-up-appear-active.#{$dropdown-prefix}-placement-topRight {
+    animation-name: nfSlideDownIn;
+  }
+
+  &.slide-down-leave.slide-down-leave-active.#{$dropdown-prefix}-placement-bottomLeft,
+  &.slide-down-leave.slide-down-leave-active.#{$dropdown-prefix}-placement-bottomCenter,
+  &.slide-down-leave.slide-down-leave-active.#{$dropdown-prefix}-placement-bottomRight {
+    animation-name: nfSlideUpOut;
+  }
+
+  &.slide-up-leave.slide-up-leave-active.#{$dropdown-prefix}-placement-topLeft,
+  &.slide-up-leave.slide-up-leave-active.#{$dropdown-prefix}-placement-topCenter,
+  &.slide-up-leave.slide-up-leave-active.#{$dropdown-prefix}-placement-topRight {
+    animation-name: nfSlideDownOut;
+  }
+}
+
+.#{$dropdown-prefix}-button {
+  white-space: nowrap;
+
+  &.btn-group > .btn:last-child:not(:first-child) {
+    padding-right: 8px;
+  }
+}
+
+// https://github.com/ant-design/ant-design/issues/4903
+.#{$dropdown-prefix}-menu-dark {
+  &,
+  .#{$dropdown-prefix}-menu {
+    background: $menu-dark-bg;
+  }
+  .#{$dropdown-prefix}-menu-item,
+  .#{$dropdown-prefix}-menu-submenu-title,
+  .#{$dropdown-prefix}-menu-item > a {
+    color: $text-color-secondary-dark;
+    &:after {
+      color: $text-color-secondary-dark;
+    }
+    &:hover {
+      color: #fff;
+      background: transparent;
+    }
+  }
+  .#{$dropdown-prefix}-menu-item-selected {
+    &,
+    &:hover,
+    > a {
+      background: $primary-color;
+      color: $white;
+    }
+  }
+}
