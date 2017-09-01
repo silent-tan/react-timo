@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import RcMenu, {SubMenu, MenuItem, Divider, ItemGroup} from 'rc-menu';
+import RcMenu from 'rc-menu';
+
+// 方便以后扩展 TODO
+import Divider from './Divider';
+import ItemGroup from './ItemGroup';
+import SubMenu from './SubMenu';
+import MenuItem from './MenuItem';
 
 class Menu extends Component {
   static Divider = Divider;
