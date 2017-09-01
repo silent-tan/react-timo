@@ -1,24 +1,13 @@
-/**
- * @Author: farzer
- * @Date:   2017-08-17 16:50:51
- * @Last modified by:   farzer
- * @Last modified time: 2017-08-17 16:51:14
- */
-
-// TODO
-import React, { Component } from 'react';
-
-class Menu extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div></div>
-    );
-  }
-
-}
+import Menu from './Menu';
+// import Divider from './Divider';
+// import ItemGroup from './ItemGroup';
+// import MenuItem from './MenuItem';
+// import SubMenu from './SubMenu';
+import './_menu.scss';
+//
+// Menu.Divider = Divider;
+// Menu.ItemGroup = ItemGroup;
+// Menu.MenuItem = MenuItem;
+// Menu.SubMenu = SubMenu;
 
 export default Menu;

@@ -11,6 +11,7 @@ import Flex from './component/Flex';
 import Grid from './component/Grid';
 import Icon from './component/Icon';
 import Loading from './component/Loading';
+import Menu from './component/Menu';
 import Modal from './component/Modal';
 import Notification from './component/Notification';
 import Popover from './component/Popover';
@@ -35,6 +36,7 @@ export {
   Grid,
   Icon,
   Loading,
+  Menu,
   Modal,
   Notification,
   Popover,

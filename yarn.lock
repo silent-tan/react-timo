@@ -4079,6 +4079,13 @@ rc-dialog@^6.5.11:
     rc-animate "2.x"
     rc-util "^4.0.4"
 
+rc-dropdown@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/rc-dropdown/-/rc-dropdown-1.5.0.tgz#2648ea78b4d56646ef306978873d3fa8993b8c48"
+  dependencies:
+    prop-types "^15.5.8"
+    rc-trigger "1.x"
+
 rc-menu@^5.0.10:
   version "5.0.10"
   resolved "https://registry.npmjs.org/rc-menu/-/rc-menu-5.0.10.tgz#266cf12e5844ba2606730b9198422da04d102b7e"

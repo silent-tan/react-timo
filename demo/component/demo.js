@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
 import $ from 'jquery';
+import _noop from 'lodash/noop';
 
 import {
   Button,
@@ -21,8 +22,12 @@ import {
   Transfer,
   DatetimePicker,
   Select,
-  SearchSelect
+  SearchSelect,
+  Dropdown,
+  Menu
 } from '../../src/index';
+
+const { SubMenu, MenuItem } = Menu;
 
 class Demo extends Component {
   static propTypes = {
@@ -35,6 +40,7 @@ class Demo extends Component {
       files: [],
       loading: false,
       dialog: false,
+      current: 'mail',
       searchSelect: {
         selected: {}
       },
@@ -182,8 +188,32 @@ class Demo extends Component {
     });
   }
   render() {
+    const titleRight = (
+      <Flex alignCenter>
+        <span>sub menu</span>
+        <i className="zmdi zmdi-caret-right ml-2"/>
+      </Flex>
+    );
+    const titleRight1 = (
+      <Flex alignCenter>
+        <span>sub menu1</span>
+        <i className="zmdi zmdi-caret-right ml-2"/>
+      </Flex>
+    );
+    const titleRight2 = (
+      <Flex alignCenter>
+        <span>sub menu2</span>
+        <i className="zmdi zmdi-caret-right ml-2"/>
+      </Flex>
+    );
+    const titleRight3 = (
+      <Flex alignCenter>
+        <span>sub menu3</span>
+        <i className="zmdi zmdi-caret-right ml-2"/>
+      </Flex>
+    );
     return (
-      <Flex className="mt-2 mb-5" column flex>
+      <Flex className="mt-2 mb-2rem" column flex style={{marginBottom: 200}}>
         <Flex className="mb-4">
           <Icon type="3d-rotation"/>
         </Flex>
@@ -341,6 +371,106 @@ class Demo extends Component {
               onSelect={this.handleSelectSearchSelect.bind(this)}
             />
           </Flex>
+        </Flex>
+        <Flex className="mb-4 py-2">
+          <Menu
+            mode="horizontal"
+            onSelect={_noop}
+            defaultActiveFirst
+            onClick={_noop}
+          >
+            <SubMenu title={titleRight} key="1">
+              <MenuItem key="1-1">0-1</MenuItem>
+              <MenuItem key="1-2">0-2</MenuItem>
+            </SubMenu>
+            <MenuItem>
+              <a href="http://taobao.com">i do not need key</a>
+            </MenuItem>
+            <MenuItem key="3">outer</MenuItem>
+            <SubMenu title={titleRight1} key="4">
+              <MenuItem key="4-1">inner inner</MenuItem>
+              <SubMenu
+                key="4-2"
+                title={titleRight2}
+              >
+                <MenuItem key="4-2-1">inn</MenuItem>
+                <SubMenu title={titleRight3} key="4-2-2">
+                  <MenuItem key="4-2-2-1">inner inner</MenuItem>
+                  <MenuItem key="4-2-2-2">inner inner2</MenuItem>
+                </SubMenu>
+              </SubMenu>
+            </SubMenu>
+            <MenuItem disabled>disabled</MenuItem>
+            <MenuItem key="4-3">outer3</MenuItem>
+          </Menu>
+        </Flex>
+        <Flex className="mb-4" width="200px">
+          <Menu
+            onSelect={_noop}
+            defaultActiveFirst
+            onClick={_noop}
+          >
+            <SubMenu title={titleRight} key="1">
+              <MenuItem key="1-1">0-1</MenuItem>
+              <MenuItem key="1-2">0-2</MenuItem>
+            </SubMenu>
+            <MenuItem>
+              <a href="http://taobao.com">i do not need key</a>
+            </MenuItem>
+            <MenuItem key="3">outer</MenuItem>
+            <SubMenu title={titleRight1} key="4">
+              <MenuItem key="4-1">inner inner</MenuItem>
+              <SubMenu
+                key="4-2"
+                title={titleRight2}
+              >
+                <MenuItem key="4-2-1">inn</MenuItem>
+                <SubMenu title={titleRight3} key="4-2-2">
+                  <MenuItem key="4-2-2-1">inner inner</MenuItem>
+                  <MenuItem key="4-2-2-2">inner inner2</MenuItem>
+                </SubMenu>
+              </SubMenu>
+            </SubMenu>
+            <MenuItem disabled>disabled</MenuItem>
+            <MenuItem key="4-3">outer3</MenuItem>
+          </Menu>
+        </Flex>
+        <Flex className="mb-4" width="200px">
+          <Menu
+            mode="inline"
+            onSelect={_noop}
+            defaultActiveFirst
+            onClick={_noop}
+          >
+            <SubMenu title={titleRight} key="1">
+              <MenuItem key="1-1">0-1</MenuItem>
+              <MenuItem key="1-2">0-2</MenuItem>
+            </SubMenu>
+            <MenuItem>
+              <a href="http://taobao.com">i do not need key</a>
+            </MenuItem>
+            <MenuItem key="3">outer</MenuItem>
+            <SubMenu title={titleRight1} key="4">
+              <MenuItem key="4-1">inner inner</MenuItem>
+              <SubMenu
+                key="4-2"
+                title={titleRight2}
+              >
+                <MenuItem key="4-2-1">inn</MenuItem>
+                <SubMenu title={titleRight3} key="4-2-2">
+                  <MenuItem key="4-2-2-1">inner inner</MenuItem>
+                  <MenuItem key="4-2-2-2">inner inner2</MenuItem>
+                </SubMenu>
+              </SubMenu>
+            </SubMenu>
+            <MenuItem disabled>disabled</MenuItem>
+            <MenuItem key="4-3">outer3</MenuItem>
+          </Menu>
+        </Flex>
+        <Flex className="mb-4 py-2 bg-white" column alignCenter>
+          <Dropdown overlay={(<span>你好</span>)} trigger="click">
+            <Button>点击我</Button>
+          </Dropdown>
         </Flex>
       </Flex>
     );
