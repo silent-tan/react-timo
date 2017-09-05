@@ -2,7 +2,7 @@
 
 msg=${*:-"c"}
 
-npm run deploy;
+yarn run deploy;
 git add --all;
 git commit -m "$msg";
 git pull;

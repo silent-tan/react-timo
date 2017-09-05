@@ -12,14 +12,14 @@
   ],
   "scripts": {
     "precommit": "eslint ./src/ ./demo/",
-    "pre": "npm install",
+    "pre": "yarn install",
     "clear": "rm -rf build && mkdir build",
-    "start": "npm run clear && NODE_ENV=development webpack-dev-server --config webpack.config.dev.js --devtool eval --host 0.0.0.0 --inline --hot --progress --colors --port 3000",
-    "deploy": "npm install && npm run build && npm run build:min",
+    "start": "yarn run clear && NODE_ENV=development webpack-dev-server --config webpack.config.dev.js --devtool eval --host 0.0.0.0 --inline --hot --progress --colors --port 3000",
+    "deploy": "yarn install && yarn run build && yarn run build:min",
     "build": "NODE_ENV=production webpack",
     "build:min": "NODE_ENV=production webpack --config webpack.config.min.js",
-    "publishpatch": "sh deploy/publish.sh",
-    "docs": "sh deploy/docs.sh"
+    "publishnpm": "sh deploy/publish.sh",
+    "test": "sh deploy/test.sh"
   },
   "repository": {
     "type": "git",
