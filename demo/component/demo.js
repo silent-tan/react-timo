@@ -467,8 +467,18 @@ class Demo extends Component {
             <MenuItem key="4-3">outer3</MenuItem>
           </Menu>
         </Flex>
-        <Flex className="mb-4 py-2 bg-white" column alignCenter>
-          <Dropdown overlay={(<span>你好</span>)} trigger="click">
+        <Flex className="mb-4 py-2">
+          <Dropdown
+            overlay={
+              <Menu
+                onClick={this.handleMenuClick}>
+                <MenuItem key="1">Clicking me will not close the menu.</MenuItem>
+                <MenuItem key="2">Clicking me will not close the menu also.</MenuItem>
+                <MenuItem key="3">Clicking me will close the menu</MenuItem>
+              </Menu>
+            }
+            trigger="click"
+          >
             <Button>点击我</Button>
           </Dropdown>
         </Flex>

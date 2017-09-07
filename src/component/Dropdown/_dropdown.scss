@@ -3,9 +3,10 @@
 @import "../../scss/_keyframe.scss";
 
 $dropdown-prefix: 'nf-dropdown';
-$item-active-bg: tint($primary-color, 90%);
-$item-hover-bg: $item-active-bg;
-$menu-dark-bg: #404040;
+$item-bg-hover: #f7f7f9;
+$item-bg-active: $item-bg-hover;
+$item-color: #4C4C4C;
+$item-color-hover: #1d1e1f;
 
 .#{$dropdown-prefix} {
   position: absolute;
@@ -30,7 +31,7 @@ $menu-dark-bg: #404040;
     outline: none;
     position: relative;
     list-style-type: none;
-    padding: 0;
+    padding: .8rem 0;
     margin: 0;
     text-align: left;
     background-color: $component-background;
@@ -40,12 +41,12 @@ $menu-dark-bg: #404040;
 
     &-item,
     &-submenu-title {
-      padding: 7px 8px;
+      padding: .5rem 1.5rem;
       margin: 0;
       clear: both;
       font-size: $font-size-base;
       font-weight: normal;
-      color: $text-color;
+      color: $item-color;
       white-space: nowrap;
       cursor: pointer;
       transition: all .3s;
@@ -64,11 +65,12 @@ $menu-dark-bg: #404040;
       &-selected,
       &-selected > a {
         color: $primary-color;
-        background-color: $item-active-bg;
+        background-color: $item-bg-active;
       }
 
       &:hover {
-        background-color: $item-hover-bg;
+        background-color: $item-bg-hover;
+        color: $item-color-hover;
       }
 
       &-disabled {
@@ -143,10 +145,11 @@ $menu-dark-bg: #404040;
   }
 
   &.slide-up-enter.slide-up-enter-active.#{$dropdown-prefix}-placement-topLeft,
-  &.slide-up-appear.slide-up-appear-active.#{$dropdown-prefix}-placement-topLeft,
   &.slide-up-enter.slide-up-enter-active.#{$dropdown-prefix}-placement-topCenter,
-  &.slide-up-appear.slide-up-appear-active.#{$dropdown-prefix}-placement-topCenter,
   &.slide-up-enter.slide-up-enter-active.#{$dropdown-prefix}-placement-topRight,
+  &.slide-up-enter.slide-up-enter-active.#{$dropdown-prefix}-placement-bottomLeft,
+  &.slide-up-appear.slide-up-appear-active.#{$dropdown-prefix}-placement-topLeft,
+  &.slide-up-appear.slide-up-appear-active.#{$dropdown-prefix}-placement-topCenter,
   &.slide-up-appear.slide-up-appear-active.#{$dropdown-prefix}-placement-topRight {
     animation-name: nfSlideDownIn;
   }
@@ -159,6 +162,7 @@ $menu-dark-bg: #404040;
 
   &.slide-up-leave.slide-up-leave-active.#{$dropdown-prefix}-placement-topLeft,
   &.slide-up-leave.slide-up-leave-active.#{$dropdown-prefix}-placement-topCenter,
+  &.slide-up-leave.slide-up-leave-active.#{$dropdown-prefix}-placement-bottomLeft,
   &.slide-up-leave.slide-up-leave-active.#{$dropdown-prefix}-placement-topRight {
     animation-name: nfSlideDownOut;
   }
@@ -169,33 +173,5 @@ $menu-dark-bg: #404040;
 
   &.btn-group > .btn:last-child:not(:first-child) {
     padding-right: 8px;
-  }
-}
-
-// https://github.com/ant-design/ant-design/issues/4903
-.#{$dropdown-prefix}-menu-dark {
-  &,
-  .#{$dropdown-prefix}-menu {
-    background: $menu-dark-bg;
-  }
-  .#{$dropdown-prefix}-menu-item,
-  .#{$dropdown-prefix}-menu-submenu-title,
-  .#{$dropdown-prefix}-menu-item > a {
-    color: $text-color-secondary-dark;
-    &:after {
-      color: $text-color-secondary-dark;
-    }
-    &:hover {
-      color: #fff;
-      background: transparent;
-    }
-  }
-  .#{$dropdown-prefix}-menu-item-selected {
-    &,
-    &:hover,
-    > a {
-      background: $primary-color;
-      color: $white;
-    }
   }
 }
