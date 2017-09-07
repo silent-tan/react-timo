@@ -50,6 +50,7 @@ class Modal extends Component {
     onClose: PropTypes.func,
     onSubmit: PropTypes.oneOfType([PropTypes.func, PropTypes.oneOf([false])]),
     show: PropTypes.bool,
+    onShow: PropTypes.func,
     size: PropTypes.oneOf(['default', 'large', 'small']),
     submitLoading: PropTypes.bool,
     submitText: PropTypes.string,
@@ -67,6 +68,7 @@ class Modal extends Component {
     onClose: _noop,
     onSubmit: _noop,
     show: false,
+    onShow: _noop,
     size: 'default',
     submitLoading: false,
     submitText: '确定',
@@ -107,6 +109,12 @@ class Modal extends Component {
       setTimeout(() => mousePosition = null, 100);
     });
     mousePositionEventBinded = true;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.show !== this.props.show && nextProps.show) {
+      this.props.onShow && this.props.onShow();
+    }
   }
 
   handleSubmit() {
