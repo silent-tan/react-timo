@@ -2,6 +2,7 @@ import './scss/main.scss';
 import * as Util from './component/Util';
 import Breadcrumb from './component/Breadcrumb';
 import Button from './component/Button';
+import Slick from './component/Slick';
 import Card from './component/Card';
 import Checkbox from './component/Checkbox';
 import DatetimePicker from './component/DatetimePicker';
@@ -28,6 +29,7 @@ import Waves from './component/Waves';
 export {
   Breadcrumb,
   Button,
+  Slick,
   Card,
   Checkbox,
   DatetimePicker,

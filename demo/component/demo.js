@@ -25,7 +25,8 @@ import {
   SearchSelect,
   Dropdown,
   Menu,
-  Tag
+  Tag,
+  Slick
 } from '../../src/index';
 
 const { SubMenu, MenuItem } = Menu;
@@ -223,6 +224,7 @@ class Demo extends Component {
         <i className="zmdi zmdi-caret-right ml-2"/>
       </Flex>
     );
+
     return (
       <Flex className="mt-2 mb-2rem" column flex style={{marginBottom: 200}}>
         <Flex className="mb-4">
@@ -509,6 +511,44 @@ class Demo extends Component {
           <MyTag>Tag1</MyTag>
           <MyTag>Tag2</MyTag>
           <MyTag>Tag3</MyTag>
+        </Flex>
+        <Flex>Slick</Flex>
+        <style>
+          {
+            `
+              .nf-slick .slick-slide {
+                text-align: center;
+                height: 160px;
+                line-height: 160px;
+                background: #364d79;
+                overflow: hidden;
+              }
+
+              .nf-slick .slick-slide .flex-slick {
+                color: #fff;
+                height: 100%;
+                font-size: 50px;
+              }
+            `
+          }
+        </style>
+        <Flex className="mb-4 py-2 px-2" row>
+          <Flex className="mr-2 p-2rem" flex={1} style={{padding: '5rem'}}>
+            <Slick autoplay arrows slidesToShow={2}>
+              <div><Flex className="flex-slick" justifyCenter alignCenter>1</Flex></div>
+              <div><Flex className="flex-slick" justifyCenter alignCenter>2</Flex></div>
+              <div><Flex className="flex-slick" justifyCenter alignCenter>3</Flex></div>
+              <div><Flex className="flex-slick" justifyCenter alignCenter>4</Flex></div>
+            </Slick>
+          </Flex>
+          <Flex height="300px" flex={1} style={{padding: '5rem'}}>
+            <Slick vertical arrows>
+              <div><Flex className="flex-slick" justifyCenter alignCenter>1</Flex></div>
+              <div><Flex className="flex-slick" justifyCenter alignCenter>2</Flex></div>
+              <div><Flex className="flex-slick" justifyCenter alignCenter>3</Flex></div>
+              <div><Flex className="flex-slick" justifyCenter alignCenter>4</Flex></div>
+            </Slick>
+          </Flex>
         </Flex>
       </Flex>
     );
