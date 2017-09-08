@@ -2,11 +2,13 @@
  * @Author: farzer
  * @Date:   2017-08-03 15:10:35
  * @Last modified by:   farzer
- * @Last modified time: 2017-08-17 16:24:25
+ * @Last modified time: 2017-09-08 09:47:20
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import _noop from 'lodash/noop';
+import _omit from 'lodash/omit';
 
 /**
  * 图标
@@ -23,14 +25,22 @@ class Icon extends Component {
     type: PropTypes.string.isRequired,
     style: PropTypes.object,
     className: PropTypes.string,
-    rest: PropTypes.any
+    rest: PropTypes.any,
+    onClick: PropTypes.func
   }
   static defaultProps = {
     style: {},
-    className: ''
+    className: '',
+    onClick: _noop
   }
   constructor(props) {
     super(props);
+    this.handleClick = ::this.handleClick;
+  }
+
+  handleClick(e) {
+    const {onClick} = this.props;
+    onClick(e);
   }
 
   render() {
@@ -44,7 +54,8 @@ class Icon extends Component {
       <i
         className={`zmdi zmdi-${type} ${className}`}
         style={style}
-        {...rest}
+        onClick={this.handleClick}
+        {..._omit(rest, ['onClick'])}
       />
     );
   }

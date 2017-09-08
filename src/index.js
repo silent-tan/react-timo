@@ -20,6 +20,7 @@ import SearchSelect from './component/SearchSelect';
 import Select from './component/Select';
 import Sheet from './component/Sheet';
 import Switch from './component/Switch';
+import Tag from './component/Tag';
 import Tooltip from './component/Tooltip';
 import Transfer from './component/Transfer';
 import Waves from './component/Waves';
@@ -45,6 +46,7 @@ export {
   Select,
   Sheet,
   Switch,
+  Tag,
   Tooltip,
   Transfer,
   Util,

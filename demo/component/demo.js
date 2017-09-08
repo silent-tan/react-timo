@@ -24,10 +24,21 @@ import {
   Select,
   SearchSelect,
   Dropdown,
-  Menu
+  Menu,
+  Tag
 } from '../../src/index';
 
 const { SubMenu, MenuItem } = Menu;
+
+class MyTag extends React.Component {
+  state = { checked: true };
+  handleChange = (checked) => {
+    this.setState({ checked });
+  }
+  render() {
+    return <Tag.CheckableTag {...this.props} checked={this.state.checked} onChange={this.handleChange} />;
+  }
+}
 
 class Demo extends Component {
   static propTypes = {
@@ -372,6 +383,7 @@ class Demo extends Component {
             />
           </Flex>
         </Flex>
+        <Flex>Menu</Flex>
         <Flex className="mb-4 py-2">
           <Menu
             mode="horizontal"
@@ -467,6 +479,9 @@ class Demo extends Component {
             <MenuItem key="4-3">outer3</MenuItem>
           </Menu>
         </Flex>
+        <Flex>
+          Dropdown
+        </Flex>
         <Flex className="mb-4 py-2">
           <Dropdown
             overlay={
@@ -481,6 +496,19 @@ class Demo extends Component {
           >
             <Button>点击我</Button>
           </Dropdown>
+        </Flex>
+        <Flex>
+          Tag
+        </Flex>
+        <Flex className="mb-4 py-2 px-2 bg-white">
+          <Tag color="blue" closable>Tag 1</Tag>
+          <Tag color="blue">Can not be closed</Tag>
+          <Tag color="blue" closable onClose={e => e.preventDefault()}>preventDefault</Tag>
+        </Flex>
+        <Flex className="mb-4 py-2 px-2 bg-white">
+          <MyTag>Tag1</MyTag>
+          <MyTag>Tag2</MyTag>
+          <MyTag>Tag3</MyTag>
         </Flex>
       </Flex>
     );

@@ -1,0 +1,132 @@
+@import "../../scss/variables.scss";
+@import "../../scss/keyframe.scss";
+@import "../../scss/function.scss";
+
+$tag-prefix: 'nf-tag';
+$tag-default-bg: #f3f3f3;
+$tag-default-color: fade-out($black, .65);
+
+.#{$tag-prefix} {
+  display: inline-block;
+  line-height: 20px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: $border-radius-base;
+  border: $border-width-base $border-style-base $border-color-split;
+  background: $tag-default-bg;
+  font-size: $font-size-base;
+  transition: all 0.3s $ease-out;
+  opacity: 1;
+  margin-right: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &,
+  a,
+  a:hover {
+    color: $tag-default-color;
+  }
+
+  &-text {
+    a:first-child:last-child {
+      display: inline-block;
+      margin: 0 -8px;
+      padding: 0 8px;
+    }
+  }
+
+  .zmdi-close {
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 3px;
+    transition: all 0.3s $ease-out;
+    opacity: 0.66;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &-has-color {
+    border-color: transparent;
+    &,
+    a,
+    a:hover,
+    .zmdi-close,
+    .zmdi-close:hover {
+      color: #fff;
+    }
+  }
+
+  &-checkable {
+    background-color: transparent;
+    border-color: transparent;
+    &:not(.#{$tag-prefix}-checkable-checked) {
+      border-color: $tag-default-color;
+      border-style: dashed;
+    }
+    &:not(.#{$tag-prefix}-checkable-checked):hover {
+      color: $primary-color;
+    }
+    &:active,
+    &-checked {
+      color: #fff;
+    }
+    &-checked,
+    &:active {
+      background-color: $primary-color;
+    }
+  }
+
+  &-close {
+    width: 0 !important;
+    padding: 0;
+    margin: 0;
+  }
+
+  &-zoom-enter,
+  &-zoom-appear {
+    animation: nfFadeIn .2s $ease-in-out-circ;
+    animation-fill-mode: both;
+  }
+
+  &-zoom-leave {
+    animation: nfZoomOut .3s $ease-in-out-circ;
+    animation-fill-mode: both;
+  }
+
+  $colors: pink, red, orange, yellow, cyan, green, blue, purple;
+
+  $color-map: (
+    pink: $pink,
+    red: $red,
+    orange: $orange,
+    yellow: $yellow,
+    cyan: $cyan,
+    green: $green,
+    blue: $blue,
+    purple: $purple
+  );
+
+  @mixin make-color-classes($colors) {
+    @each $color in $colors {
+      $light-color: tint(map-get($color-map, $color), 80%);
+      &.#{$tag-prefix}-#{$color} {
+        color: $primary-color;
+        background: $light-color;
+        border-color: $light-color;
+      }
+      &.#{$tag-prefix}-#{$color}-inverse {
+        color: #fff;
+        background: $primary-color;
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  @include make-color-classes($colors);
+}
