@@ -21,6 +21,7 @@ import SearchSelect from './component/SearchSelect';
 import Select from './component/Select';
 import Sheet from './component/Sheet';
 import Switch from './component/Switch';
+import Tabs from './component/Tabs';
 import Tag from './component/Tag';
 import Tooltip from './component/Tooltip';
 import Transfer from './component/Transfer';
@@ -48,6 +49,7 @@ export {
   Select,
   Sheet,
   Switch,
+  Tabs,
   Tag,
   Tooltip,
   Transfer,

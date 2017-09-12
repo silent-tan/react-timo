@@ -1,15 +1,10 @@
-import React, { Component } from 'react';
+import Tabs from './Tabs';
+import TabPane from './TabPane';
+import TabContent from './TabContent';
+import './_tabs.scss';
 
-class Tabs extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div></div>
-    );
-  }
-}
-
-export default Tabs;
+export {
+  Tabs as default,
+  TabPane,
+  TabContent
+};

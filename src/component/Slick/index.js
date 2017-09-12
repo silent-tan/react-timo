@@ -151,7 +151,7 @@ class Slick extends Component {
     }
   }
 
-  onWindowResized() {
+  onWindowResized = () => {
     // Fix https://github.com/ant-design/ant-design/issues/2550
     const slick = this.refsSlick;
     const { autoplay } = this.props;

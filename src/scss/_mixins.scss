@@ -41,3 +41,18 @@
     animation-timing-function: $ease-in-out-circ;
   }
 }
+
+@mixin clearfix {
+  zoom: 1;
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }  
+}

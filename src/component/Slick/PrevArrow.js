@@ -27,7 +27,7 @@ class PrevArrow extends Component {
         <Flex className="nf-slick-arrow-prev" justifyCenter alignCenter>
           {
             !vertical
-              ? <Icon type="long-arrow-right"/>
+              ? <Icon type="long-arrow-left"/>
               : <Icon type="long-arrow-up" />
           }
         </Flex>

@@ -11,7 +11,7 @@ import isNil from 'lodash/isNil';
 
 import './_select.scss';
 
-export default class SelectBox extends Component {
+export default class Select extends Component {
   static propTypes = {
     selected: PropTypes.any,
     options: PropTypes.array,
@@ -48,7 +48,7 @@ export default class SelectBox extends Component {
     $el.select2(this.__config);
     $el.on("select2:select", (e) => {
       this.setState({
-        selected: parseInt(e.target.value, 10)
+        selected: e.target.value
       }, () => {
         $el.select2(this.__config);
       });
@@ -61,7 +61,7 @@ export default class SelectBox extends Component {
     if(!isNil(nextProps.selected) && nextProps.selected !== this.state.selected) {
       const $el = $(`#${this.state.cid}`);
       this.setState({
-        selected: parseInt(nextProps.selected, 10)
+        selected: nextProps.selected
       }, () => {
         $el.val('' + nextProps.selected).trigger('change');
       });
