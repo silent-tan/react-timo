@@ -1,0 +1,395 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+@import "./card.scss";
+
+$tabs-title-font-size: $font-size-base;
+$tabs-title-active-color: #333;
+$tabs-normal-color: #9c9c9c;
+$tabs-nav-bar-border-bottom-width: 2px;
+$tabs-nav-bar-border-bottom-color: #eee;
+$tabs-icon-size: 1rem;
+
+.#{$tab-prefix} {
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  @include clearfix;
+  color: $text-color;
+
+  &-ink-bar {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    height: 2px;
+    background-color: $primary-color;
+    transform-origin: 0 0;
+  }
+
+  &-bar {
+    border-bottom: $tabs-nav-bar-border-bottom-width $border-style-base $tabs-nav-bar-border-bottom-color;
+    outline: none;
+    transition: padding .3s $ease-in-out;
+  }
+
+  &-nav-container {
+    overflow: hidden;
+    font-size: $tabs-title-font-size;
+    line-height: $line-height-base;
+    box-sizing: border-box;
+    position: relative;
+    white-space: nowrap;
+    transition: padding .3s $ease-in-out;
+    margin-bottom: -2px;
+    @include clearfix;
+
+    &-scrolling {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+  }
+
+  &-tab-prev,
+  &-tab-next {
+    user-select: none;
+    z-index: 2;
+    width: 0;
+    height: 100%;
+    line-height: 32px;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    text-align: center;
+    color: $text-color;
+    transition: width .3s $ease-in-out, opacity .3s $ease-in-out, color .3s $ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+
+    &.#{$tab-prefix}-tab-arrow-show {
+      opacity: 1;
+      width: 32px;
+      height: 100%;
+      pointer-events: auto;
+    }
+
+    &:hover {
+      color: $text-color-dark;
+    }
+
+    &-icon {
+      font-style: normal;
+      font-weight: bold;
+      font-variant: normal;
+      line-height: inherit;
+      vertical-align: baseline;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      text-transform: none;
+
+      &:before {
+        display: block;
+        font-family: "Material-Design-Iconic-Font" !important;
+      }
+    }
+  }
+
+  &-tab-btn-disabled {
+    cursor: not-allowed;
+    &,
+    &:hover {
+      color: $tabs-normal-color;
+    }
+  }
+
+  &-tab-next {
+    right: 2px;
+
+    &-icon:before {
+      content: "\f2fb";
+    }
+  }
+
+  &-tab-prev {
+    left: 0;
+    &-icon:before {
+      content: "\f2fa";
+    }
+    :root & {
+      filter: none;
+    }
+  }
+
+  &-nav-wrap {
+    overflow: hidden;
+  }
+
+  &-nav-scroll {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &-nav {
+    box-sizing: border-box;
+    padding-left: 0;
+    transition: transform 0.3s $ease-in-out;
+    position: relative;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+
+    @include clearfix;
+
+    .#{$tab-prefix}-tab {
+      display: inline-block;
+      height: 100%;
+      box-sizing: border-box;
+      position: relative;
+      color: $tabs-normal-color;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.8rem 1.5rem;
+      transition: color 0.3s $ease-in-out;
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:hover {
+        color: $tabs-title-active-color;
+      }
+      &.#{$tab-prefix}-tab-disabled {
+        opacity: .8;
+        &:hover {
+          cursor: not-allowed;
+          color: $tabs-normal-color;
+        }
+      }
+
+      &:active {
+        color: $tabs-title-active-color;
+      }
+      .zmdi {
+        width: $tabs-icon-size;
+        height: $tabs-icon-size;
+        margin-right: 8px;
+        font-size: $tabs-icon-size;
+      }
+    }
+
+    .#{$tab-prefix}-tab-active {
+      color: $tabs-title-active-color;
+      font-weight: 500;
+    }
+  }
+
+  &-mini &-nav-container {
+    font-size: $font-size-base;
+  }
+
+  &-mini &-tab {
+    margin-right: 0;
+    padding: 8px 16px;
+  }
+
+  &:not(.#{$tab-prefix}-vertical) {
+    > .#{$tab-prefix}-content {
+      width: 100%;
+      padding: 1.5rem 0;
+
+      > .#{$tab-prefix}-tabpane {
+        flex-shrink: 0;
+        width: 100%;
+        transition: opacity .45s;
+        opacity: 1;
+      }
+
+      > .#{$tab-prefix}-tabpane-inactive {
+        opacity: 0;
+        height: 0;
+        padding: 0 !important;
+        pointer-events: none;
+      }
+    }
+    > .#{$tab-prefix}-content-animated {
+      display: flex;
+      flex-direction: row;
+      will-change: margin-left;
+      transition: margin-left 0.3s $ease-in-out;
+    }
+  }
+
+  &-vertical {
+    > .#{$tab-prefix}-bar {
+      border-bottom: 0;
+      height: 100%;
+      &-tab-prev, &-tab-next {
+        width: 32px;
+        height: 0;
+        transition: height .3s $ease-in-out, opacity .3s $ease-in-out, color .3s $ease-in-out;
+      }
+      &-tab-prev.#{$tab-prefix}-tab-arrow-show,
+      &-tab-next.#{$tab-prefix}-tab-arrow-show {
+        width: 100%;
+        height: 32px;
+      }
+
+      .#{$tab-prefix}-tab {
+        float: none;
+        margin-right: 0;
+        margin-bottom: 16px;
+        display: block;
+        padding: 8px 24px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .#{$tab-prefix}-extra-content {
+        text-align: center;
+      }
+
+      .#{$tab-prefix}-nav-scroll {
+        width: auto;
+      }
+
+      .#{$tab-prefix}-nav-container,
+      .#{$tab-prefix}-nav-wrap {
+        height: 100%;
+      }
+
+      .#{$tab-prefix}-nav-container {
+        margin-bottom: 0;
+
+        &.#{$tab-prefix}-nav-container-scrolling {
+          padding: 32px 0;
+        }
+      }
+
+      .#{$tab-prefix}-nav-wrap {
+        margin-bottom: 0;
+      }
+
+      .#{$tab-prefix}-nav {
+        width: 100%;
+      }
+
+      .#{$tab-prefix}-ink-bar {
+        width: 2px;
+        left: auto;
+        height: auto;
+        top: 0;
+      }
+    }
+
+    > .#{$tab-prefix}-content {
+      overflow: hidden;
+      width: auto;
+      margin-top: 0 !important;
+    }
+
+    > .#{$tab-prefix}-bar {
+      .#{$tab-prefix}-tab-next {
+        width: 100%;
+        bottom: 0;
+        height: 32px;
+        &-icon:before {
+          content: "\f2f9";
+        }
+      }
+
+      .#{$tab-prefix}-tab-prev {
+        top: 0;
+        width: 100%;
+        height: 32px;
+        &-icon:before {
+          content: "\f2fc";
+        }
+      }
+    }
+  }
+
+  &-vertical.#{$tab-prefix}-left {
+    > .#{$tab-prefix}-bar {
+      float: left;
+      border-right: $border-width-base $border-style-base $border-color-split;
+      margin-right: -1px;
+      margin-bottom: 0;
+      .#{$tab-prefix}-tab {
+        text-align: right;
+      }
+      .#{$tab-prefix}-nav-container {
+        margin-right: -1px;
+      }
+      .#{$tab-prefix}-nav-wrap {
+        margin-right: -1px;
+      }
+      .#{$tab-prefix}-ink-bar {
+        right: 1px;
+      }
+    }
+    > .#{$tab-prefix}-content {
+      padding-left: 24px;
+      border-left: $border-width-base $border-style-base $border-color-split;
+    }
+  }
+
+  &-vertical.#{$tab-prefix}-right {
+    > .#{$tab-prefix}-bar {
+      float: right;
+      border-left: $border-width-base $border-style-base $border-color-split;
+      margin-left: -1px;
+      margin-bottom: 0;
+      .#{$tab-prefix}-nav-container {
+        margin-left: -1px;
+      }
+      .#{$tab-prefix}-nav-wrap {
+        margin-left: -1px;
+      }
+      .#{$tab-prefix}-ink-bar {
+        left: 1px;
+      }
+    }
+    > .#{$tab-prefix}-content {
+      padding-right: 24px;
+      border-right: $border-width-base $border-style-base $border-color-split;
+    }
+  }
+
+  &-bottom > &-bar {
+    margin-bottom: 0;
+    margin-top: 16px;
+  }
+}
+
+.#{$tab-prefix}-top .#{$tab-prefix}-ink-bar-animated,
+.#{$tab-prefix}-bottom .#{$tab-prefix}-ink-bar-animated {
+  transition: transform .3s $ease-in-out, width .3s $ease-in-out;
+}
+
+.#{$tab-prefix}-left .#{$tab-prefix}-ink-bar-animated,
+.#{$tab-prefix}-right .#{$tab-prefix}-ink-bar-animated {
+  transition: transform .3s $ease-in-out, height .3s $ease-in-out;
+}
+
+.no-flex,
+.#{$tab-prefix}-no-animation,
+.#{$tab-prefix}-vertical {
+  > .#{$tab-prefix}-content {
+    &-animated {
+      transform: none !important;
+      margin-left: 0 !important;
+    }
+    > .#{$tab-prefix}-tabpane-inactive {
+      display: none;
+    }
+  }
+}

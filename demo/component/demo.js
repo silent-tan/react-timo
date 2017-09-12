@@ -26,7 +26,8 @@ import {
   Dropdown,
   Menu,
   Tag,
-  Slick
+  Slick,
+  Tabs
 } from '../../src/index';
 
 const { SubMenu, MenuItem } = Menu;
@@ -100,7 +101,8 @@ class Demo extends Component {
           _transfer_value: '测试1'
         }],
         targetData: []
-      }
+      },
+      tabPosition: 'top'
     };
   }
 
@@ -198,6 +200,9 @@ class Demo extends Component {
         selected
       }
     });
+  }
+  handleTabsChange(key) {
+    console.log(key); // eslint-disable-line
   }
   render() {
     const titleRight = (
@@ -548,6 +553,113 @@ class Demo extends Component {
               <div><Flex className="flex-slick" justifyCenter alignCenter>3</Flex></div>
               <div><Flex className="flex-slick" justifyCenter alignCenter>4</Flex></div>
             </Slick>
+          </Flex>
+        </Flex>
+        <Flex>
+          <Flex flex={1} column className="mr-2">
+            <Flex>
+              Tabs Normal
+            </Flex>
+            <Flex className="mb-4 py-2 px-2 bg-white" column>
+              <Tabs defaultActiveKey="1" onChange={this.handleTabsChange.bind(this)}>
+                <Tabs.TabPane tab="Tab 1" key="1">Content of Tab Pane 1</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 2" key="2">Content of Tab Pane 2</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 3" key="3">Content of Tab Pane 3</Tabs.TabPane>
+              </Tabs>
+            </Flex>
+          </Flex>
+          <Flex flex={1} column>
+            <Flex>
+              Tabs disabled
+            </Flex>
+            <Flex className="mb-4 py-2 px-2 bg-white" column>
+              <Tabs defaultActiveKey="1">
+                <Tabs.TabPane tab="Tab 1" key="1">Tab 1</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 2" disabled key="2">Tab 2</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 3" key="3">Tab 3</Tabs.TabPane>
+              </Tabs>
+            </Flex>
+          </Flex>
+        </Flex>
+        <Flex>
+          <Flex flex={1} column className="mr-2">
+            <Flex>
+              Tabs Icon
+            </Flex>
+            <Flex className="mb-4 py-2 px-2 bg-white" column>
+              <Tabs defaultActiveKey="2">
+                <Tabs.TabPane tab={<span><Icon type="apple" />Tab 1</span>} key="1">
+                  Tab 1
+                </Tabs.TabPane>
+                <Tabs.TabPane tab={<span><Icon type="android" />Tab 2</span>} key="2">
+                  Tab 2
+                </Tabs.TabPane>
+              </Tabs>
+            </Flex>
+          </Flex>
+          <Flex flex={1} column>
+            <Flex>
+              Tabs Scroll
+            </Flex>
+            <Flex className="mb-4 py-2 px-2 bg-white">
+              <Tabs
+                defaultActiveKey="1"
+                tabPosition="top"
+                style={{ height: 120 }}
+              >
+                <Tabs.TabPane tab="Tab 1" key="1">Content of tab 1</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 2" key="2">Content of tab 2</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 3" key="3">Content of tab 3</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 4" key="4">Content of tab 4</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 5" key="5">Content of tab 5</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 6" key="6">Content of tab 6</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 7" key="7">Content of tab 7</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 8" key="8">Content of tab 8</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 9" key="9">Content of tab 9</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 10" key="10">Content of tab 10</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 11" key="11">Content of tab 11</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 12" key="12">Content of tab 12</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 13" key="13">Content of tab 13</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 14" key="14">Content of tab 14</Tabs.TabPane>
+                <Tabs.TabPane tab="Tab 15" key="15">Content of tab 15</Tabs.TabPane>
+              </Tabs>
+            </Flex>
+          </Flex>
+        </Flex>
+        <Flex>
+          Tabs position
+        </Flex>
+        <Flex className="mb-4 py-2 px-2 bg-white" column>
+          <Flex className="mb-2">
+            <Select
+              selected={this.state.tabPosition}
+              options={[
+                {
+                  value: 'top',
+                  name: 'top'
+                }, {
+                  value: 'bottom',
+                  name: 'bottom'
+                }, {
+                  value: 'left',
+                  name: 'left'
+                }, {
+                  value: 'right',
+                  name: 'right'
+                }]
+              }
+              onChange={(value) => this.setState({tabPosition: value})}
+            />
+          </Flex>
+          <Flex column>
+            <Tabs tabPosition={this.state.tabPosition} style={{height: 200}}>
+              <Tabs.TabPane tab="Tab 1" key="1">Content of Tab 1</Tabs.TabPane>
+              <Tabs.TabPane tab="Tab 2" key="2">Content of Tab 2</Tabs.TabPane>
+              <Tabs.TabPane tab="Tab 3" key="3">Content of Tab 3</Tabs.TabPane>
+              <Tabs.TabPane tab="Tab 4" key="4">Content of Tab 4</Tabs.TabPane>
+              <Tabs.TabPane tab="Tab 5" key="5">Content of Tab 5</Tabs.TabPane>
+              <Tabs.TabPane tab="Tab 6" key="6">Content of Tab 6</Tabs.TabPane>
+            </Tabs>
           </Flex>
         </Flex>
       </Flex>
