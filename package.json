@@ -18,7 +18,6 @@
     "deploy": "yarn install && yarn run build && yarn run build:min",
     "build": "NODE_ENV=production webpack",
     "build:min": "NODE_ENV=production webpack --config webpack.config.min.js",
-    "publishnpm": "sh deploy/publish.sh",
     "test": "sh deploy/test.sh"
   },
   "repository": {
