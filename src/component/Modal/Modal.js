@@ -12,6 +12,7 @@ import uuid from 'uuid';
 
 import _noop from 'lodash/noop';
 import _isNil from 'lodash/isNil';
+import _isBoolen from 'lodash/isNil';
 
 import Button from '../Button';
 import * as Util from '../Util';
@@ -47,7 +48,7 @@ class Modal extends Component {
     keyboard: PropTypes.bool,
     maskClosable: PropTypes.bool,
     maskTransitionName: PropTypes.string,
-    onClose: PropTypes.func,
+    onClose: PropTypes.oneOfType([PropTypes.func, PropTypes.oneOf([false])]),
     onSubmit: PropTypes.oneOfType([PropTypes.func, PropTypes.oneOf([false])]),
     show: PropTypes.bool,
     onShow: PropTypes.func,
@@ -128,23 +129,28 @@ class Modal extends Component {
   }
 
   renderFooter() {
-    return [
-      (
+    const {onSubmit, onClose, closable} = this.props;
+    const footer = [];
+    if(_isBoolen(onSubmit) && !onSubmit) {
+      footer.push(
         <Button
           className="btn-link"
           key="submit"
           loading={this.props.submitLoading}
           onClick={this.handleSubmit}
         >{this.props.submitText}</Button>
-      ),
-      (
+      );
+    }
+    if(_isBoolen(onClose) && !onClose && !closable) {
+      footer.push(
         <Button
           className="btn-link"
           key="cancel"
           onClick={this.handleClose}
         >{this.props.cancelText}</Button>
-      )
-    ];
+      );
+    }
+    return footer;
   }
 
   render() {
