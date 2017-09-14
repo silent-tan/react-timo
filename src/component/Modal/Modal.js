@@ -131,7 +131,7 @@ class Modal extends Component {
   renderFooter() {
     const {onSubmit, onClose, closable} = this.props;
     const footer = [];
-    if(_isBoolen(onSubmit) && !onSubmit) {
+    if(!_isBoolen(onSubmit)) {
       footer.push(
         <Button
           className="btn-link"
@@ -141,7 +141,7 @@ class Modal extends Component {
         >{this.props.submitText}</Button>
       );
     }
-    if(_isBoolen(onClose) && !onClose && !closable) {
+    if(!_isBoolen(onClose) && !closable) {
       footer.push(
         <Button
           className="btn-link"
