@@ -12,7 +12,7 @@ import uuid from 'uuid';
 
 import _noop from 'lodash/noop';
 import _isNil from 'lodash/isNil';
-import _isBoolen from 'lodash/isNil';
+import _isBoolean from 'lodash/isBoolean';
 
 import Button from '../Button';
 import * as Util from '../Util';
@@ -131,7 +131,7 @@ class Modal extends Component {
   renderFooter() {
     const {onSubmit, onClose, closable} = this.props;
     const footer = [];
-    if(!_isBoolen(onSubmit)) {
+    if(!_isBoolean(onSubmit)) {
       footer.push(
         <Button
           className="btn-link"
@@ -141,7 +141,7 @@ class Modal extends Component {
         >{this.props.submitText}</Button>
       );
     }
-    if(!_isBoolen(onClose) && !closable) {
+    if(!_isBoolean(onClose) && !closable) {
       footer.push(
         <Button
           className="btn-link"
