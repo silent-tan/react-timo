@@ -56,6 +56,7 @@ class Modal extends Component {
     submitLoading: PropTypes.bool,
     submitText: PropTypes.string,
     title: PropTypes.string,
+    style: PropTypes.object,
     transitionName: PropTypes.string,
     width: PropTypes.any
   }
@@ -74,6 +75,7 @@ class Modal extends Component {
     submitLoading: false,
     submitText: '确定',
     title: '默认模态框',
+    style: {},
     transitionName: 'zoom',
     width: undefined
   }
