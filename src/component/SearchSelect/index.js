@@ -58,7 +58,12 @@ class SearchSelect extends Component {
           const page = params.data.page || 1;
           const offset = (page - 1) * 30;
           this.props.onSearch(params.data.term, offset).then((result) => {
-            success(result);
+            const resultTemp = {...result};
+            if(resultTemp.searchList === undefined) {
+              resultTemp.searchList = [];
+              resultTemp.count = 0;
+            }
+            success(resultTemp);
           }, () => {
             failure();
           });
