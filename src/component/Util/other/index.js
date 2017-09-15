@@ -14,6 +14,13 @@ function createChainedFunction() {
   };
 }
 
+function move(arr, from, to) {
+  const temp = [...arr];
+  temp.splice(to, 0, temp.splice(from, 1)[0]);
+  return temp;
+}
+
 export {
-  createChainedFunction
+  createChainedFunction,
+  move
 };
