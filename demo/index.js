@@ -1,6 +1,4 @@
 import './index.scss';
-import 'markdown-it-react-loader/index.css';
-import 'highlight.js/styles/default.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
