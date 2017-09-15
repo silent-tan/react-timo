@@ -1,16 +1,13 @@
 const path = require('path');
-const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const precss = require('precss');
-const isDev = process.env.NODE_ENV === 'development';
 const config = {
   entry: {
     'index': ['./demo/index']
   },
   resolve: {
-      alias: {
-      }
+    alias: { }
   },
   output: {
     path: path.join(__dirname, 'build'),
@@ -118,22 +115,5 @@ const config = {
       }
     })]
 };
-if (!isDev) {
-  // 压缩
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
-}
-// // build ++
-// const deps = [
-//     'react-router/umd/ReactRouter.min.js',
-//
-//     'redux/dist/redux.min.js',
-//     'react-redux/dist/react-redux.min.js',
-//
-//     'underscore/underscore-min.js',
-//     'moment/min/moment.min.js'
-// ];
-// deps.forEach(function (dep) {
-//     config.resolve.alias[dep.split('/')[0]] = dep;
-//     config.module.noParse.push(dep);
-// });
+
 module.exports = config;
