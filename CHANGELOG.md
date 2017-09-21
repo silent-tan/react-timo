@@ -14,3 +14,8 @@
 - Modal submit and display config changed, close button style changed, props keyboard maskClose = false
 - fixed SearchSelect select2 warning
 - add Util function move
+
+### v1.0.8
+
+- `U` Slick style props
+- `U` UI Demo
