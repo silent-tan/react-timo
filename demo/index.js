@@ -1,45 +1,21 @@
 import './index.scss';
 import React from 'react';
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
-import {Flex} from '../src/';
-import {Router, Route, hashHistory, IndexRedirect} from 'react-router';
-import Demo from './component/demo';
+import {render} from 'react-dom';
+import {Router, hashHistory} from 'react-router';
 
-class App extends React.Component {
-  static propTypes = {
-    children: PropTypes.any
-  }
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <div className="demo">
-        <Flex className="demo-center container">
-          <Flex flex={1}>
-            {this.props.children}
-          </Flex>
-        </Flex>
-      </div>
-    );
-  }
-}
+const rootRoute = {
+  childRoutes: [
+    {
+      path: '/',
+      breadcrumbName: '首页',
+      component: require('./component/App').default,
+      childRoutes: [
+        require('./routes/Icon').default
+      ]
+    }
+  ]
+};
 
-class Test extends React.Component {
-  render() {
-    return (
-      <div>Test</div>
-    );
-  }
-}
-
-ReactDOM.render((
-  <Router history={hashHistory}>
-    <Route path="/" component={App} breadcrumbName="首页">
-      <IndexRedirect to="/demo" />
-      <Route path="/demo" component={Demo} breadcrumbName="例子"/>
-      <Route path="/test" component={Test} />
-    </Route>
-  </Router>
+render((
+  <Router history={hashHistory} routes={rootRoute}/>
 ), window.document.getElementById('appContainer'));
