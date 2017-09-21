@@ -70,7 +70,7 @@ const SlickCarousel = require('react-slick').default;
  * afterChange
  * beforeChange
  * slickGoTo  跳到某一项
- * style  样式
+ * style  外层样式定义背景色
  */
 
 class Slick extends Component {
@@ -161,7 +161,14 @@ class Slick extends Component {
   }
 
   render() {
-    const {prefixCls, className, vertical, nextArrow, prevArrow} = this.props;
+    const {
+      prefixCls,
+      className,
+      vertical,
+      nextArrow,
+      prevArrow,
+      style
+    } = this.props;
     const cls = cx(prefixCls, className, {
       [`${prefixCls}-vertical`]: vertical
     });
@@ -177,10 +184,10 @@ class Slick extends Component {
     }
 
     return (
-      <div className={`${cls}`}>
+      <div className={`${cls}`} style={style}>
         <SlickCarousel
           ref={refsNode => this.refsSlick = refsNode}
-          {..._omit(this.props, ['nextArrow', 'prevArrow', 'prefixCls'])}
+          {..._omit(this.props, ['nextArrow', 'prevArrow', 'prefixCls', 'style'])}
           {...tempProps}
         />
       </div>
