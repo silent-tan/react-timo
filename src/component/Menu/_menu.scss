@@ -100,7 +100,10 @@ $menu-shadow: 0 2px 10px rgba(0,0,0,.075);
 
     & > .#{$menu-prefix}-item,
     & > .#{$menu-prefix}-submenu > .#{$menu-prefix}-submenu-title {
-      padding: .5rem 1.5rem;
+      padding: .7rem 1.5rem;
+      &:hover {
+        background-color: rgba(0,0,0,.03);
+      }
     }
   }
 
@@ -111,7 +114,11 @@ $menu-shadow: 0 2px 10px rgba(0,0,0,.075);
   }
 
   &-inline {
-
+    & > .#{$menu-prefix}-item {
+      &:hover {
+        background-color: rgba(0,0,0,.03);
+      }
+    }
   }
 
   > li.#{$menu-prefix}-submenu {
@@ -160,6 +167,9 @@ $menu-shadow: 0 2px 10px rgba(0,0,0,.075);
   }
 
   &-item {
+    & > a {
+      color: $menu-normal-color;
+    }
     @include menu-item;
     &-group {
       &-list {

@@ -2,17 +2,18 @@
  * @Author: farzer
  * @Date:   2017-07-19 11:27:09
  * @Last modified by:   farzer
- * @Last modified time: 2017-08-05 15:08:07
+ * @Last modified time: 2017-07-19 11:41:58
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import uuid from 'uuid';
 import $ from 'jquery';
 import 'select2';
-import uuid from 'uuid';
 
 import _noop from 'lodash/noop';
 import _keys from 'lodash/keys';
+import _replace from 'lodash/replace';
 import _isEqual from 'lodash/isEqual';
 
 class SearchSelect extends Component {
@@ -30,13 +31,19 @@ class SearchSelect extends Component {
     selected: PropTypes.object,
     // 返回选择的数据
     onSelect: PropTypes.func,
-    delay: PropTypes.number
+    delay: PropTypes.number,
+    disabled: PropTypes.bool,
+    placeholder: PropTypes.string,
+    allowClear: PropTypes.bool
   }
 
   static defaultProps = {
     selected: {},
     onSelect: _noop,
-    delay: 300
+    delay: 300,
+    disabled: false,
+    placeholder: '输入关键字进行搜索',
+    allowClear: true
   }
 
   constructor(props) {
@@ -49,7 +56,9 @@ class SearchSelect extends Component {
   componentDidMount() {
     this.__SEARCHBOX = $(`#${this.state.idKey}`);
     this.__OPTIONS = {
-      placeholder: '输入关键字进行搜索',
+      width: '100%',
+      placeholder: this.props.placeholder,
+      allowClear: this.props.allowClear,
       data: [this.props.selected],
       ajax: {
         dataType: 'json',
@@ -106,10 +115,17 @@ class SearchSelect extends Component {
       this.__SEARCHBOX.select2('close');
       evt.preventDefault();
     });
+
+    // 如果允许清除，则监听清除，并返回 {}
+    if(this.props.allowClear) {
+      this.__SEARCHBOX.on('change', () => {
+        this.props.onSelect({});
+      });
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    if(_isEqual(nextProps.selected, {})) {
+    if(_isEqual(nextProps.selected, {}) && !_isEqual(this.props.selected, {})) {
       this.clearSelection();
       return;
     }
@@ -125,7 +141,12 @@ class SearchSelect extends Component {
   }
 
   componentWillUnmount() {
-    this.__SEARCHBOX.select2('destroy');
+    if(this.__SEARCHBOX) {
+      const cls = _replace(this.__SEARCHBOX[0].className, ' ', '.');
+      if($(`.${cls}`).length) {
+        this.__SEARCHBOX.select2('destroy');
+      }
+    }
   }
 
   // 为组件附上加入ref,可通过this.xxx.clearSelection()进行调用，但不建议这种方式使用
@@ -135,7 +156,7 @@ class SearchSelect extends Component {
 
   render() {
     return (
-      <select className="select2 form-control" id={this.state.idKey}>
+      <select className="select2 form-control" id={this.state.idKey} disabled={this.props.disabled}>
         <option />
       </select>
     );

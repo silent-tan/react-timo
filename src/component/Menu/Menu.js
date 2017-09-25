@@ -32,17 +32,20 @@ class Menu extends Component {
     onSelect: PropTypes.func,
     onClick: PropTypes.func,
     onOpenChange: PropTypes.func,
-    onDeselect: PropTypes.func
+    onDeselect: PropTypes.func,
+    shadow: PropTypes.bool
   }
 
   static defaultProps = {
     prefixCls: 'nf-menu',
     openTransition: 'zoom',
     style: {},
-    justify: 'center',
+    justify: 'start',
     className: '',
     selectable: true,
-    multiple: false
+    multiple: false,
+    mode: 'horizontal',
+    shadow: false
   }
 
   constructor(props) {
@@ -50,13 +53,19 @@ class Menu extends Component {
   }
 
   render() {
-    const {style, justify, ...restProps} = this.props;
+    const {style, shadow, justify, ...restProps} = this.props;
+    const temp = {};
+    if(this.props.mode === 'horizontal') {
+      temp.justifyContent = justify;
+      if(justify === 'end') temp.justifyContent = 'flex-end';
+    }
+    if(!shadow) {
+      temp.boxShadow = 'none';
+    }
     const styleTemp = {
+      ...temp,
       ...style
     };
-    if(this.props.mode === 'horizontal') {
-      styleTemp.justifyContent = justify;
-    }
     return (
       <RcMenu {...restProps} style={styleTemp}/>
     );

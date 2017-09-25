@@ -6,7 +6,6 @@ import _noop from 'lodash/noop';
 
 import {
   Button,
-  FileUpload,
   Flex,
   Icon,
   Loading,
@@ -233,31 +232,6 @@ class Demo extends Component {
     return (
       <Flex className="mt-2 mb-2rem" column flex style={{marginBottom: 200}}>
         <Flex className="mb-4">
-          <Icon type="3d-rotation"/>
-        </Flex>
-        <Flex className="mb-4">
-          <FileUpload onChange={this.handleChangeFile}/>
-        </Flex>
-        {
-          this.state.files.length ?
-            <Flex className="img-thumb">
-              <div className="row">
-                {
-                  map(this.state.files, file => {
-                    return (
-                      <div className="col-md-2" key={file.name}>
-                        <Flex alignCenter justifyCenter  height="250px" className="mb-4">
-                          <img src={file.thumb} style={{maxWidth: '100%', maxHeight: '100%'}}/>
-                        </Flex>
-                      </div>
-                    );
-                  })
-                }
-              </div>
-            </Flex>
-            : null
-        }
-        <Flex className="mb-4">
           <Loading />
         </Flex>
         <Flex className="mb-4" column>
@@ -397,6 +371,7 @@ class Demo extends Component {
             onSelect={_noop}
             defaultActiveFirst
             onClick={_noop}
+            justify="end"
           >
             <SubMenu title={titleRight} key="1">
               <MenuItem key="1-1">0-1</MenuItem>
@@ -425,6 +400,7 @@ class Demo extends Component {
         </Flex>
         <Flex className="mb-4" width="200px">
           <Menu
+            mode="vertical"
             onSelect={_noop}
             defaultActiveFirst
             onClick={_noop}

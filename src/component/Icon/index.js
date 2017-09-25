@@ -25,7 +25,6 @@ class Icon extends Component {
     type: PropTypes.string.isRequired,
     style: PropTypes.object,
     className: PropTypes.string,
-    rest: PropTypes.any,
     onClick: PropTypes.func
   }
   static defaultProps = {
@@ -48,7 +47,7 @@ class Icon extends Component {
       type,
       style,
       className,
-      rest
+      ...rest
     } = this.props;
     return (
       <i

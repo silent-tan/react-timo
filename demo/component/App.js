@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {Flex} from '../../src/index';
 import SideBar from './Sidebar';
-import Demo from './demo';
+import NavTop from './NavTop';
 
 class App extends Component {
   static propTypes = {
@@ -12,15 +12,13 @@ class App extends Component {
   render() {
     return (
       <div className="demo">
+        <NavTop />
         <Flex className="demo-center container">
           <Flex className="mr-4" width="200px">
             <SideBar />
           </Flex>
-          <Flex flex={1}>
+          <Flex flex={1} className="demo-content">
             {this.props.children}
-            <Flex>
-              <Demo />
-            </Flex>
           </Flex>
         </Flex>
       </div>
