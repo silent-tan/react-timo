@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Flex, Menu} from '../../src/index';
+import {Flex, Menu} from 'react-timo';
 
 class NavTop extends Component {
   constructor(props) {

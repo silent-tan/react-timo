@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {Flex} from '../../src/index';
+import {Flex} from 'react-timo';
 import SideBar from './Sidebar';
 import NavTop from './NavTop';
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Link as RouterLink} from 'react-router';
 import _noop from 'lodash/noop';
 
-import {Flex, Menu} from '../../src/index';
+import {Flex, Menu} from 'react-timo';
 const { SubMenu, MenuItem } = Menu;
 
 class Link extends Component {

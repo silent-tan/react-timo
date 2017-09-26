@@ -19,3 +19,11 @@
 
 - `U` Slick style props
 - `U` UI Demo
+
+### v1.0.9
+
+- `U` Icon add autoFixed props
+- `U` Add Grid Component
+- `A` Collapse Component
+- `A` Highlight
+- `U` API document framework

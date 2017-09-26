@@ -7,7 +7,10 @@ const config = {
     'index': ['./demo/index']
   },
   resolve: {
-    alias: { }
+    alias: {
+      'react-timo': path.resolve(__dirname, 'src/index.js'),
+      'demo-component': path.resolve(__dirname, 'demo/component/Common.js')
+    }
   },
   output: {
     path: path.join(__dirname, 'build'),

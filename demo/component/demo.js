@@ -26,8 +26,9 @@ import {
   Menu,
   Tag,
   Slick,
-  Tabs
-} from '../../src/index';
+  Tabs,
+  Collapse
+} from 'react-timo';
 
 const { SubMenu, MenuItem } = Menu;
 
@@ -228,6 +229,12 @@ class Demo extends Component {
         <i className="zmdi zmdi-caret-right ml-2"/>
       </Flex>
     );
+
+    const text = `
+      A dog is a type of domesticated animal.
+      Known for its loyalty and faithfulness,
+      it can be found as a welcome guest in many households across the world.
+    `;
 
     return (
       <Flex className="mt-2 mb-2rem" column flex style={{marginBottom: 200}}>
@@ -637,6 +644,19 @@ class Demo extends Component {
               <Tabs.TabPane tab="Tab 6" key="6">Content of Tab 6</Tabs.TabPane>
             </Tabs>
           </Flex>
+        </Flex>
+        <Flex className="mb-4 py-2 px-2 bg-white" column>
+          <Collapse defaultActiveKey={['1']} onChange={_noop} accordion showArrow>
+            <Collapse.Panel header="This is panel header 1" key="1">
+              {text}
+            </Collapse.Panel>
+            <Collapse.Panel header="This is panel header 2" key="2">
+              {text}
+            </Collapse.Panel>
+            <Collapse.Panel header="This is panel header 3" key="3" disabled>
+              {text}
+            </Collapse.Panel>
+          </Collapse>
         </Flex>
       </Flex>
     );

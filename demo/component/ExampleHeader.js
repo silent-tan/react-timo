@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Flex} from '../../src/index';
+import {Flex} from 'react-timo';
 
 class ExampleHeader extends Component {
   static propTypes = {

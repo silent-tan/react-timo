@@ -1,0 +1,110 @@
+@import "../../scss/variables.scss";
+
+$collapse-prefix: "nf-collapse";
+
+$collapse-header-color: #333;
+$collapse-header-bg: #f9f9f9;
+
+.nf-motion-collapse {
+  overflow: hidden;
+  &-active {
+    transition: height .15s $ease-in-out, opacity .15s $ease-in-out !important;
+  }
+}
+
+.#{$collapse-prefix} {
+  border-radius: $border-radius-base;
+  border: $border-width-base $border-style-base $border-color-base;
+  border-bottom: 0;
+
+  & > &-item {
+    border-bottom: $border-width-base $border-style-base $border-color-base;
+
+    &:last-child {
+      &,
+      & > .#{$collapse-prefix}-header {
+        border-radius: 0 0 $border-radius-base $border-radius-base;
+      }
+    }
+
+    & > .#{$collapse-prefix}-header {
+      background: $collapse-header-bg;
+      padding: .5rem .9rem;
+      line-height: 22px;
+      color: $collapse-header-color;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+      transition: all .3s;
+    }
+
+    .zmdi {
+      transition: transform .5s;
+    }
+
+    &-active {
+      .zmdi {
+        transform: scaleY(-1);
+        transition: transform .5s;
+      }
+    }
+  }
+
+  &-anim-active {
+    transition: height .2s $ease-out;
+  }
+
+  &-content {
+    overflow: hidden;
+    color: $font-color-base;
+
+    & > &-box {
+      padding: 1.5rem .9rem;
+    }
+
+    &-inactive {
+      display: none;
+    }
+  }
+
+  &-item:last-child {
+    > .#{$collapse-prefix}-content {
+      border-radius: 0 0 $border-radius-base $border-radius-base;
+    }
+  }
+
+  &-borderless {
+    border: 0;
+
+    & > .#{$collapse-prefix}-item > .#{$collapse-prefix}-header {
+      padding: .9rem 0;
+      transition: all .3s;
+      background: transparent;
+    }
+
+    & > .#{$collapse-prefix}-item:last-child,
+    & > .#{$collapse-prefix}-item:last-child .#{$collapse-prefix}-header {
+      border-radius: 0;
+    }
+
+    & > .#{$collapse-prefix}-item-active {
+      border: 0;
+    }
+
+    & > .#{$collapse-prefix}-item > .#{$collapse-prefix}-content {
+      border-top: $border-width-base $border-style-base $border-color-base;
+      .#{$collapse-prefix}-content-box {
+        padding: 1.5rem 0;
+      }
+    }
+  }
+
+  & &-item-disabled > &-header {
+    &,
+    & > .arrow {
+      cursor: not-allowed;
+      color: $disabled-color;
+    }
+  }
+}

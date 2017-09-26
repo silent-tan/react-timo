@@ -5,11 +5,13 @@ import Button from './component/Button';
 import Slick from './component/Slick';
 import Card from './component/Card';
 import Checkbox from './component/Checkbox';
+import Collapse from './component/Collapse';
 import DatetimePicker from './component/DatetimePicker';
 import Dropdown from './component/Dropdown';
 import FileUpload from './component/FileUpload';
 import Flex from './component/Flex';
 import Grid from './component/Grid';
+import Highlight from './component/Highlight';
 import Icon from './component/Icon';
 import Loading from './component/Loading';
 import Menu from './component/Menu';
@@ -33,11 +35,13 @@ export {
   Slick,
   Card,
   Checkbox,
+  Collapse,
   DatetimePicker,
   Dropdown,
   FileUpload,
   Flex,
   Grid,
+  Highlight,
   Icon,
   Loading,
   Menu,

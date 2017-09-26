@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {
   Flex,
   Loading
-} from '../../../../src';
+} from 'react-timo';
+
+import Demo from '../../../component/demo';
 
 class LoadingExample extends Component {
   constructor(props) {
@@ -11,8 +13,11 @@ class LoadingExample extends Component {
 
   render() {
     return (
-      <Flex className="demo-loading">
-        <Loading />
+      <Flex className="demo-loading" column>
+        <Flex>
+          <Loading />
+        </Flex>
+        <Demo />
       </Flex>
     );
   }
