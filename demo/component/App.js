@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {Flex} from 'react-timo';
 import SideBar from './Sidebar';
 import NavTop from './NavTop';
+import './_style.scss';
 
 class App extends Component {
   static propTypes = {

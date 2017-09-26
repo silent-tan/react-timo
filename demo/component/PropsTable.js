@@ -43,6 +43,11 @@ class PropsTable extends Component {
     return null;
   }
 
+  renderRequired(required) {
+    return required === 'true'
+      ? <span className="text-danger">{required}</span> : required;
+  }
+
   renderValue(list, valueObj, i) {
     if (valueObj === undefined || valueObj.value === '_noop') {
       return '-';
@@ -92,7 +97,9 @@ class PropsTable extends Component {
               <Sheet.SheetColumn field="propTypes" name="PropTypes">
                 { this.renderType.bind(this) }
               </Sheet.SheetColumn>
-              <Sheet.SheetColumn field="isRequired" name="isRequired"/>
+              <Sheet.SheetColumn field="isRequired" name="isRequired">
+                { this.renderRequired.bind(this)}
+              </Sheet.SheetColumn>
               <Sheet.SheetColumn field="default" name="defaultValue">
                 { this.renderValue.bind(this, list) }
               </Sheet.SheetColumn>

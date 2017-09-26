@@ -1,0 +1,9 @@
+$card-prefix: 'nf-card';
+
+.#{$card-prefix} {
+  &-header {
+    &-desc {
+      margin-top: .8rem;
+    }
+  }
+}

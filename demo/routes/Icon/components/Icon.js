@@ -20,9 +20,11 @@ class IconExample extends Component {
           title="Icon Component"
           desc="Material Design Iconic Font is a full suite of official material design icons (created and maintained by Google), with additional community-designed icons and brands icons for easy scalable vector graphics on websites or desktop"
         />
-        <Demobox code={code}>
-          <Demo />
-        </Demobox>
+        <Card title="Example">
+          <Demobox code={code}>
+            <Demo />
+          </Demobox>
+        </Card>
         <PropsTable list={iconProps}/>
         {
           _map(icons, (value, key) => {

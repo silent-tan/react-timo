@@ -1,0 +1,23 @@
+/**
+ * Demobox
+ */
+
+.nf-demobox-code {
+  pre {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .zmdi {
+    font-size: 1.7rem;
+    vertical-align: bottom;
+    margin-right: 1rem;
+  }
+
+  .nf-demobox-copy {
+    &:active,
+    &:focus {
+      color: green;
+    }
+  }
+}

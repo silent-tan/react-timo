@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Icon, Flex} from 'react-timo';
+import {Flex, Loading} from 'react-timo';
 
 class Demo extends Component {
   constructor(props) {
@@ -9,9 +9,9 @@ class Demo extends Component {
   render() {
     return (
       <Flex>
-        <Icon type="3d-rotation" />
-        <Icon type="airplane-off" />
-        <Icon type="airplane" />
+        <Loading size="sm" />
+        <Loading size="md"/>
+        <Loading size="lg" />
       </Flex>
     );
   }

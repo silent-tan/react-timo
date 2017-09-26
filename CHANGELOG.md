@@ -27,3 +27,5 @@
 - `A` Collapse Component
 - `A` Highlight
 - `U` API document framework
+- `U` Card add desc props
+- `U` Loading add width props

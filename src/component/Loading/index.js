@@ -1,32 +1,54 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import './_style.scss';
 class Loading extends Component {
   static propTypes = {
-    size: PropTypes.oneOf(['sm', 'md', 'lg'])
+    /**
+     * Loading 大小
+     */
+    size: PropTypes.oneOf(['sm', 'md', 'lg']),
+    /**
+     * 具体大小
+     */
+    width: PropTypes.number,
+    /**
+     * Loading类名
+     */
+    className: PropTypes.string,
+    /**
+     * 额外内联样式
+     */
+    style: PropTypes.object
   }
   static defaultProps = {
-    size: 'md'
+    size: 'md',
+    width: 0,
+    className: '',
+    style: {}
   }
   constructor(props) {
     super(props);
   }
 
   render() {
-    const {size} = this.props;
+    const {size, width, style, className} = this.props;
     const sizeMap = {
       'sm': 30,
       'md': 40,
       'lg': 50
     };
-    const viewBoxStr = `${sizeMap[size] / 2} ${sizeMap[size] / 2} ${sizeMap[size]} ${sizeMap[size]}`;
+    let value = sizeMap[size];
+    if(width) value = width;
+    const viewBoxStr = `${value / 2} ${value / 2} ${value} ${value}`;
+    const cls = cx('nf-loading', className);
     return (
-      <div className="nf-loading" style={{height: sizeMap[size], width: sizeMap[size]}}>
+      <div className={cls} style={{height: value, width: value, ...style}}>
         <svg viewBox={viewBoxStr}>
           <circle
-            cx={`${sizeMap[size]}`}
-            cy={`${sizeMap[size]}`}
-            r={`${sizeMap[size] / 5 * 2}`}
+            cx={`${value}`}
+            cy={`${value}`}
+            r={`${value / 5 * 2}`}
             fill="none"
             strokeWidth="2"
             strokeMiterlimit="10"

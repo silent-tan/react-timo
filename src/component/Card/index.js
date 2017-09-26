@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import _isString from 'lodash/isString';
+import './_card.scss';
 
 const STATUS = ['default', 'info', 'primary', 'success', 'warning', 'danger'];
 
@@ -30,6 +31,7 @@ class Card extends Component {
       PropTypes.string,
       PropTypes.object
     ]),
+    desc: PropTypes.node,
     type: PropTypes.oneOf(STATUS)
   }
   static defaultProps = {
@@ -39,8 +41,40 @@ class Card extends Component {
     title: '',
     type: 'default'
   }
+  constructor(props) {
+    super(props);
+    this.renderHeader = ::this.renderHeader;
+  }
+  renderHeader() {
+    const {title, desc} = this.props;
+    if(title) {
+      let titleTemp = null;
+      let descTemp = null;
+      if(_isString) {
+        titleTemp = (
+          <h2 className="card-title">{title}</h2>
+        );
+      } else {
+        titleTemp = title;
+      }
+      if(desc) {
+        descTemp = (
+          <div className="nf-card-header-desc">
+            {desc}
+          </div>
+        );
+      }
+      return (
+        <div className="card-header">
+          {titleTemp}
+          {descTemp}
+        </div>
+      );
+    }
+    return null;
+  }
   render() {
-    const {title, children, animated, style, type, outline} = this.props;
+    const {children, animated, style, type, outline} = this.props;
     const cls = cx('card', {
       [`animated ${animated}`]: animated !== '',
       [`card-${type}`]: type !== 'default',
@@ -49,14 +83,7 @@ class Card extends Component {
     });
     return (
       <div className={cls} style={style}>
-        {
-          title ?
-            <div className="card-header">
-              {
-                _isString(title) ? <h2 className="card-title">{title}</h2> : {title}
-              }
-            </div> : null
-        }
+        { this.renderHeader() }
         <div className="card-block">
           {children}
         </div>
