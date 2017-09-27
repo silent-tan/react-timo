@@ -38,10 +38,6 @@
   top: 0;
   width: 100%;
   z-index: 2;
-
-  .nav-top-menu {
-    padding: 0.5rem;
-  }
 }
 
 .demo-sidebar {
@@ -69,5 +65,12 @@
     font-size: 1.7rem;
     vertical-align: bottom;
     margin-right: 1rem;
+  }
+
+  .icon-name-instance {
+    cursor: pointer;
+    &:hover {
+      background: #f3f3f3;
+    }
   }
 }

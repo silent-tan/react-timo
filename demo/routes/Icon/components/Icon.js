@@ -34,7 +34,7 @@ class IconExample extends Component {
                   {
                     _map(value, (icon, index) => {
                       return (
-                        <div className="col-sm-4" key={index}>
+                        <div className="col-sm-4 icon-name-instance" key={index}>
                           <Icon type={icon} className="zmdi-hc-fw"/>
                           { icon }
                         </div>

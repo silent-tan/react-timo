@@ -7,19 +7,22 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import noop from 'lodash/noop';
 import cx from 'classnames';
+import _noop from 'lodash/noop';
 import _isString from 'lodash/isString';
 import _isNumber from 'lodash/isNumber';
 import _join from 'lodash/join';
 import _split from 'lodash/split';
 import Waves from '../Waves';
+import Icon from '../Icon';
 
 Waves.init();
 Waves.attach('.btn');
 
 const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
+
+const MODE = ['primary', 'secondary', 'success', 'info', 'danger', 'warning', 'link'];
 
 /**
  * 按钮
@@ -33,33 +36,75 @@ const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
  */
 class Button extends Component {
   static propTypes = {
+    /**
+     * 类名
+     */
     className: PropTypes.string,
+    /**
+     * 按钮场景
+     */
+    mode: PropTypes.oneOf(MODE),
+    /**
+     * 按钮边框化
+     */
+    outline: PropTypes.bool,
+    /**
+     * 点击回调事件
+     */
     onClick: PropTypes.func,
+    /**
+     * 鼠标聚焦事件回调
+     */
     onFocus: PropTypes.func,
+    /**
+     * 禁止点击
+     */
     disabled: PropTypes.bool,
-    children: PropTypes.any,
+    /**
+     * children
+     */
+    children: PropTypes.node,
+    /**
+     * 两个汉字插入空格
+     */
     insertSpace: PropTypes.bool,
+    /**
+     * Icon式按钮, 取值为Icon组件的type
+     */
+    icon: PropTypes.string,
+    /**
+     * 点击后加载状态
+     */
     loading: PropTypes.bool
   }
 
   static defaultProps = {
-    className: 'btn-secondary',
+    className: '',
     disabled: false,
-    onClick: noop,
-    onFocus: noop,
+    onClick: _noop,
+    icon: '',
+    onFocus: _noop,
+    mode: 'secondary',
+    outline: false,
     insertSpace: true,
     loading: false
   }
 
   constructor(props) {
     super(props);
-    this.handleInsertSpace = ::this.handleInsertSpace;
+    this.renderChild = ::this.renderChild;
   }
 
   // 如果是两个中文字符，则自动插入一个空格
-  handleInsertSpace(child) {
+  renderChild(child) {
+    const {icon} = this.props;
     if (child == null) {
-      return;
+      if(icon !== '') {
+        return (
+          <Icon type={icon}/>
+        );
+      }
+      return null;
     }
     const SPACE = ' ';
     if (!_isString(child) && _isNumber(child) && _isString(child.type) && isTwoCNChar(child.props.children)) {
@@ -82,15 +127,21 @@ class Button extends Component {
       insertSpace,  // eslint-disable-line
       disabled,
       loading,
+      mode,
+      icon,
+      outline,
       ...rest
     } = this.props;
 
-    const cls = cx('btn waves-effect', className);
+    const cls = cx('btn waves-effect', {
+      [`btn-${outline && mode !== 'link' ? 'outline-' +  mode : mode }`]: true,
+      'btn--icon': icon !== ''
+    }, className);
     const extraAttr = {disabled: disabled};
     if(loading) extraAttr.disabled = true;
     return (
       <button className={cls} {...rest} {...extraAttr}>
-        { this.handleInsertSpace(children) }
+        { this.renderChild(children) }
       </button>
     );
   }

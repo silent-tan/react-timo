@@ -67,7 +67,7 @@ class Tabs extends Component {
 
   componentDidMount() {
     const NO_FLEX = ' no-flex';
-    const tabNode = findDOMNode(this);
+    const tabNode = findDOMNode(this);  // eslint-disable-line
     if (tabNode && !isFlexSupported() && _includes(tabNode.className, NO_FLEX)) {
       tabNode.className += NO_FLEX;
     }

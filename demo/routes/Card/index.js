@@ -1,8 +1,8 @@
 export default {
-  path: 'home',
+  path: 'card',
   getComponent(nextState, cb) {
     require.ensure([], (require) => {
-      cb(null, require('./components/Home').default);
+      cb(null, require('./components/Card').default);
     });
   }
 };

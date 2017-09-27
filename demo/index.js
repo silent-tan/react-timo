@@ -7,14 +7,23 @@ const rootRoute = {
   childRoutes: [
     {
       path: '/',
-      breadcrumbName: '首页',
+      indexRoute: { onEnter: (nextState, replace) => replace('/home') }
+    },
+    {
+      path: '/components',
+      breadcrumbName: '组件库',
       component: require('./component/App').default,
-      indexRoute: { onEnter: (nextState, replace) => replace('/home') },
+      indexRoute: { onEnter: (nextState, replace) => replace('/components/icon') },
       childRoutes: [
-        require('./routes/Home').default,
         require('./routes/Icon').default,
-        require('./routes/Loading').default
+        require('./routes/Loading').default,
+        require('./routes/Card').default,
+        require('./routes/Button').default
       ]
+    }, {
+      path: '/home',
+      breadcrumbName: '首页',
+      component: require('./component/Home').default
     }
   ]
 };

@@ -24,13 +24,15 @@ class Grid extends Component {
   }
 
   render() {
-    const {fluid, className, style} = this.props;
+    const {fluid, className, style, children} = this.props;
     const cls = cx({
       'container': !fluid,
       'container-fluid': fluid
     }, className);
     return (
-      <div className={cls} style={style} />
+      <div className={cls} style={style}>
+        {children}
+      </div>
     );
   }
 }

@@ -50,10 +50,20 @@ class SideBar extends Component {
       <Flex className="demo-sidebar mb-4" flex={1}>
         <Menu mode="inline" onSelect={_noop} onClick={_noop} >
           <MenuItem key="icon" className="p-0">
-            <Link to="/icon" className="demo-sidebar-link" activeClassName="demo-sidebar-link-active">Icon</Link>
+            <Link to="/components/icon" className="demo-sidebar-link" activeClassName="demo-sidebar-link-active">Icon</Link>
           </MenuItem>
           <MenuItem key="loading" className="p-0">
-            <Link to="/loading" className="demo-sidebar-link" activeClassName="demo-sidebar-link-active">Loading</Link>
+            <Link to="/components/loading" className="demo-sidebar-link" activeClassName="demo-sidebar-link-active">Loading</Link>
+          </MenuItem>
+          <MenuItem key="card" className="p-0">
+            <Link to="/components/card" className="demo-sidebar-link" activeClassName="demo-sidebar-link-active">Card</Link>
+          </MenuItem>
+          <MenuItem key="button" className="p-0">
+            <Link
+              to="/components/button"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Button</Link>
           </MenuItem>
           <SubMenu title={titleRight} key="1">
             <MenuItem key="1-1">0-1</MenuItem>

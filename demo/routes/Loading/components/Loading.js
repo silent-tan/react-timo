@@ -21,12 +21,12 @@ class LoadingExample extends Component {
           title="Icon Component"
           desc="Material Design Iconic Font is a full suite of official material design icons (created and maintained by Google), with additional community-designed icons and brands icons for easy scalable vector graphics on websites or desktop"
         />
-        <Card title="Normal Example">
+        <Card title="Basic Loading">
           <Demobox code={normalCode}>
             <NormalDemo />
           </Demobox>
         </Card>
-        <Card title="Example with Width Props"  desc="Using custom size with width props.">
+        <Card title="Custom Size Loading"  desc="Using custom size with width props.">
           <Demobox code={widthCode}>
             <WidthDemo />
           </Demobox>

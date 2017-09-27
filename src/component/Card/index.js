@@ -9,7 +9,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import _isString from 'lodash/isString';
-import './_card.scss';
 
 const STATUS = ['default', 'info', 'primary', 'success', 'warning', 'danger'];
 
@@ -23,15 +22,36 @@ const STATUS = ['default', 'info', 'primary', 'success', 'warning', 'danger'];
  */
 class Card extends Component {
   static propTypes = {
+    /**
+     * React Component
+     */
     children: PropTypes.any.isRequired,
+    /**
+     * 动画名称, 参照css-animate动画名称
+     */
     animated: PropTypes.string,
+    /**
+     * 边框主题
+     */
     outline: PropTypes.oneOf(STATUS),
+    /**
+     * 内敛样式
+     */
     style: PropTypes.object,
+    /**
+     * 标题
+     */
     title: PropTypes.oneOfType([
       PropTypes.string,
-      PropTypes.object
+      PropTypes.node
     ]),
+    /**
+     * 标题描述
+     */
     desc: PropTypes.node,
+    /**
+     * 主题
+     */
     type: PropTypes.oneOf(STATUS)
   }
   static defaultProps = {
@@ -59,9 +79,9 @@ class Card extends Component {
       }
       if(desc) {
         descTemp = (
-          <div className="nf-card-header-desc">
+          <small className="card-subtitle">
             {desc}
-          </div>
+          </small>
         );
       }
       return (
@@ -81,10 +101,14 @@ class Card extends Component {
       'card-inverse': type !== 'default',
       [`card-outline-${outline}`]: outline !== 'default'
     });
+
+    const blockCls = cx('card-block', {
+      'card-text': type !== 'default'
+    });
     return (
       <div className={cls} style={style}>
         { this.renderHeader() }
-        <div className="card-block">
+        <div className={blockCls}>
           {children}
         </div>
       </div>

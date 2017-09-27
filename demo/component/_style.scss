@@ -21,3 +21,31 @@
     }
   }
 }
+
+/**
+ * NavTop
+ */
+
+.demo-nav-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.nav-top-menu-link {
+  display: block;
+  padding: 1.5rem 2rem;
+}
+
+.nav-top-menu-item {
+  padding: 0 !important;
+}
+
+.nav-top-logo {
+  cursor: pointer;
+}
+.nav-top-title {
+  font-weight: Bold;
+  font-size: 1.2rem;
+}
