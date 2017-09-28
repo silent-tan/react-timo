@@ -2,7 +2,7 @@ stages:
   - install_deps
   - test
   - build
-  - deploy
+  # - deploy
 cache:
   key: ${CI_BUILD_REF_NAME}
   paths:
@@ -31,11 +31,11 @@ build:
     - npm run clean
     - npm run build
 # 部署服务器
-deploy:
-  stage: deploy
-  only:
-    - master
-  script:
-    - pm2 delete app || true
-    - pm2 start app.js --name app
+# deploy:
+#   stage: deploy
+#   only:
+#     - master
+#   script:
+#     - pm2 delete app || true
+#     - pm2 start app.js --name app
 # 部署生产服务器
