@@ -15,7 +15,7 @@ const config = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[name].[hash].bundle.js',
-    publicPath: '/react-timo/build/'
+    publicPath: '/build/'
   },
   module: {
     rules: [
