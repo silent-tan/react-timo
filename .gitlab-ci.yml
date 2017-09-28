@@ -1,0 +1,41 @@
+stages:
+  - install_deps
+  - test
+  - build
+  - deploy
+cache:
+  key: ${CI_BUILD_REF_NAME}
+  paths:
+    - node_modules/
+    - dist/
+# 安装依赖
+install_deps:
+  stage: install_deps
+  only:
+    - master
+  script:
+    - yarn install
+# 运行测试用例
+test:
+  stage: test
+  only:
+    - master
+  script:
+    - npm run test
+# 编译
+build:
+  stage: build
+  only:
+    - master
+  script:
+    - npm run clean
+    - npm run build
+# 部署服务器
+deploy:
+  stage: deploy
+  only:
+    - master
+  script:
+    - pm2 delete app || true
+    - pm2 start app.js --name app
+# 部署生产服务器

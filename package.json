@@ -18,7 +18,7 @@
     "deploy": "yarn install && yarn run build && yarn run build:min",
     "build": "NODE_ENV=production webpack",
     "build:min": "NODE_ENV=production webpack --config webpack.config.min.js",
-    "test": "sh deploy/test.sh"
+    "test": "eslint ./src/ ./demo/"
   },
   "repository": {
     "type": "git",
