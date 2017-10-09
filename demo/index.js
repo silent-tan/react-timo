@@ -18,7 +18,10 @@ const rootRoute = {
         require('./routes/Icon').default,
         require('./routes/Loading').default,
         require('./routes/Card').default,
-        require('./routes/Button').default
+        require('./routes/Button').default,
+        require('./routes/Collapse').default,
+        require('./routes/Grid').default,
+        require('./routes/Flex').default
       ]
     }, {
       path: '/home',

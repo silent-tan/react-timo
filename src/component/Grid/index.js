@@ -9,9 +9,21 @@ class Grid extends Component {
   static Row = Row
   static Col = Col
   static propTypes = {
+    /**
+     * 流式布局
+     */
     fluid: PropTypes.bool,
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
+    /**
+     * 类名
+     */
     className: PropTypes.string,
+    /**
+     * 内联样式
+     */
     style: PropTypes.object
   }
   static defaultProps = {

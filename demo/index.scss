@@ -9,7 +9,7 @@
 }
 
 .demo {
-  margin-top: 6rem;
+  padding-top: 6rem;
 }
 
 .demo-header {
@@ -41,10 +41,8 @@
 }
 
 .demo-sidebar {
-  position: fixed;
   width: 200px;
   min-height: 400px;
-  overflow: scroll;
 
   &-link {
     display: block;

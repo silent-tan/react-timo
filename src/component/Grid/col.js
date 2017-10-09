@@ -4,17 +4,30 @@ import cx from 'classnames';
 
 class Col extends Component {
   static propTypes = {
+    /**
+     * 栅格个数
+     */
     span: PropTypes.number,
+    /**
+     * 自适应断点
+     */
     size: PropTypes.oneOf(['sm', 'md', 'lg']),
-    offset: PropTypes.number,
+    /**
+     * 额外类名
+     */
     className: PropTypes.string,
+    /**
+     * 额外样式
+     */
     style: PropTypes.object,
+    /**
+     * 子组件
+     */
     children: PropTypes.any
   }
   static defaultProps = {
     span: 12,
     size: 'sm',
-    offset: 0,
     className: '',
     style: {}
   }
@@ -35,15 +48,13 @@ class Col extends Component {
     const {
       size,
       span,
-      offset,
       className,
       style,
       children
     } = this.props;
 
     const cls = cx({
-      [`col-${size}-${span}`]: true,
-      [`col-${size}-offset-${offset}`]: Col.validate(span, offset)
+      [`col-${size}-${span}`]: true
     }, className);
 
     return (

@@ -4,7 +4,7 @@ import {Link as RouterLink} from 'react-router';
 import _noop from 'lodash/noop';
 
 import {Flex, Menu} from 'react-timo';
-const { SubMenu, MenuItem } = Menu;
+const { MenuItem } = Menu;
 
 class Link extends Component {
   static propTypes = {
@@ -30,24 +30,8 @@ class SideBar extends Component {
   }
 
   render() {
-    const icon = (
-      <i className="zmdi zmdi-menu ml-2" style={{
-        position: 'relative',
-        top: 2
-      }}/>
-    );
-
-    const titleRight = (
-      <Flex alignCenter justifyBetween>
-        <span>sub menu</span>
-        {icon}
-      </Flex>
-    );
-
-    // const path = window.location.hash.substr(1);
-
     return (
-      <Flex className="demo-sidebar mb-4" flex={1}>
+      <Flex className="demo-sidebar mb-4" flex={1} column>
         <Menu mode="inline" onSelect={_noop} onClick={_noop} >
           <MenuItem key="icon" className="p-0">
             <Link to="/components/icon" className="demo-sidebar-link" activeClassName="demo-sidebar-link-active">Icon</Link>
@@ -65,10 +49,139 @@ class SideBar extends Component {
               activeClassName="demo-sidebar-link-active"
             >Button</Link>
           </MenuItem>
-          <SubMenu title={titleRight} key="1">
-            <MenuItem key="1-1">0-1</MenuItem>
-            <MenuItem key="1-2">0-2</MenuItem>
-          </SubMenu>
+          <MenuItem key="collapse" className="p-0">
+            <Link
+              to="/components/collapse"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Collapse</Link>
+          </MenuItem>
+          <MenuItem key="grid" className="p-0">
+            <Link
+              to="/components/grid"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Grid</Link>
+          </MenuItem>
+          <MenuItem key="flex" className="p-0">
+            <Link
+              to="/components/flex"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Flex</Link>
+          </MenuItem>
+          <MenuItem key="breadcrumb" className="p-0">
+            <Link
+              to="/components/breadcrumb"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Breadcrumb</Link>
+          </MenuItem>
+          <MenuItem key="checkbox" className="p-0">
+            <Link
+              to="/components/checkbox"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Checkbox</Link>
+          </MenuItem>
+          <MenuItem key="radio" className="p-0">
+            <Link
+              to="/components/radio"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Radio</Link>
+          </MenuItem>
+          <MenuItem key="datetimepicker" className="p-0">
+            <Link
+              to="/components/datetimepicker"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >DatetimePicker</Link>
+          </MenuItem>
+          <MenuItem key="dropdown" className="p-0">
+            <Link
+              to="/components/dropdown"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Dropdown</Link>
+          </MenuItem>
+          <MenuItem key="modal" className="p-0">
+            <Link
+              to="/components/modal"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Modal</Link>
+          </MenuItem>
+          <MenuItem key="notification" className="p-0">
+            <Link
+              to="/components/notification"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Notification</Link>
+          </MenuItem>
+          <MenuItem key="popover" className="p-0">
+            <Link
+              to="/components/popover"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Popover</Link>
+          </MenuItem>
+          <MenuItem key="select" className="p-0">
+            <Link
+              to="/components/select"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Select</Link>
+          </MenuItem>
+          <MenuItem key="sheet" className="p-0">
+            <Link
+              to="/components/sheet"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Sheet</Link>
+          </MenuItem>
+          <MenuItem key="slick" className="p-0">
+            <Link
+              to="/components/slick"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Slick</Link>
+          </MenuItem>
+          <MenuItem key="switch" className="p-0">
+            <Link
+              to="/components/switch"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Switch</Link>
+          </MenuItem>
+          <MenuItem key="tabs" className="p-0">
+            <Link
+              to="/components/tabs"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Tabs</Link>
+          </MenuItem>
+          <MenuItem key="tag" className="p-0">
+            <Link
+              to="/components/tag"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Tag</Link>
+          </MenuItem>
+          <MenuItem key="transfer" className="p-0">
+            <Link
+              to="/components/transfer"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Transfer</Link>
+          </MenuItem>
+          <MenuItem key="tooltip" className="p-0">
+            <Link
+              to="/components/tooltip"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Tooltip</Link>
+          </MenuItem>
         </Menu>
       </Flex>
     );

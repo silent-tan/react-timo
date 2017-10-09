@@ -11,8 +11,17 @@ import cx from 'classnames';
 
 class Row extends Component {
   static propTypes = {
+    /**
+     * 额外的类名
+     */
     className: PropTypes.string,
+    /**
+     * 行内样式
+     */
     style: PropTypes.object,
+    /**
+     * 子组件
+     */
     children: PropTypes.any
   }
   static defaultProps = {

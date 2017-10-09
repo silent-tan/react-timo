@@ -12,6 +12,9 @@ import Outline from './Outline';
 import iconCode from '!!raw-loader!./Icon';
 import IconDemo from './Icon';
 
+import loadingCode from '!!raw-loader!./Loading';
+import LoadingDemo from './Loading';
+
 class IconExample extends Component {
   constructor(props) {
     super(props);
@@ -37,6 +40,11 @@ class IconExample extends Component {
         <Card title="Icon Button" desc="You can refer the Icons page for the complete list of Font Icons which are inspired by Material Design">
           <Demobox code={iconCode}>
             <IconDemo/>
+          </Demobox>
+        </Card>
+        <Card title="Loading Button" desc="Make the button to be loading">
+          <Demobox code={loadingCode}>
+            <LoadingDemo/>
           </Demobox>
         </Card>
         <PropsTable list={buttonProps}/>

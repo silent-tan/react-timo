@@ -14,11 +14,11 @@
     "precommit": "eslint ./src/ ./demo/",
     "pre": "yarn install",
     "clear": "rm -rf build && mkdir build",
-    "start": "yarn run clear && NODE_ENV=development webpack-dev-server --config webpack.config.dev.js --devtool eval --host 0.0.0.0 --inline --hot --progress --colors --port 9999 --public",
+    "start": "yarn run clear && NODE_ENV=development webpack-dev-server --config webpack.config.dev.js --devtool eval --host 0.0.0.0 --inline --hot --progress --colors --port 3000",
     "deploy": "yarn install && yarn run build && yarn run build:min",
     "build": "NODE_ENV=production webpack",
     "build:min": "NODE_ENV=production webpack --config webpack.config.min.js",
-    "demo": "webpack --config webpack.config.dev.js",
+    "demo": "NODE_ENV=production webpack --config webpack.config.demo.js",
     "test": "eslint ./src/ ./demo/"
   },
   "repository": {

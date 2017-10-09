@@ -8,7 +8,11 @@ import ObjectView from './ObjectView';
 
 class PropsTable extends Component {
   static propTypes = {
+    title: PropTypes.string,
     list: PropTypes.any
+  }
+  static defaultProps = {
+    title: 'Props'
   }
 
   constructor(props) {
@@ -80,7 +84,7 @@ class PropsTable extends Component {
       };
     });
     return (
-      <Card title="Props">
+      <Card title={this.props.title}>
         <style>
           {
             `
