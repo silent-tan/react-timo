@@ -5,9 +5,9 @@ import uuid from 'uuid';
 import 'select2';
 import 'select2/dist/css/select2.css';
 
-import map from 'lodash/map';
-import noop from 'lodash/noop';
-import isNil from 'lodash/isNil';
+import _map from 'lodash/map';
+import _noop from 'lodash/noop';
+import _isNil from 'lodash/isNil';
 
 import './_select.scss';
 
@@ -23,7 +23,7 @@ export default class Select extends Component {
   static defaultProps = {
     selected: undefined,
     options: [],
-    onChange: noop,
+    onChange: _noop,
     multiple: false,
     disabledSearch: false,
     disabled: false
@@ -55,10 +55,11 @@ export default class Select extends Component {
       this.props.onChange && this.props.onChange(e.params.data.id, e.params.data.text);
     });
   }
+
   componentWillReceiveProps(nextProps) {
     // why
     // https://stackoverflow.com/questions/17957040/reset-select2-value-and-show-placeholder
-    if(!isNil(nextProps.selected) && nextProps.selected !== this.state.selected) {
+    if(!_isNil(nextProps.selected) && nextProps.selected !== this.state.selected) {
       const $el = $(`#${this.state.cid}`);
       this.setState({
         selected: nextProps.selected
@@ -69,7 +70,7 @@ export default class Select extends Component {
   }
   renderOptionItem() {
     const {options} = this.props;
-    return map(options, (item) => {
+    return _map(options, (item) => {
       return (
         <option value={item.value} key={`tabs${item.value}`}>{item.name}</option>
       );
