@@ -43,7 +43,7 @@ import isArray from 'lodash/isArray';
 import isEqual from 'lodash/isEqual';
 import forEach from 'lodash/forEach';
 
-import ZH from 'flatpickr/src/l10n/zh';
+import ZH from 'flatpickr/dist/l10n/zh';
 
 class DateTimePicker extends Component {
   static propTypes = {
