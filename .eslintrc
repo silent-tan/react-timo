@@ -46,6 +46,7 @@
       "allow": ["warn", "error"]
     }],
     "comma-dangle": [2, "never"],
-    "semi": [2, "always"]
+    "semi": [2, "always"],
+    "react/prop-types": [2, {}]
   }
 }

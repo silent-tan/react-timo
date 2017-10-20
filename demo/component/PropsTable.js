@@ -78,7 +78,7 @@ class PropsTable extends Component {
       return {
         propName: key,
         propTypes: value.type,
-        isRequired: value.required.toString(),
+        isRequired: value.required !== undefined ? value.required.toString() : 'false',
         comment: value.description,
         default: value.defaultValue
       };

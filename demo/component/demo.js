@@ -19,6 +19,7 @@ import {
   Tooltip,
   Popover,
   Transfer,
+  Highlight,
   DatetimePicker,
   Select,
   SearchSelect,
@@ -241,6 +242,11 @@ class Demo extends Component {
         <Flex className="mb-4">
           <Loading />
         </Flex>
+        <Flex className="mb-4">
+          <Highlight>
+            dfjsdjflksdj
+          </Highlight>
+        </Flex>
         <Flex className="mb-4" column>
           <Flex className="mb-2">单个checkbox</Flex>
           <Flex className="mb-4">
@@ -278,13 +284,10 @@ class Demo extends Component {
         </Flex>
         <Flex className="mb-4" column>
           <Flex className="mb-2">面包屑</Flex>
-          <Flex className="mb-3">
-            <Breadcrumb routes={this.props.routes} border={false}/>
-          </Flex>
           <Flex>
             <Breadcrumb>
-              <Breadcrumb.Item href="/hello">你好</Breadcrumb.Item>
-              <Breadcrumb.Item>例子</Breadcrumb.Item>
+              <Breadcrumb.Item href="/hello" key={1}>你好</Breadcrumb.Item>
+              <Breadcrumb.Item key={2}>例子</Breadcrumb.Item>
             </Breadcrumb>
           </Flex>
         </Flex>
@@ -352,7 +355,7 @@ class Demo extends Component {
         <Flex className="mb-4 pt-2 pb-2 bg-white" column>
           <Flex className="mb-2">DatetimePicker</Flex>
           <Flex>
-            <DatetimePicker />
+            <DatetimePicker enableTime={true}/>
           </Flex>
         </Flex>
         <Flex className="mb-4 pt-2 pb-2 bg-white" column>

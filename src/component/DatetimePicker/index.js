@@ -85,7 +85,8 @@ class DateTimePicker extends Component {
     mode: PropTypes.oneOf(['single', 'multiple']),
     format: PropTypes.string,
     nextArrow: PropTypes.string,
-    prevArrow: PropTypes.string
+    prevArrow: PropTypes.string,
+    time24: PropTypes.bool
   }
 
   static defaultProps = {
@@ -100,7 +101,8 @@ class DateTimePicker extends Component {
     mode: 'single',
     format: '',
     nextArrow: '<i class="zmdi zmdi-long-arrow-right"></i>',
-    prevArrow: '<i class="zmdi zmdi-long-arrow-left"></i>'
+    prevArrow: '<i class="zmdi zmdi-long-arrow-left"></i>',
+    time24: true
   }
 
   constructor(props) {
@@ -133,6 +135,7 @@ class DateTimePicker extends Component {
       mode: this.props.mode,
       nextArrow: this.props.nextArrow,
       prevArrow: this.props.prevArrow,
+      time_24hr: this.props.time24,
       parseDate: dateString => moment(trim(dateString)).toDate()
     };
 

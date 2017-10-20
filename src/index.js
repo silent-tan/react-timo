@@ -17,6 +17,7 @@ import Loading from './component/Loading';
 import Menu from './component/Menu';
 import Modal from './component/Modal';
 import Notification from './component/Notification';
+import Pagination from './component/Pagination';
 import Popover from './component/Popover';
 import Radio from './component/Radio';
 import SearchSelect from './component/SearchSelect';
@@ -47,6 +48,7 @@ export {
   Menu,
   Modal,
   Notification,
+  Pagination,
   Popover,
   Radio,
   SearchSelect,

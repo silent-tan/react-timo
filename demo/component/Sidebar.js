@@ -182,6 +182,13 @@ class SideBar extends Component {
               activeClassName="demo-sidebar-link-active"
             >Tooltip</Link>
           </MenuItem>
+          <MenuItem key="pagination" className="p-0">
+            <Link
+              to="/components/pagination"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Pagination</Link>
+          </MenuItem>
         </Menu>
       </Flex>
     );

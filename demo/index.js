@@ -21,12 +21,16 @@ const rootRoute = {
         require('./routes/Button').default,
         require('./routes/Collapse').default,
         require('./routes/Grid').default,
-        require('./routes/Flex').default
+        require('./routes/Flex').default,
+        require('./routes/Pagination').default
       ]
     }, {
       path: '/home',
       breadcrumbName: '首页',
       component: require('./component/Home').default
+    }, {
+      path: '/demo',
+      component: require('./component/demo').default 
     }
   ]
 };
