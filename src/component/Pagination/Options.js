@@ -83,7 +83,7 @@ class Options extends React.Component {
 
     if (changeSize) {
       const pageSize = props.pageSize || props.pageSizeOptions[0];
-      const options = _map(props.pageSizeOptions, (value, i) => {
+      const options = _map(props.pageSizeOptions, value => {
         return {
           value,
           name: `每页${value}项`
