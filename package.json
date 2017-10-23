@@ -3,7 +3,6 @@
   "version": "1.0.14",
   "description": "",
   "main": "dist/react-timo.js",
-  "module": "src/index.js",
   "style": "dist/react-timo.css",
   "keywords": [
     "react",

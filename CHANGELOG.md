@@ -1,31 +1,60 @@
 ### v1.0.1
 
-- `A` Tag
-- `A` Slick
+- :sparkles: Tag
+- :sparkles: Slick
 
 ### v1.0.2
 
-- `F` Slick arrow style
-- `A` Tabs
+- :bug: Slick arrow style
+- :sparkles: Tabs
 
 ### v1.0.7
 
-- `D` `/dist` folder
-- `U` Modal submit and display config changed, close button style changed, props keyboard maskClose = false
-- `F` SearchSelect select2 warning
-- `A` add Util function move
+- :fire: `/dist` folder
+- :zap: Modal submit and display config changed, close button style changed, props keyboard maskClose = false
+- :bug: SearchSelect select2 warning
+- :sparkles: add Util function move
 
 ### v1.0.8
 
-- `U` Slick style props
-- `U` UI Demo
+- :zap: Slick style props
+- :memo: Demo
 
 ### v1.0.9
 
-- `U` Icon add autoFixed props
-- `U` Add Grid Component
-- `A` Collapse Component
-- `A` Highlight
-- `U` API document framework
-- `U` Card add desc props
-- `U` Loading add width props
+- :zap: Icon add autoFixed props
+- :zap: Add Grid Component
+- :sparkles: Collapse Component
+- :sparkles: Highlight
+- :zap: API document framework
+- :zap: Card add desc props
+- :zap: Loading add width props
+
+### v1.0.10
+- :zap: Demo
+- :zap: Button, Card
+- :zap: README.md
+
+### v1.0.11
+- :memo: Demo
+- :construction_worker: CI init
+- :wrench: webpack, package.json
+- :zap: Select
+
+### v1.0.12
+- :arrow_up: React 16.0.0
+- :bug: DatetimePicker locale pathname
+
+### v1.0.13
+- :sparkles: Add `/dist` folder
+
+### v1.0.14
+- :sparkles: Pagination
+- :zap: Highlight
+- :memo: Pagination
+- :zap: DatetimePicker add time24 props
+- :wrench: `eslint.rc`, `.gitignore`
+- :fire: /dist
+
+### v1.0.15
+- :wrench: `package.json` remove `module` config
