@@ -16,25 +16,61 @@ import _keys from 'lodash/keys';
 import _replace from 'lodash/replace';
 import _isEqual from 'lodash/isEqual';
 
+function formatOptions(options) {
+  return options.__select__name;
+}
+
+function formatOptionsSelection(selected) {
+  return selected.__select__name || selected.text;
+}
+
 class SearchSelect extends Component {
   static propTypes = {
-    // onSearch必须返回一个promise对象，并且列表中数组信息包含{id: xxx, __select__name: xxx}
-    // eg:
-    // {
-    //  searchList: [{id: xxx, __select__name: xxx}, ...],
-    //  offset,
-    //  limit,
-    //  count
-    // }
+    /**
+     * onSearch必须返回一个promise对象，并且列表中数组信息包含{id: xxx, __select__name: xxx}
+     * eg:
+     * {
+     *  searchList: [
+     *    {id: xxx, __select__name: xxx, ...}, ... 
+     *  ],
+     *  offset,
+     *  limit,
+     *  count
+     * }
+     */
     onSearch: PropTypes.func.isRequired,
-    // selected对象为{id: xxx, __select__name: xxx} 或者 {id: xxx, text: xxx}
+    /**
+     * selected对象为{id: xxx, __select__name: xxx} 或者 {id: xxx, text: xxx}
+     */
     selected: PropTypes.object,
-    // 返回选择的数据
+    /**
+     * 返回选择的数据
+     */
     onSelect: PropTypes.func,
+    /**
+     * 搜索结果延迟多少秒
+     */
     delay: PropTypes.number,
+    /**
+     * 禁止选择
+     */
     disabled: PropTypes.bool,
+    /**
+     * 同select placeholder
+     */
     placeholder: PropTypes.string,
-    allowClear: PropTypes.bool
+    /**
+     * 允许清空
+     */
+    allowClear: PropTypes.bool,
+    /**
+     * 返回一个 option 模板
+     */
+    templateResult: PropTypes.func,
+    /**
+     * 自定义onSelect回调返回的值
+     */
+    templateSelection: PropTypes.func
   }
 
   static defaultProps = {
@@ -43,7 +79,9 @@ class SearchSelect extends Component {
     delay: 300,
     disabled: false,
     placeholder: '输入关键字进行搜索',
-    allowClear: true
+    allowClear: true,
+    templateResult: formatOptions,
+    templateSelection: formatOptionsSelection 
   }
 
   constructor(props) {
@@ -90,10 +128,10 @@ class SearchSelect extends Component {
       minimumInputLength: 1,
       templateResult: (item) => {
         if(item.loading) { return '搜索中...'; }
-        return item.__select__name;
+        return this.props.templateResult(item);
       },
       templateSelection: (item) => {
-        return item.__select__name || item.text;
+        return this.props.templateSelection(item);
       },
       language: {
         inputTooShort: (params) => `至少输入${params.minimum}个字符`,

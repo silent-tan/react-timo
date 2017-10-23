@@ -133,6 +133,13 @@ class SideBar extends Component {
               activeClassName="demo-sidebar-link-active"
             >Select</Link>
           </MenuItem>
+          <MenuItem key="searchselect" className="p-0">
+            <Link
+              to="/components/searchselect"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >SearchSelect</Link>
+          </MenuItem>
           <MenuItem key="sheet" className="p-0">
             <Link
               to="/components/sheet"

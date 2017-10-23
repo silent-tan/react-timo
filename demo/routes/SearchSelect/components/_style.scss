@@ -1,0 +1,16 @@
+.select2-container {
+  .select2-result-repository {
+    .select2-result-repository__avatar {
+      display: block;
+      float: left;
+      > img {
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+  .select2-result-repository__meta {
+    display: block;
+    float: left;
+  }
+}
