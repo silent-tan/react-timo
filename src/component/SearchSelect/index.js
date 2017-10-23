@@ -70,7 +70,11 @@ class SearchSelect extends Component {
     /**
      * 自定义onSelect回调返回的值
      */
-    templateSelection: PropTypes.func
+    templateSelection: PropTypes.func,
+    /**
+     * 搜索结果渲染DOM在哪里
+     */
+    dropdownParent: PropTypes.any
   }
 
   static defaultProps = {
@@ -143,6 +147,12 @@ class SearchSelect extends Component {
 
     if(_keys(this.props.selected).length) {
       this.__SEARCHBOX.empty();
+    }
+
+    if(_keys(this.props.dropdownParent)) {
+      this.__OPTIONS.dropdownParent = this.props.dropdownParent;
+    } else {
+      this.__OPTIONS.dropdownParent = $(`#${this.state.idKey}`).parent();
     }
 
     this.__SEARCHBOX.select2(this.__OPTIONS);

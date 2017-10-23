@@ -58,3 +58,10 @@
 
 ### v1.0.15
 - :wrench: `package.json` remove `module` config
+
+### v1.0.16
+- :zap: SearchSelect add templateResult and templateSelection
+- :memo: SearchSelect
+
+### v1.0.17
+- :bug: SearchSelect dropmenu layout, add dropdownParent
