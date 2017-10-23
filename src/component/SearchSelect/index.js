@@ -152,7 +152,8 @@ class SearchSelect extends Component {
     if(_keys(this.props.dropdownParent)) {
       this.__OPTIONS.dropdownParent = this.props.dropdownParent;
     } else {
-      this.__OPTIONS.dropdownParent = $(`#${this.state.idKey}`).parent();
+      const selectWrap = this.selectRefs;
+      this.__OPTIONS.dropdownParent = $(selectWrap).parent();
     }
 
     this.__SEARCHBOX.select2(this.__OPTIONS);
@@ -204,7 +205,12 @@ class SearchSelect extends Component {
 
   render() {
     return (
-      <select className="select2 form-control" id={this.state.idKey} disabled={this.props.disabled}>
+      <select
+        className="select2 form-control"
+        id={this.state.idKey}
+        ref={selectRefs => this.selectRefs = selectRefs}
+        disabled={this.props.disabled}
+      >
         <option />
       </select>
     );
