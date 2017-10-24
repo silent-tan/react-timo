@@ -65,3 +65,6 @@
 
 ### v1.0.17
 - :bug: SearchSelect dropmenu layout, add dropdownParent
+
+### v1.0.18
+- :bug: SearchSelect dropdown render location
