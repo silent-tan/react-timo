@@ -149,7 +149,7 @@ class SearchSelect extends Component {
       this.__SEARCHBOX.empty();
     }
 
-    if(_keys(this.props.dropdownParent)) {
+    if(this.props.dropdownParent) {
       this.__OPTIONS.dropdownParent = this.props.dropdownParent;
     } else {
       const selectWrap = this.selectRefs;

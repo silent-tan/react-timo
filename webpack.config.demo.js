@@ -42,7 +42,8 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
+        exclude: /node_module/
       }, {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
         use: [

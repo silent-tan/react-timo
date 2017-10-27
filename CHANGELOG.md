@@ -68,3 +68,9 @@
 
 ### v1.0.18
 - :bug: SearchSelect dropdown render location
+
+### v1.0.19
+- :arrow_down: React v15
+
+### v1.0.20
+- :bug: SearchSelect dropdownparent
