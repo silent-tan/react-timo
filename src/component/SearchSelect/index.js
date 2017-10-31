@@ -194,6 +194,7 @@ class SearchSelect extends Component {
       const cls = _replace(this.__SEARCHBOX[0].className, ' ', '.');
       if($(`.${cls}`).length) {
         this.__SEARCHBOX.select2('destroy');
+        // this.__SEARCHBOX.off('select2:select');
       }
     }
   }

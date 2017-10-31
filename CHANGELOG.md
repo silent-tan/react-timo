@@ -74,3 +74,8 @@
 
 ### v1.0.20
 - :bug: SearchSelect dropdownparent
+
+### v1.0.21
+- :bug: SearchSelect select2 off event
+- :arrow_up: React v16
+- :heavy_minus_sign: react-highlight

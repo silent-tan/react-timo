@@ -11,6 +11,9 @@ import NormalDemo from './NormalDemo';
 import selectionsCode from '!!raw-loader!./Selections';
 import SelectionsDemo from './Selections';
 
+import modalCode from '!!raw-loader!./ModalDemo';
+import ModalDemo from './ModalDemo';
+
 class SearchSelectExample extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +34,11 @@ class SearchSelectExample extends Component {
         <Card title="Custom Option template">
           <Demobox code={selectionsCode}>
             <SelectionsDemo />
+          </Demobox>
+        </Card>
+        <Card title="Play with Modal">
+          <Demobox code={modalCode}>
+            <ModalDemo />
           </Demobox>
         </Card>
         <PropsTable list={SearchSelectProps}/>
