@@ -79,3 +79,8 @@
 - :bug: SearchSelect select2 off event
 - :arrow_up: React v16
 - :heavy_minus_sign: react-highlight
+
+### v1.0.22
+- :sparkles: Clipboard
+- :heavy_plus_sign: copy-to-clipboard
+- :memo: Breadcrumb, Clipboard

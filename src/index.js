@@ -5,6 +5,7 @@ import Button from './component/Button';
 import Slick from './component/Slick';
 import Card from './component/Card';
 import Checkbox from './component/Checkbox';
+import Clipboard from './component/Clipboard';
 import Collapse from './component/Collapse';
 import DatetimePicker from './component/DatetimePicker';
 import Dropdown from './component/Dropdown';
@@ -36,6 +37,7 @@ export {
   Slick,
   Card,
   Checkbox,
+  Clipboard,
   Collapse,
   DatetimePicker,
   Dropdown,

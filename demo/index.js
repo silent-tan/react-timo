@@ -23,7 +23,9 @@ const rootRoute = {
         require('./routes/Grid').default,
         require('./routes/Flex').default,
         require('./routes/Pagination').default,
-        require('./routes/SearchSelect').default
+        require('./routes/SearchSelect').default,
+        require('./routes/Breadcrumb').default,
+        require('./routes/Clipboard').default
       ]
     }, {
       path: '/home',

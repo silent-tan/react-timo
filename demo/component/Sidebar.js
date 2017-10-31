@@ -77,6 +77,13 @@ class SideBar extends Component {
               activeClassName="demo-sidebar-link-active"
             >Breadcrumb</Link>
           </MenuItem>
+          <MenuItem key="clipboard" className="p-0">
+            <Link
+              to="/components/clipboard"
+              className="demo-sidebar-link"
+              activeClassName="demo-sidebar-link-active"
+            >Clipboard</Link>
+          </MenuItem>
           <MenuItem key="checkbox" className="p-0">
             <Link
               to="/components/checkbox"

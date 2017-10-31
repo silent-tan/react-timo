@@ -30,11 +30,29 @@ function defaultItemRender(route) {
  */
 class Breadcrumb extends Component {
   static propTypes = {
+    /**
+     * 根据路由进行配置
+     */
     routes: PropTypes.array,
+    /**
+     * 路由参数
+     */
     params: PropTypes.object,
+    /**
+     * Breadcrumb Item 自定渲染函数
+     */
     itemRender: PropTypes.func,
+    /**
+     * 分隔符
+     */
     separator: PropTypes.any,
-    children: PropTypes.any,
+    /**
+     * 为Breadcrumb.Item
+     */
+    children: PropTypes.any.isRequired,
+    /**
+     * 是否需要下横线
+     */
     border: PropTypes.bool
   }
 
@@ -43,7 +61,7 @@ class Breadcrumb extends Component {
     params:  {},
     separator: '/',
     itemRender: defaultItemRender,
-    border: true
+    border: false
   }
   constructor(props) {
     super(props);
