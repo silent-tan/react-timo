@@ -2,6 +2,7 @@ import _includes from 'lodash/includes';
 import _isNil from 'lodash/isNil';
 import _forEach from 'lodash/forEach';
 import _noop from 'lodash/noop';
+import _isString from 'lodash/isString';
 import cx from 'classnames';
 
 import Notification from './Notification';
@@ -91,10 +92,15 @@ const notificationApi = {
 };
 
 _forEach(NOTICE_TYPE, type => {
-  notificationApi[type] = (args) => notificationApi.open({
-    ...args,
-    type
-  });
+  notificationApi[type] = (args) => {
+    let temp = { type };
+    if(_isString(args)) {
+      temp.content = args;
+    } else {
+      temp = { ...args, type };
+    }
+    notificationApi.open(temp);
+  };
 });
 
 export default notificationApi;

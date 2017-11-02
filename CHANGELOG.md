@@ -86,6 +86,7 @@
 - :memo: Breadcrumb, Clipboard
 
 ### v1.0.23
-- :memo: Checkbox, Radio, DatetimePicker, Dropdown, Modal
+- :memo: Checkbox, Radio, DatetimePicker, Dropdown, Modal, Notification
 - :zap: Checkbox, Radio remove showText, add children
 - :fire: gitlab CI
+- :zap: Notification string call

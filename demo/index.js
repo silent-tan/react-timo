@@ -30,7 +30,8 @@ const rootRoute = {
         require('./routes/Radio').default,
         require('./routes/DatetimePicker').default,
         require('./routes/Dropdown').default,
-        require('./routes/Modal').default
+        require('./routes/Modal').default,
+        require('./routes/Notification').default
       ]
     }, {
       path: '/home',
