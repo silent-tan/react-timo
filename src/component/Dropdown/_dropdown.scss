@@ -36,7 +36,7 @@ $item-color-hover: #1d1e1f;
     text-align: left;
     background-color: $component-background;
     border-radius: $border-radius-base;
-    box-shadow: $box-shadow-base;
+    box-shadow: $box-shadow-base !important;
     background-clip: padding-box;
 
     &-item,

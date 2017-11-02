@@ -27,9 +27,8 @@
 // s  Seconds 0, 1 to 59
 // K  AM/PM AM or PM
 
-// 不知道为什么不显示使用loader的时候无法使用配置loader进行编译
 import 'flatpickr/dist/flatpickr.css';
-import './_style.scss';
+import './_datetimepicker.scss';
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -37,25 +36,35 @@ import Flatpickr from 'flatpickr';
 import moment from 'moment';
 import uuid from 'uuid';
 
-import trim from 'lodash/trim';
-import noop from 'lodash/noop';
-import isArray from 'lodash/isArray';
-import isEqual from 'lodash/isEqual';
-import forEach from 'lodash/forEach';
+import _trim from 'lodash/trim';
+import _noop from 'lodash/noop';
+import _isArray from 'lodash/isArray';
+import _isEqual from 'lodash/isEqual';
+import _forEach from 'lodash/forEach';
 
 import ZH from 'flatpickr/dist/l10n/zh';
 
 class DateTimePicker extends Component {
   static propTypes = {
+    /**
+     * 改变时间回调
+     */
     onChange: PropTypes.func,
+    /**
+     * 时间选择器打开回调
+     */
     onOpen: PropTypes.func,
+    /**
+     * 时间选择器关闭回调
+     */
     onClose: PropTypes.func,
-
-    // 要显示的值
+    /**
+     * 要显示的值
+     */ 
     value: (props, propName, componentName) => {
       const value = props[propName];
       // 只允许空或者可以检测测moment时间字符串
-      const condition = trim(value) === '' || moment(value).isValid();
+      const condition = _trim(value) === '' || moment(value).isValid();
       if (!condition) {
         return new Error(
           'Invalid prop `' +
@@ -68,31 +77,52 @@ class DateTimePicker extends Component {
         );
       }
     },
-    // 是否显示时间
+    /**
+     * 是否显示时间
+     */
     enableTime: PropTypes.bool,
-
-    // 最大日期或者最小日期
+    /**
+     * 最大日期
+     */
     maxDate: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
+    /**
+     * 最小日期
+     */
     minDate: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
-
-    // 是否允许选择，如果不允许为false,或者允许某一些日期选择
-    enable: PropTypes.oneOfType([
-      PropTypes.bool,
-      PropTypes.arrayOf(PropTypes.string) // 只允许选择
-    ]),
-
-    // 当选或者多选，这影响返回的值是字符串还是字符串数组
+    /**
+     * 是否允许选择，如果不允许为false,或者允许某一些日期选择
+     */ 
+    enable: PropTypes.oneOfType([ PropTypes.bool, PropTypes.arrayOf(PropTypes.string) ]),
+    /**
+     * 当选或者多选，这影响返回的值是字符串还是字符串数组
+     */
     mode: PropTypes.oneOf(['single', 'multiple']),
+    /**
+     * 时间日期格式
+     */
     format: PropTypes.string,
+    /**
+     * 日期选择前箭头
+     */
     nextArrow: PropTypes.string,
+    /**
+     * 日期选择后箭头
+     */
     prevArrow: PropTypes.string,
-    time24: PropTypes.bool
+    /**
+     * 时间24小时
+     */
+    time24: PropTypes.bool,
+    /**
+     * 关闭手机原生
+     */
+    disableMobile: PropTypes.bool
   }
 
   static defaultProps = {
-    onClose: noop,
-    onOpen: noop,
-    onChange: noop,
+    onClose: _noop,
+    onOpen: _noop,
+    onChange: _noop,
     value: '',
     enableTime: false,
     maxDate: null,
@@ -102,13 +132,15 @@ class DateTimePicker extends Component {
     format: '',
     nextArrow: '<i class="zmdi zmdi-long-arrow-right"></i>',
     prevArrow: '<i class="zmdi zmdi-long-arrow-left"></i>',
-    time24: true
+    time24: true,
+    disableMobile: true
   }
 
   constructor(props) {
     super(props);
     this.state = {
-      timeKey: uuid.v1() + Math.random().toString().slice(3)
+      timeKey: uuid.v1() + Math.random().toString().slice(3),
+      disabled: false
     };
   }
 
@@ -136,30 +168,34 @@ class DateTimePicker extends Component {
       nextArrow: this.props.nextArrow,
       prevArrow: this.props.prevArrow,
       time_24hr: this.props.time24,
-      parseDate: dateString => moment(trim(dateString)).toDate()
+      disableMobile: this.props.disableMobile,
+      parseDate: dateString => moment(_trim(dateString)).toDate()
     };
 
     if (this.props.format) {
       options.dateFormat = this.props.format;
     }
 
-    if (isArray(this.props.enable)) {
+    if (_isArray(this.props.enable)) {
       options.enable = this.props.enable;
     }
 
     if (this.props.enable === false) {
       // 如果enable为false时，传递空数组给flatpickr
       options.enable = [];
+      this.setState({
+        disabled: true
+      });
     }
 
     this.flatpickr = new Flatpickr(this.node, options);
-    if (trim(this.props.value) !== '') {
+    if (_trim(this.props.value) !== '') {
       this.flatpickr.setDate(this.props.value, false);
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!isEqual(nextProps, this.props)) {
+    if (!_isEqual(nextProps, this.props)) {
       if (nextProps.value !== this.props.value) {
         this.flatpickr.setDate(nextProps.value, false);
       }
@@ -174,12 +210,12 @@ class DateTimePicker extends Component {
         options.minDate = nextProps.minDate;
       }
 
-      if (trim(nextProps.value) === '') {
+      if (_trim(nextProps.value) === '') {
         this.flatpickr.clear();
         return;
       }
 
-      forEach(options, (value, key) => {
+      _forEach(options, (value, key) => {
         this.flatpickr.set(key, value);
       });
     }
@@ -191,11 +227,13 @@ class DateTimePicker extends Component {
 
   render() {
     return (
-      <div key={this.state.timeKey} className="form-group">
+      <div key={this.state.timeKey} className="form-group nf-datetime-picker">
         <input
-          className="form-control datetime-picker flatpickr-input"
+          className="form-control datetime-picker flatpickr-input nf-datetime-picker-input"
           defaultValue={this.props.value}
           ref={node => (this.node = node)}
+          placeholder="选择时间"
+          disabled={this.state.disabled}
         />
         <i className="form-group__bar" />
       </div>

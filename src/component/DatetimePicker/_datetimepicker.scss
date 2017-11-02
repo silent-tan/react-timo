@@ -1,4 +1,9 @@
-$datetime-picker-prefix: 'flatpickr';
+$datetime-picker-prefix: 'nf-datetime-picker';
+.#{$datetime-picker-prefix} {
+  .form-control.#{$datetime-picker-prefix}-input:disabled {
+    cursor: not-allowed;
+  }
+}
 .form-control[readonly] {
   opacity: 1 !important;
 }

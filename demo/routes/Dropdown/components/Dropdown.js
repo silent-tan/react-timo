@@ -2,31 +2,31 @@ import React, { Component } from 'react';
 import { Flex, Card } from 'react-timo';
 import {ExampleHeader, PropsTable, Demobox} from 'demo-component';
 
-import breadcrumbProps from '!!docgen-loader!../../../../src/component/Breadcrumb/Breadcrumb';
+import dropdownProps from '!!docgen-loader!../../../../src/component/Dropdown/Dropdown';
 import basicCode from '!!raw-loader!./Basic';
 import Basic from './Basic';
 
-class BreadcrumbExample extends Component {
+class ClipboardExample extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <Flex column className="demo-breadcrumb" flex={1}>
+      <Flex column className="demo-dropdown" flex={1}>
         <ExampleHeader
-          title="Breadcrumb Component"
-          desc="Indicate the current page’s location within a navigational hierarchy"
+          title="Dropdown Component"
+          desc="Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They’re made interactive with the included dropdown directives."
         />
         <Card title="Basic Example">
           <Demobox code={basicCode}>
             <Basic />
           </Demobox>
         </Card>
-        <PropsTable list={breadcrumbProps}/>
+        <PropsTable list={dropdownProps}/>
       </Flex>
     );
   }
 }
 
-export default BreadcrumbExample;
+export default ClipboardExample;

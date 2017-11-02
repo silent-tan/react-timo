@@ -9,7 +9,6 @@ import {
   Flex,
   Icon,
   Loading,
-  Checkbox,
   Radio,
   Card,
   Breadcrumb,
@@ -70,19 +69,6 @@ class Demo extends Component {
           value: 3
         }
       ],
-      checkboxes: {
-        options: [{
-          label: '测试1',
-          value: 1
-        },{
-          label: '测试2',
-          value: 2
-        }, {
-          label: '测试3',
-          value: 3
-        }],
-        values: [1]
-      },
       radios: {
         options: [{
           label: '测试1',
@@ -133,14 +119,6 @@ class Demo extends Component {
     });
   }
 
-  handleChangeCheckboxes(values) {
-    this.setState({
-      checkboxes: {
-        ...this.state.checkboxes,
-        values
-      }
-    });
-  }
   handleChangeRadios(value) {
     this.setState({
       radios: {
@@ -246,21 +224,6 @@ class Demo extends Component {
           <Highlight>
             dfjsdjflksdj
           </Highlight>
-        </Flex>
-        <Flex className="mb-4" column>
-          <Flex className="mb-2">单个checkbox</Flex>
-          <Flex className="mb-4">
-            <Checkbox showText="测试"/>
-            <Checkbox showText="测试" disabled/>
-          </Flex>
-          <Flex className="mb-2">Checkbox Group</Flex>
-          <Flex>
-            <Checkbox.Group
-              options={this.state.checkboxes.options}
-              values={this.state.checkboxes.values}
-              onChange={this.handleChangeCheckboxes.bind(this)}
-            />
-          </Flex>
         </Flex>
         <Flex className="mb-4" column>
           <Flex className="mb-2">单个Radio</Flex>

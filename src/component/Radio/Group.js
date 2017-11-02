@@ -10,13 +10,37 @@ import Radio from './Radio';
 
 class RadioGroup extends Component {
   static propTypes = {
+    /**
+     * Radios的配置
+     */
     options: PropTypes.array.isRequired,
+    /**
+     * 额外类名
+     */
     className: PropTypes.string,
+    /**
+     * 额外样式
+     */
     style: PropTypes.object,
+    /**
+     * 是否保持一行
+     */
     inline: PropTypes.bool,
+    /**
+     * 勾选的值
+     */
     value: PropTypes.any,
+    /**
+     * 发生改变回调
+     */
     onChange: PropTypes.func,
+    /**
+     * 所有Radio的name
+     */
     name: PropTypes.string,
+    /**
+     * 禁止点击
+     */
     disabled: PropTypes.bool
   }
 
@@ -52,11 +76,10 @@ class RadioGroup extends Component {
           key={opt.value}
           checked={opt.value === value}
           value={opt.value}
-          showText={opt.label}
           disabled={disabledTemp}
           name={name}
           onClick={this.handleChange}
-        />
+        >{ opt.label }</Radio>
       );
       if(!inline && (index !== options.length - 1)) {
         radios.push(

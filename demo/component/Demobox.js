@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Grid, Collapse, Icon, Flex, Highlight} from 'react-timo';
+import {Grid, Collapse, Icon, Flex, Highlight, Clipboard} from 'react-timo';
 const {Row, Col} = Grid;
 
 import _includes from 'lodash/includes';
@@ -54,7 +54,9 @@ class Demobox extends Component {
                   {
                     this.state.showCopy ?
                       <Flex className="nf-demobox-copy">
-                        <Icon type="copy" onClick={this.handleCopy.bind(this)}/>
+                        <Clipboard text={code}>
+                          <Icon type="copy" onClick={this.handleCopy.bind(this)}/>
+                        </Clipboard>
                       </Flex> : null
                   }
                   <Flex>

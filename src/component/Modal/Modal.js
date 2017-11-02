@@ -23,41 +23,80 @@ let mousePositionEventBinded;
 /**
  * 模态框组件
  * @type {Component}
- * √ 表示可更改  × 表示不推荐更改
- * cancelText 取消按钮文本
- * closable 是否显示右上角关闭按钮 ×
- * keyboard 启用ESC退出模态框
- * maskClosable 点击模态框是否退出模态框
- * maskTransitionName 遮罩层动画 ×
- * onClose  模态框关闭触发回调
- * onSubmit 模态框提交触发回调
- * show 模态框状态
- * size 模态框大小
- * submitLoading  异步确认
- * submitText 确定按钮文本
- * title  模态框标题
- * transitionName 模态框动画 ×
- * width  自定义模态框宽度  ×
  */
 class Modal extends Component {
   static propTypes = {
+    /**
+     * 取消按钮文本
+     */
     cancelText: PropTypes.string,
+    /**
+     * 子组件
+     */
     children: PropTypes.any,
+    /**
+     * 额外类名
+     */
     className: PropTypes.string,
+    /**
+     * 是否显示右上角关闭按钮
+     */
     closable: PropTypes.bool,
+    /**
+     * 启用ESC退出模态框
+     */
     keyboard: PropTypes.bool,
+    /**
+     * 点击模态框是否退出模态框
+     */
     maskClosable: PropTypes.bool,
+    /**
+     * 遮罩层动画
+     */
     maskTransitionName: PropTypes.string,
+    /**
+     * 关闭回调
+     */
     onClose: PropTypes.oneOfType([PropTypes.func, PropTypes.oneOf([false])]),
+    /**
+     * 提交回调
+     */
     onSubmit: PropTypes.oneOfType([PropTypes.func, PropTypes.oneOf([false])]),
+    /**
+     * 模态框是否显示
+     */
     show: PropTypes.bool,
+    /**
+     * 显示回调
+     */
     onShow: PropTypes.func,
+    /**
+     * 模态框尺寸
+     */
     size: PropTypes.oneOf(['default', 'large', 'small']),
+    /**
+     * 提交loading
+     */
     submitLoading: PropTypes.bool,
+    /**
+     * 提交文案
+     */
     submitText: PropTypes.string,
+    /**
+     * 模态框标题
+     */
     title: PropTypes.string,
+    /**
+     * 模态框额外样式
+     */
     style: PropTypes.object,
+    /**
+     * 模态框动画
+     */
     transitionName: PropTypes.string,
+    /**
+     * 自定义模态框宽度
+     */
     width: PropTypes.any
   }
   static defaultProps = {

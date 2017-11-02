@@ -2,31 +2,31 @@ import React, { Component } from 'react';
 import { Flex, Card } from 'react-timo';
 import {ExampleHeader, PropsTable, Demobox} from 'demo-component';
 
-import breadcrumbProps from '!!docgen-loader!../../../../src/component/Breadcrumb/Breadcrumb';
+import datetimePickerProps from '!!docgen-loader!../../../../src/component/DatetimePicker';
 import basicCode from '!!raw-loader!./Basic';
 import Basic from './Basic';
 
-class BreadcrumbExample extends Component {
+class ClipboardExample extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <Flex column className="demo-breadcrumb" flex={1}>
+      <Flex column className="demo-datetime-picker" flex={1}>
         <ExampleHeader
-          title="Breadcrumb Component"
-          desc="Indicate the current page’s location within a navigational hierarchy"
+          title="DatetimePicker Component"
+          desc="a component base on flatpickr.js"
         />
         <Card title="Basic Example">
           <Demobox code={basicCode}>
             <Basic />
           </Demobox>
         </Card>
-        <PropsTable list={breadcrumbProps}/>
+        <PropsTable list={datetimePickerProps}/>
       </Flex>
     );
   }
 }
 
-export default BreadcrumbExample;
+export default ClipboardExample;

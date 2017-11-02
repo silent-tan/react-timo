@@ -84,3 +84,8 @@
 - :sparkles: Clipboard
 - :heavy_plus_sign: copy-to-clipboard
 - :memo: Breadcrumb, Clipboard
+
+### v1.0.23
+- :memo: Checkbox, Radio, DatetimePicker, Dropdown, Modal
+- :zap: Checkbox, Radio remove showText, add children
+- :fire: gitlab CI

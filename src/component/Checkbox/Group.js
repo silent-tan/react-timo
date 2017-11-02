@@ -26,13 +26,37 @@ import Checkbox from './Checkbox';
  */
 class CheckboxGroup extends Component {
   static propTypes = {
+    /**
+     * 全禁止勾选
+     */
     disabled: PropTypes.bool,
+    /**
+     * 额外类名
+     */
     className: PropTypes.string,
+    /**
+     * 额外样式
+     */
     style: PropTypes.object,
+    /**
+     * checkbox配置
+     */
     options: PropTypes.array.isRequired,
+    /**
+     * 选中的值
+     */
     values: PropTypes.array,
+    /**
+     * checkbox改变的回调
+     */
     onChange: PropTypes.func,
+    /**
+     * checkbox组别统一的name
+     */
     name: PropTypes.string,
+    /**
+     * 是否同一行
+     */
     inline: PropTypes.bool
   }
 
@@ -78,10 +102,9 @@ class CheckboxGroup extends Component {
           value={opt.value}
           checked={_includes(values, opt.value)}
           name={name}
-          showText={opt.label}
           disabled={disabledTemp}
           onChange={this.handleChange}
-        />
+        >{opt.label}</Checkbox>
       );
       if(!inline && (index !== options.length - 1)) {
         checkboxes.push(

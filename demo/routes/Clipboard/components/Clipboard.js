@@ -16,7 +16,7 @@ class ClipboardExample extends Component {
       <Flex column className="demo-clipboard" flex={1}>
         <ExampleHeader
           title="Clipboard Component"
-          desc="Indicate the current page’s location within a navigational hierarchy"
+          desc="Simple copy the string to your clipboard"
         />
         <Card title="Basic Example">
           <Demobox code={basicCode}>

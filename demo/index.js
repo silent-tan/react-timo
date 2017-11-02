@@ -25,7 +25,12 @@ const rootRoute = {
         require('./routes/Pagination').default,
         require('./routes/SearchSelect').default,
         require('./routes/Breadcrumb').default,
-        require('./routes/Clipboard').default
+        require('./routes/Clipboard').default,
+        require('./routes/Checkbox').default,
+        require('./routes/Radio').default,
+        require('./routes/DatetimePicker').default,
+        require('./routes/Dropdown').default,
+        require('./routes/Modal').default
       ]
     }, {
       path: '/home',
