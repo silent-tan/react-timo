@@ -90,3 +90,6 @@
 - :zap: Checkbox, Radio remove showText, add children
 - :fire: gitlab CI
 - :zap: Notification string call
+
+### v1.0.24
+- :bug: Dropdown demo directory error
