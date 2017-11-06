@@ -1,8 +1,8 @@
 export default {
-  path: 'tooltip',
+  path: 'popover',
   getComponent(nextState, cb) {
     require.ensure([], (require) => {
-      cb(null, require('./components/Tooltip').default);
+      cb(null, require('./components/Popover').default);
     });
   }
 };

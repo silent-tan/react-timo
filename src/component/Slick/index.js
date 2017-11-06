@@ -32,91 +32,175 @@ const SlickCarousel = require('react-slick').default;
 
 /**
  * 轮播组件
- * @type {Component}
- * accessibility  启动键盘导航
- * className  container类名
- * adaptiveHeight 是否自动调整高度
- * arrows 是否显示箭头
- * nextArrow  下一个箭头React Element
- * prevArrow  上一个箭头React Element
- * autoplay 自动播放
- * autoplaySpeed  自动播放速度
- * centerMode 图片是否居中
- * centerPadding  ×
- * cssEase  ×
- * customPaging 自定义轮播模板
- * dots 是否显示点点点
- * dotsClass  dot的样式，如果dots开启的话
- * draggable  桌面版是否可以拖动
- * easing ×
- * fade 轮播是否使用渐变作为过渡
- * focusOnSelect  点击是否跳到轮播
- * infinite 是否无线轮播
- * initialSlide 那项被最初显示
- * lazyLoad 是否懒加载图片
- * pauseOnHover 是否阻止自动播放当hover的时候
- * rtl 是否倒序轮播
- * slide  ×
- * slidesToShow 同一时间显示多少个item
- * slidesToScroll 滚动一下需要改变多少item
- * speed  ×
- * swipe ×
- * swipeToSlide 是否允许滑动轮播
- * touchMove  ×
- * touchThreshold ×
- * variableWidth  ×
- * useCSS 是否使用css过度
- * vertical 竖向模式
- * afterChange
- * beforeChange
- * slickGoTo  跳到某一项
- * style  外层样式定义背景色
- */
+ */ 
 
 class Slick extends Component {
   static NextArrow = NextArrow
   static PrevArrow = PrevArrow
   static propTypes = {
+    /**
+     * use keyboard
+     */
     accessibility: PropTypes.bool,
+    /**
+     * extra class name
+     */
     className: PropTypes.string,
+    /**
+     * auto height
+     */
     adaptiveHeight: PropTypes.bool,
+    /**
+     * padding
+     */
     centerPadding: PropTypes.any,
+    /**
+     * show arrow
+     */
     arrows: PropTypes.bool,
+    /**
+     * next arrow Element
+     */
     nextArrow: PropTypes.any,
+    /**
+     * previous arrow Element
+     */
     prevArrow: PropTypes.any,
+    /**
+     *  enable auto play
+     */
     autoplay: PropTypes.bool,
+    /**
+     * auto play speed
+     */
     autoplaySpeed: PropTypes.number,
+    /**
+     * protruding center
+     */
     centerMode: PropTypes.bool,
+    /**
+     * css transisation
+     */
     cssEase: PropTypes.any,
+    /**
+     * custom template for slick
+     */
     customPaging: PropTypes.func,
+    /**
+     * enable dot
+     */
     dots: PropTypes.bool,
+    /**
+     * extra dot class
+     */
     dotsClass: PropTypes.string,
+    /**
+     * enable drag to slick
+     */
     draggable: PropTypes.bool,
+    /**
+     * TODO
+     */
     easing: PropTypes.string,
+    /**
+     * enable fade
+     */
     fade: PropTypes.bool,
+    /**
+     * enable focus on select
+     */
     focusOnSelect: PropTypes.bool,
+    /**
+     * infinite slick
+     */
     infinite: PropTypes.bool,
+    /**
+     * show which item while initing
+     */
     initialSlide: PropTypes.number,
+    /**
+     * enable lazy load
+     */
     lazyLoad: PropTypes.bool,
+    /**
+     * pause while hovering
+     */
     pauseOnHover: PropTypes.bool,
+    /**
+     * business class name
+     */
     prefixCls: PropTypes.string,
+    /**
+     * step by step to play
+     */
     rtl: PropTypes.bool,
+    /**
+     * TODO
+     */
     slide: PropTypes.string,
+    /**
+     * show how many item in one time
+     */
     slidesToShow: PropTypes.number,
+    /**
+     * slide how many item in one time
+     */
     slidesToScroll: PropTypes.number,
+    /**
+     * TODO
+     */
     speed: PropTypes.number,
+    /**
+     * TODO
+     */
     swipe: PropTypes.bool,
+    /**
+     * enable swipe to play
+     */
     swipeToSlide: PropTypes.bool,
+    /**
+     * TODO
+     */
     touchMove: PropTypes.bool,
+    /**
+     * TODO
+     */
     touchThreshold: PropTypes.number,
+    /**
+     * TODO
+     */
     variableWidth: PropTypes.bool,
+    /**
+     * use css to transisation
+     */
     useCSS: PropTypes.bool,
+    /**
+     * vertical mode
+     */
     vertical: PropTypes.bool,
+    /**
+     * before change callback
+     */
     beforeChange: PropTypes.func,
+    /**
+     * after change callback
+     */
     afterChange: PropTypes.func,
+    /**
+     * jump to a item
+     */
     slickGoTo: PropTypes.number,
+    /**
+     * extra style
+     */
     style: PropTypes.object,
+    /**
+     * previous arrow style
+     */
     prevArrowStyle: PropTypes.object,
+    /**
+     * next arrow style
+     */
     nextArrowStyle: PropTypes.object
   }
   static defaultProps = {

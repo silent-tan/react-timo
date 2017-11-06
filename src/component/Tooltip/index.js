@@ -50,20 +50,65 @@ const defaultGetPopupContainer = () => window.document.body;
  */
 class Tooltip extends Component {
   static propTypes = {
+    /**
+     * 组件内容
+     */
     content: PropTypes.any.isRequired,
+    /**
+     * 组件方向
+     */
     placement: PropTypes.oneOf(PLACEMENT),
+    /**
+     * 组件挂载容器
+     */
     getPopupContainer: PropTypes.func,
+    /**
+     * 箭头指向中间
+     */
     arrowPointAtCenter: PropTypes.bool,
+    /**
+     * 内容超出自动调整方向
+     */
     autoAdjustOverflow: PropTypes.bool,
+    /**
+     * 可见化
+     */
     visible: PropTypes.bool,
+    /**
+     * 可见状态改变回调
+     */
     onVisibleChange: PropTypes.func,
+    /**
+     * 鼠标进入回调
+     */
     mouseEnterDelay: PropTypes.number,
+    /**
+     * 鼠标离开回调
+     */
     mouseLeaveDelay: PropTypes.number,
+    /**
+     * 触发动作
+     */
     trigger: PropTypes.oneOf(['click', 'hover', 'focus']),
+    /**
+     * 内容容器类名
+     */
     overlayClassName: PropTypes.string,
+    /**
+     * 内容容器样式
+     */
     overlayStyle: PropTypes.object,
+    /**
+     * 渐变名称
+     */
     transitionName: PropTypes.string,
+    /**
+     * 要显示的弹窗内容
+     */
     children: PropTypes.any,
+    /**
+     * 业务前缀
+     */
     prefixCls: PropTypes.string
   }
 

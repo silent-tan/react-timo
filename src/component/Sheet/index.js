@@ -18,16 +18,34 @@ import SheetBatchAction from './SheetBatchAction';
 
 class Sheet extends React.Component {
   static propTypes = {
+    /**
+     * table data object array
+     */
     list: PropTypes.array,
+    /**
+     * enable loading
+     */
     loading: PropTypes.bool,
+    /**
+     * enable tip while no data
+     */
     enableEmptyTip: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.string,
       PropTypes.element
     ]),
+    /**
+     * extra class name for table
+     */
     className: PropTypes.string,
     getTrProps: PropTypes.func,
+    /**
+     * scrollX while overflow
+     */
     scrollX: PropTypes.bool,
+    /**
+     * children
+     */
     children: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.array

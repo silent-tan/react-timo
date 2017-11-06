@@ -27,12 +27,33 @@ import './_style.scss';
  */
 class Switch extends Component {
   static propTypes = {
+    /**
+     * color mode
+     */
     type: PropTypes.oneOf(['primary', 'success', 'info', 'warning', 'danger']),
+    /**
+     * controlled checked
+     */
     checked: PropTypes.bool,
+    /**
+     * extra class name
+     */
     className: PropTypes.string,
+    /**
+     * uncontrolled checked
+     */
     defaultChecked: PropTypes.bool,
+    /**
+     * disabled
+     */
     disabled: PropTypes.bool,
+    /**
+     * change the status callback
+     */
     onChange: PropTypes.func,
+    /**
+     * click the switch callback
+     */
     onClick: PropTypes.func
   }
 

@@ -13,11 +13,29 @@ import './_select.scss';
 
 export default class Select extends Component {
   static propTypes = {
+    /**
+     * control selected
+     */
     selected: PropTypes.any,
+    /**
+     * option config
+     */
     options: PropTypes.array,
+    /**
+     * selected callback
+     */
     onChange: PropTypes.func,
+    /**
+     * multiple
+     */
     multiple: PropTypes.oneOf(['multiple', false]),
+    /**
+     * disabled search the option
+     */
     disabledSearch: PropTypes.bool,
+    /**
+     * disabled select
+     */
     disabled: PropTypes.bool
   }
   static defaultProps = {

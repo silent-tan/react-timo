@@ -31,7 +31,13 @@ const rootRoute = {
         require('./routes/DatetimePicker').default,
         require('./routes/Dropdown').default,
         require('./routes/Modal').default,
-        require('./routes/Notification').default
+        require('./routes/Notification').default,
+        require('./routes/Popover').default,
+        require('./routes/Tooltip').default,
+        require('./routes/Select').default,
+        require('./routes/Sheet').default,
+        require('./routes/Slick').default,
+        require('./routes/Switch').default
       ]
     }, {
       path: '/home',

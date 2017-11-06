@@ -21,7 +21,8 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
+        exclude: /node_modules/
       }, {
         test: /\.md$/,
         use: ['babel-loader', 'markdown-it-react-loader']
