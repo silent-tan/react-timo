@@ -14,12 +14,33 @@ import './_tag.scss';
 class Tag extends Component {
   static CheckableTag = CheckableTag;
   static propTypes = {
+    /**
+     * business prefix
+     */
     prefixCls: PropTypes.string,
+    /**
+     * extra class name
+     */
     className: PropTypes.string,
+    /**
+     * color
+     */
     color: PropTypes.string,
+    /**
+     * enable closable
+     */
     closable: PropTypes.bool,
+    /**
+     * close callback
+     */
     onClose: PropTypes.func,
+    /**
+     * extra style
+     */
     style: PropTypes.object,
+    /**
+     * children
+     */
     children: PropTypes.any
   }
   static defaultProps = {

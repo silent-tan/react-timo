@@ -6,20 +6,37 @@ import Flex from '../Flex';
 import uniqBy from 'lodash/uniqBy';
 import remove from 'lodash/remove';
 
-const defaultRenderItem = (item) => (
-  <div className="nf-transfer-item-render">
-    {`${item._transfer_id} ${item._transfer_value}`}
-  </div>
-);
+import { defaultRenderItem } from './util';
 
+/**
+ * Transfer Component
+ */
 class Transfer extends Component {
   static propTypes = {
-    height: PropTypes.number, // 高度
-    title: PropTypes.array, // 右侧标题
-    sourceData: PropTypes.array.isRequired, // 源数据
-    targetData: PropTypes.array.isRequired, // 目标数据
-    onChange: PropTypes.func.isRequired, // 回调函数，返回两个参数sourceData, targetData
-    render: PropTypes.func // 渲染数据的显示内容
+    /**
+     * transfer height
+     */
+    height: PropTypes.number,
+    /**
+     * title
+     */
+    title: PropTypes.array,
+    /**
+     * source object data
+     */
+    sourceData: PropTypes.array.isRequired,
+    /**
+     * target object data
+     */
+    targetData: PropTypes.array.isRequired,
+    /**
+     * transfer change callback
+     */
+    onChange: PropTypes.func.isRequired,
+    /**
+     * render the custom item
+     */
+    render: PropTypes.func
   }
   static defaultProps = {
     height: 300,

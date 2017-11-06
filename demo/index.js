@@ -37,7 +37,10 @@ const rootRoute = {
         require('./routes/Select').default,
         require('./routes/Sheet').default,
         require('./routes/Slick').default,
-        require('./routes/Switch').default
+        require('./routes/Switch').default,
+        require('./routes/Tabs').default,
+        require('./routes/Tag').default,
+        require('./routes/Transfer').default
       ]
     }, {
       path: '/home',

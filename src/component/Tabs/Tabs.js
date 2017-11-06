@@ -21,21 +21,69 @@ class Tabs extends Component {
   static TabPane = TabPane
 
   static propTypes = {
+    /**
+     * default active key
+     */
     defaultActiveKey: PropTypes.string,
+    /**
+     * controlled active key
+     */
     activeKey: PropTypes.string,
+    /**
+     * tabs size
+     */
     size: PropTypes.oneOf(['default', 'small']),
+    /**
+     * tabs type
+     */
     type: PropTypes.oneOf(['line', 'card', 'editable-card']),
+    /**
+     * tabs position
+     */
     tabPosition: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+    /**
+     * onEdit while the type is editable-card
+     */
     onEdit: PropTypes.func,
+    /**
+     * select tab callback
+     */
     onChange: PropTypes.func,
+    /**
+     * business prefix
+     */
     prefixCls: PropTypes.string,
+    /**
+     * hide add btn
+     */
     hideAdd: PropTypes.bool,
+    /**
+     * extra classname
+     */
     className: PropTypes.string,
+    /**
+     * children
+     */
     children: PropTypes.any,
+    /**
+     * tab bar style
+     */
     tabBarStyle: PropTypes.object,
+    /**
+     * click event callback
+     */
     onTabClick: PropTypes.func,
+    /**
+     * click prev btn callback
+     */
     onPrevClick: PropTypes.func,
+    /**
+     * click next btn callback
+     */
     onNextClick: PropTypes.func,
+    /**
+     * enable animated
+     */
     animated: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.shape({
@@ -43,6 +91,9 @@ class Tabs extends Component {
         tabPane: PropTypes.bool
       })
     ]),
+    /**
+     * tab bar extra content
+     */
     tabBarExtraContent: PropTypes.oneOfType([
       PropTypes.node,
       PropTypes.oneOf([null])
