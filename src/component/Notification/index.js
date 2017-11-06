@@ -50,9 +50,11 @@ function getPlacementStyle(placement) {
 
 function getNotificationInstance(placement) {
   if (!notificationInstance[placement]) {
-    notificationInstance[placement] = Notification.newInstance({
+    Notification.newInstance({
       style: getPlacementStyle(placement),
       className: `nf-notification-${placement}`
+    }, (notificationInstanceTemp) => {
+      notificationInstance[placement] = notificationInstanceTemp;
     });
   }
   return notificationInstance[placement];
