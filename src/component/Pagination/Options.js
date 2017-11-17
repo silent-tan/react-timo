@@ -91,11 +91,13 @@ class Options extends React.Component {
       });
 
       changeSelect = (
-        <Select
-          options={options}
-          selected={pageSize}
-          onChange={this.changeSize}
-        />
+        <Flex className={`${prefixCls}-item ${prefixCls}-item-select`}>
+          <Select
+            options={options}
+            selected={pageSize}
+            onChange={this.changeSize}
+          />
+        </Flex>
       );
     }
 
@@ -116,32 +118,36 @@ class Options extends React.Component {
         }
       }
       goInput = (
-        <div className={`${prefixCls}-quick-jumper`}>
-          <Flex>
-            <Flex className="mr-1">跳至</Flex>
+        <Flex className={`${prefixCls}-item ${prefixCls}-item-go`}>
+          <div className={`${prefixCls}-quick-jumper`}>
             <Flex>
-              <div className="form-group mb-0">
-                <input
-                  type="text"
-                  className="form-control input-mask"
-                  value={state.goInputText}
-                  onChange={this.handleChange}
-                  onKeyUp={this.go}
-                />
-                <i className="form-group__bar" />
-              </div>
+              <Flex className="mr-1">跳至</Flex>
+              <Flex>
+                <div className="form-group mb-0">
+                  <input
+                    type="text"
+                    className="form-control input-mask"
+                    value={state.goInputText}
+                    onChange={this.handleChange}
+                    onKeyUp={this.go}
+                  />
+                  <i className="form-group__bar" />
+                </div>
+              </Flex>
+              <Flex className="ml-1">页</Flex>
             </Flex>
-            <Flex className="ml-1">页</Flex>
-          </Flex>
-          {gotoButton}
-        </div>
+            {gotoButton}
+          </div>
+        </Flex>
       );
     }
 
     return (
       <li className={`${prefixCls}`}>
-        {changeSelect}
-        {goInput}
+        <Flex>
+          {changeSelect}
+          {goInput}
+        </Flex>
       </li>
     );
   }

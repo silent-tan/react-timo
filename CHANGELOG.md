@@ -93,3 +93,11 @@
 
 ### v1.0.24
 - :bug: Dropdown demo directory error
+
+### v1.0.25
+- :bug: remove return value of ReactDOM.render
+
+### v1.0.26
+- :bug: Pagination style error while showQuickJumper and showSizeChanger both used
+- :meno: Paigintion complete demo
+- :fire: yarn.lock

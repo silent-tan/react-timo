@@ -19,6 +19,9 @@ import ShowTotal from './ShowTotal';
 import pageSizeCode from '!!raw-loader!./PageSize';
 import PageSize from './PageSize';
 
+import completeCode from '!!raw-loader!./Complete';
+import Complete from './Complete';
+
 class PaginationExample extends Component {
   constructor(props) {
     super(props);
@@ -54,6 +57,11 @@ class PaginationExample extends Component {
         <Card title="Page size change">
           <Demobox code={pageSizeCode}>
             <PageSize />
+          </Demobox> 
+        </Card>
+        <Card title="A complete demo">
+          <Demobox code={completeCode}>
+            <Complete />
           </Demobox> 
         </Card>
         <PropsTable list={PaginationProps}/>

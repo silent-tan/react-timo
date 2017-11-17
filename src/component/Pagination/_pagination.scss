@@ -214,7 +214,17 @@ $jump-input-height: 28px;
     display: inline-block;
     vertical-align: middle;
     margin-left: 16px;
-    width: 120px;
+    max-width: 400px;
+
+    &-item {
+      &-select {
+        min-width: 120px;
+      }
+    }
+
+    &-item + &-item {
+      margin-left: 16px;
+    }
 
     .select2 .select2-selection__rendered {
       padding-left: 0.8rem;
