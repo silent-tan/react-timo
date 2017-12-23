@@ -152,11 +152,11 @@ class DateTimePicker extends Component {
         this.node.blur && this.node.blur();
         this.props.onClose();
       },
-      onChange: selectedDates => {
+      onChange: (selectedDates, dateStr, instance) => {
         if (selectedDates.length === 0) return;
         if (this.props.mode === 'single') {
           const value = moment(selectedDates[0]).toDate();
-          this.props.onChange(value);
+          this.props.onChange(value, dateStr, instance);
         } else {
           this.props.onChange(selectedDates);
         }

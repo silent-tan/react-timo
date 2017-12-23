@@ -1,4 +1,7 @@
-.nf-breadcrumb {
+$breadcrumb-prefix: 'nf-breadcrumb';
+@import "../../scss/_variables.scss";
+
+.#{$breadcrumb-prefix} {
   margin-bottom: 0;
   & > li {
     display: block;
@@ -13,5 +16,8 @@
   }
   &-item {
     color: rgba(0, 0, 0, .65);
+  }
+  a.#{$breadcrumb-prefix}-item {
+    color: $link-color-base;
   }
 }

@@ -17,8 +17,7 @@
     "deploy": "npm install && npm run build && npm run build:min",
     "build": "NODE_ENV=production webpack",
     "build:min": "NODE_ENV=production webpack --config webpack.config.min.js",
-    "demo": "NODE_ENV=production webpack --config webpack.config.demo.js",
-    "test": "eslint ./src/ ./demo/"
+    "demo": "NODE_ENV=production webpack --config webpack.config.demo.js"
   },
   "repository": {
     "type": "git",

@@ -31,7 +31,7 @@ function defaultItemRender(route) {
 class Breadcrumb extends Component {
   static propTypes = {
     /**
-     * 根据路由进行配置
+     * 根据路由进行配置,包含breadcrumbName显示
      */
     routes: PropTypes.array,
     /**
@@ -49,7 +49,7 @@ class Breadcrumb extends Component {
     /**
      * 为Breadcrumb.Item
      */
-    children: PropTypes.any.isRequired,
+    children: PropTypes.any,
     /**
      * 是否需要下横线
      */
@@ -77,7 +77,7 @@ class Breadcrumb extends Component {
         const restProps = {};
         if(!isLastItem) restProps.href = route.path;
         return (
-          <BreadcrumbItem separator={separator} key={route.path} {...restProps}>
+          <BreadcrumbItem separator={separator} key={`${route.path}index`} {...restProps}>
             {itemRender(route, params, routes)}
           </BreadcrumbItem>
         );

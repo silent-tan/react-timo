@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _map from 'lodash/map';
-import { Flex, Card, Icon } from 'react-timo';
+import { Flex, Card, Icon, Clipboard, Notification } from 'react-timo';
 import {ExampleHeader, PropsTable, Demobox} from 'demo-component';
 
 import icons from '../config/icons';
@@ -11,6 +11,10 @@ import Demo from './Demo';
 class IconExample extends Component {
   constructor(props) {
     super(props);
+  }
+
+  handleClick() {
+    Notification.success('复制成功');
   }
 
   render() {
@@ -34,10 +38,12 @@ class IconExample extends Component {
                   {
                     _map(value, (icon, index) => {
                       return (
-                        <div className="col-sm-4 icon-name-instance" key={index}>
-                          <Icon type={icon} className="zmdi-hc-fw"/>
-                          { icon }
-                        </div>
+                        <Clipboard text={icon} key={index}>
+                          <div className="col-sm-4 icon-name-instance waves-effect" onClick={this.handleClick}>
+                            <Icon type={icon} className="zmdi-hc-fw"/>
+                            { icon }
+                          </div>
+                        </Clipboard>
                       );
                     })
                   }

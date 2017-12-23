@@ -100,4 +100,8 @@
 ### v1.0.26
 - :bug: Pagination style error while showQuickJumper and showSizeChanger both used
 - :meno: Paigintion complete demo
+- :lipstick: Breadcrumb
+- :sparkles: DatetimePicker export more arguments to callback
+- :sparkles: Clipboard export static method `copy`
 - :fire: yarn.lock
+- :package: remove test script

@@ -8,12 +8,14 @@ import './_style.scss';
 
 class App extends Component {
   static propTypes = {
-    children: PropTypes.any
+    children: PropTypes.any,
+    location: PropTypes.object
   }
   render() {
+    const { location } = this.props;
     return (
       <div className="demo">
-        <NavTop />
+        <NavTop pathname={location.pathname}/>
         <Flex className="demo-center container">
           <Flex className="mr-4" width="200px">
             <SideBar />
